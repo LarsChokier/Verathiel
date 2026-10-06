@@ -1,0 +1,34 @@
+[
+  {
+    "naam": "Elian I",
+    "jaren": "360 – 370 N.A.",
+    "titel": "De Geleerde · eerste Pontifex",
+    "tekst": "Verzamelde de verspreide geschriften van het Aehisme, schreef de Verlichte Verhandelingen en verenigde de Aelarianen tot één staat.",
+    "citaat": "“Vrees de dag waarop men mijn woorden heilig noemt enkel omdat zij de mijne zijn.”"
+  },
+  {
+    "naam": "Arie",
+    "jaren": "370 – 390 N.A.",
+    "titel": "Tweede Pontifex",
+    "tekst": "Volgde Elian op en droeg het ambt twintig jaar. Hij stierf aan een hartaanval."
+  },
+  {
+    "naam": "Cornelis",
+    "jaren": "390 – 410 N.A.",
+    "titel": "Derde Pontifex",
+    "tekst": "Droeg het ambt twintig jaar en overleed een natuurlijke dood."
+  },
+  {
+    "naam": "Paulus",
+    "jaren": "410 – 428 N.A.",
+    "titel": "Vierde Pontifex",
+    "tekst": "Overleed in 428 N.A. onder schimmige omstandigheden.",
+    "mysterie": true
+  },
+  {
+    "naam": "Lars",
+    "jaren": "sinds 428 N.A.",
+    "titel": "De huidige Pontifex",
+    "tekst": "Volgde Paulus op na diens dood. Onder zijn leiding is Verathiel een welvarende en strikte theocratie."
+  }
+]
