@@ -1,0 +1,1379 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Verathiel</title>
+<meta name="theme-color" content="#17132B">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<!-- Voorbeeld bij het delen van de link (Discord, WhatsApp...).
+     Discord heeft een volledig adres nodig: vervang "img/og.jpg" hieronder door
+     bv. https://jouwnaam.github.io/verathiel/img/og.jpg zodra je site online staat. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Verathiel">
+<meta property="og:description" content="De theocratie van het Eerste Licht op RepublicMC. Voor ons was het Licht. In ons brandt het Licht. Na ons blijft het Licht.">
+<meta property="og:image" content="img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<style>[hidden]{display:none!important}</style>
+<meta name="description" content="Verathiel, de theocratie van het Eerste Licht op RepublicMC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@500;700&family=Marcellus&family=Marcellus+SC&display=swap">
+<script>
+  try { var t = localStorage.getItem('verathiel-thema'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+<style>
+/* Layout: één lange pelgrimstocht door Verathiel. Volle breedte voor beelden, een tekstkolom van ~65 tekens,
+   secties gescheiden door zandstenen kantelen en het kompasster-ornament uit het wapen.
+   Zon (licht) = zandsteen in de middagzon; Maan (donker) = de paarse woestijnschemering uit de screenshots. */
+:root{
+  --zand:#ECDDBA;         /* pagina: zonverlicht zandsteen */
+  --zand-2:#E2CC9E;       /* afwisselende sectie */
+  --perkament:#F7EED8;    /* panelen en boeken */
+  --inkt:#2A1A12;         /* tekst: omber */
+  --inkt-zacht:#5E4838;
+  --karmijn:#8C1C1C;      /* uit het wapen */
+  --goud:#9A6110;         /* goud, leesbaar op zand */
+  --gloed:#F2B54A;        /* lampenlicht (decoratief) */
+  --schemer:#5D4E7B;      /* woestijnschemering */
+  --klei:#B5643C;         /* terracotta lampen */
+  --klei-donker:#763820;
+  --lijn:rgba(42,26,18,.16);
+  --knop:#8C1C1C;
+  --knop-tekst:#FBF0DA;
+  --straal:rgba(255,214,140,.24);
+  --lc-a:0;
+  --zm-x:0px;
+  --zm-zon:#3A2208;
+  --zm-maan:currentColor;
+
+  /* altijd-donkere werelden (lantaarnsectie, voet, boekruggen) */
+  --nacht:#14112A;
+  --nacht-2:#1E1938;
+  --nacht-inkt:#EEE4CF;
+  --hero-inkt:#FFF4DE;
+  --rug-1:#7E1A1A; --rug-2:#4A2C1C; --rug-3:#463B66; --rug-4:#5E4A16;
+  --rug-inkt:#F6E8C8;
+
+  --font-display:"Marcellus","Trajan Pro","Palatino Linotype",Georgia,serif;
+  --font-sc:"Marcellus SC","Marcellus","Palatino Linotype",Georgia,serif;
+  --font-body:"Alegreya","Palatino Linotype",Palatino,Georgia,serif;
+  --font-label:"Alegreya SC","Alegreya","Palatino Linotype",Georgia,serif;
+
+  --t-hero:clamp(3.4rem, 11vw, 8.6rem);
+  --t-h2:clamp(2rem, 4.4vw, 3.3rem);
+  --t-h3:clamp(1.35rem, 2vw, 1.6rem);
+  --t-body:1.125rem;
+  --t-klein:.98rem;
+  --t-label:.82rem;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --zand:#17132B; --zand-2:#1F1A37; --perkament:#26203F;
+    --inkt:#EEE4CF; --inkt-zacht:#BBB0CC;
+    --karmijn:#E5705F; --goud:#F0B650; --gloed:#F6C25E; --schemer:#B3A5DA;
+    --klei:#C9784F; --klei-donker:#8E4A2C;
+    --lijn:rgba(238,228,207,.14);
+    --knop:#A12C24; --knop-tekst:#FFF1DC;
+    --straal:rgba(214,218,255,.17);
+    --lc-a:.13; --zm-x:32px; --zm-zon:currentColor; --zm-maan:#2A1A12;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --zand:#17132B; --zand-2:#1F1A37; --perkament:#26203F;
+  --inkt:#EEE4CF; --inkt-zacht:#BBB0CC;
+  --karmijn:#E5705F; --goud:#F0B650; --gloed:#F6C25E; --schemer:#B3A5DA;
+  --klei:#C9784F; --klei-donker:#8E4A2C;
+  --lijn:rgba(238,228,207,.14);
+  --knop:#A12C24; --knop-tekst:#FFF1DC;
+  --straal:rgba(214,218,255,.17);
+  --lc-a:.13; --zm-x:32px; --zm-zon:currentColor; --zm-maan:#2A1A12;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;overflow-x:clip}
+body{
+  margin:0;overflow-x:clip;
+  background-color:var(--zand);background-image:var(--textuur,none);background-size:64px 64px;image-rendering:pixelated;
+  color:var(--inkt);font-family:var(--font-body);font-size:var(--t-body);line-height:1.62;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  transition:background-color .6s ease,color .6s ease;
+}
+img,canvas,svg{image-rendering:auto}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--goud);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:400;line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+.binnen{max-width:72rem;margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- kleine bouwstenen ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:.6em;font-family:var(--font-label);font-weight:700;font-size:var(--t-label);letter-spacing:.16em;text-transform:lowercase;color:var(--karmijn)}
+.eyebrow svg{width:14px;height:14px;flex:none}
+.kop{display:grid;gap:1rem;max-width:46rem;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.kop h2{font-size:var(--t-h2)}
+.intro{font-size:1.2rem;color:var(--inkt-zacht);max-width:40em}
+.label{font-family:var(--font-label);font-weight:700;font-size:var(--t-label);letter-spacing:.14em;text-transform:lowercase;color:var(--goud)}
+
+.sectie{position:relative;padding-block:clamp(4.5rem,10vw,8rem)}
+.sectie-alt{background-color:var(--zand-2);background-image:var(--textuur,none);background-size:64px 64px;transition:background-color .6s ease}
+.sectie-alt::before{ /* zandstenen kantelen */
+  content:"";position:absolute;left:0;right:0;top:-14px;height:14px;
+  background:repeating-linear-gradient(90deg,var(--zand-2) 0 28px,transparent 28px 56px);
+  transition:background .6s ease;
+}
+
+.knoppen{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center}
+.knop{display:inline-flex;align-items:center;gap:.6em;padding:.85em 1.35em;font-family:var(--font-label);font-weight:700;font-size:1rem;letter-spacing:.1em;text-transform:lowercase;text-decoration:none;border:0;border-radius:3px;cursor:pointer;transition:transform .2s ease,box-shadow .25s ease,background-color .25s ease}
+.knop svg{width:18px;height:18px;flex:none}
+.knop-primair{background:var(--knop);color:var(--knop-tekst);box-shadow:inset 0 0 0 1px rgba(255,220,160,.35),0 8px 22px rgba(110,20,20,.28)}
+.knop-primair:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(255,220,160,.5),0 10px 30px rgba(242,181,74,.38)}
+.knop-glas{background:rgba(255,244,222,.08);color:var(--hero-inkt);box-shadow:inset 0 0 0 1px rgba(255,244,222,.55);backdrop-filter:blur(4px)}
+.knop-glas:hover{background:rgba(255,244,222,.16);transform:translateY(-2px)}
+.knop-lijn{background:transparent;color:var(--inkt);box-shadow:inset 0 0 0 1px var(--lijn)}
+.knop-lijn:hover{box-shadow:inset 0 0 0 1px var(--goud);color:var(--goud)}
+.knop-klein{padding:.5em .95em;font-size:.9rem}
+
+.ornament{display:flex;align-items:center;gap:1rem;color:var(--goud);justify-content:center}
+.ornament::before,.ornament::after{content:"";height:1px;flex:1;max-width:9rem;background:linear-gradient(90deg,transparent,currentColor)}
+.ornament::after{background:linear-gradient(270deg,transparent,currentColor)}
+.ornament svg{width:18px;height:18px}
+
+/* ---------- navigatie ---------- */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;gap:1rem;
+  padding:calc(env(safe-area-inset-top,0px) + .65rem) clamp(16px,3vw,40px) .65rem;color:var(--hero-inkt);
+  transition:background-color .35s ease,box-shadow .35s ease,color .35s ease}
+.nav.is-vast,.nav.menu-open{background:color-mix(in srgb,var(--zand) 90%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--lijn);color:var(--inkt)}
+.nav-merk{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--font-sc);font-size:1.25rem;letter-spacing:.08em;margin-right:auto}
+.nav-merk img{width:38px;height:38px}
+.nav-links{display:flex;align-items:center;gap:clamp(.6rem,1.6vw,1.5rem)}
+.nav-links a{font-family:var(--font-label);font-weight:500;font-size:1rem;letter-spacing:.06em;text-transform:lowercase;text-decoration:none;opacity:.85;position:relative;padding-block:.3rem}
+.nav-links a::after{content:"";position:absolute;left:50%;bottom:-2px;width:5px;height:5px;background:var(--gloed);transform:translateX(-50%) rotate(45deg) scale(0);transition:transform .25s ease}
+.nav-links a:hover,.nav-links a.actief{opacity:1}
+.nav-links a.actief::after{transform:translateX(-50%) rotate(45deg) scale(1)}
+.nav-links .nav-cta{padding:.35rem .9rem;border-radius:3px;box-shadow:inset 0 0 0 1px currentColor;opacity:1}
+.nav-links .nav-cta::after{display:none}
+.zonmaan{position:relative;flex:none;width:68px;height:34px;border-radius:999px;border:0;cursor:pointer;
+  background:color-mix(in srgb,currentColor 14%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,currentColor 35%,transparent);
+  display:flex;align-items:center;justify-content:space-between;padding:0 8px}
+.zonmaan svg{width:18px;height:18px;position:relative;z-index:1}
+.zonmaan .zm-knop{position:absolute;top:3px;left:3px;width:28px;height:28px;border-radius:50%;background:var(--gloed);box-shadow:0 0 14px var(--gloed);transform:translateX(var(--zm-x));transition:transform .45s cubic-bezier(.5,1.6,.4,1),background-color .4s}
+.zonmaan .zm-zon{color:var(--zm-zon)}
+.zonmaan .zm-maan{color:var(--zm-maan)}
+.nav-menu{display:none;flex:none;background:none;border:0;cursor:pointer;padding:.4rem;font-family:var(--font-label);font-weight:700;letter-spacing:.1em;text-transform:lowercase;align-items:center;gap:.45rem}
+.nav-menu span{display:block;width:20px;height:2px;background:currentColor;box-shadow:0 6px 0 currentColor,0 -6px 0 currentColor}
+@media (max-width:900px){
+  .nav-menu{display:inline-flex}
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--perkament);color:var(--inkt);box-shadow:0 12px 30px rgba(0,0,0,.18);padding:.5rem clamp(16px,3vw,40px) 1rem;display:none}
+  .nav.menu-open .nav-links{display:flex}
+  .nav-links a{padding:.8rem 0;border-bottom:1px solid var(--lijn);font-size:1.1rem}
+  .nav-links a::after{display:none}
+  .nav-links .nav-cta{margin-top:.8rem;text-align:center;border-bottom:0}
+}
+
+/* ---------- hero ---------- */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:clamp(600px,90vh,940px);display:grid;place-items:center;text-align:center;color:var(--hero-inkt);padding:7.5rem 16px 6rem}
+.hero-beeld{position:absolute;inset:-4% 0 0 0;width:100%;height:108%;object-fit:cover;object-position:62% 45%;z-index:-3;animation:heroIn 2.6s cubic-bezier(.2,.7,.2,1) both;will-change:transform}
+.hero-waas{position:absolute;inset:0;z-index:-2;background:
+  radial-gradient(ellipse 70% 55% at 50% 48%,rgba(24,12,30,.2),rgba(24,12,30,.62) 80%),
+  linear-gradient(to bottom,rgba(20,14,34,.6) 0%,rgba(20,14,34,.12) 32%,rgba(20,14,34,.3) 72%,var(--zand) 100%)}
+.vonken{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.hero-inhoud{display:grid;justify-items:center;gap:1.1rem;max-width:56rem}
+.medaillon{position:relative;width:clamp(128px,17vw,186px);aspect-ratio:1;margin-bottom:.4rem;animation:rijs 1.4s .2s cubic-bezier(.2,.8,.2,1) both}
+.medaillon img{position:relative;width:100%;height:100%;filter:drop-shadow(0 12px 28px rgba(0,0,0,.55))}
+.stralen{position:absolute;inset:-75%;border-radius:50%;background:repeating-conic-gradient(from 0deg,var(--straal) 0deg 2.5deg,transparent 2.5deg 11deg);
+  -webkit-mask:radial-gradient(circle,#000 22%,transparent 68%);mask:radial-gradient(circle,#000 22%,transparent 68%);animation:draai 120s linear infinite;pointer-events:none}
+.hero .eyebrow{color:#F6CF8A;animation:rijs 1.2s .45s ease both}
+.hero .eyebrow svg{color:#F6CF8A}
+@media (max-width:520px){.hero .eyebrow{text-align:center;justify-content:center}.hero .eyebrow svg{display:none}}
+.hero h1{font-family:var(--font-sc);font-size:var(--t-hero);letter-spacing:.06em;line-height:.95;color:#FFF1D2;
+  filter:drop-shadow(0 4px 24px rgba(255,170,70,.35)) drop-shadow(0 2px 2px rgba(0,0,0,.35))}
+.hero h1 span{display:inline-block;background:linear-gradient(180deg,#FFF8E8 25%,#F4CB78 78%,#E09A3C 100%);-webkit-background-clip:text;background-clip:text;color:transparent;animation:letter 1.1s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(.55s + var(--i) * .07s)}
+.hero-gebed{display:flex;flex-wrap:wrap;justify-content:center;gap:.25em .7em;font-style:italic;font-size:clamp(1.1rem,2.2vw,1.4rem);color:rgba(255,244,222,.9)}
+.hero-gebed span{animation:rijs 1.2s ease both}
+.hero-gebed span:nth-child(1){animation-delay:1.1s}.hero-gebed span:nth-child(2){animation-delay:1.35s}.hero-gebed span:nth-child(3){animation-delay:1.6s}
+.hero .knoppen{margin-top:.9rem;animation:rijs 1.2s 1.8s ease both}
+.daal{position:absolute;left:50%;bottom:1.6rem;transform:translateX(-50%);display:grid;justify-items:center;gap:.2rem;font-family:var(--font-label);font-size:.8rem;letter-spacing:.18em;text-transform:lowercase;text-decoration:none;color:var(--inkt);opacity:.75}
+.daal svg{width:16px;height:16px;animation:zweef 2.2s ease-in-out infinite}
+@keyframes heroIn{from{transform:scale(1.12)}to{transform:scale(1)}}
+@keyframes rijs{from{opacity:.25;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes letter{from{opacity:.2;transform:translateY(.35em);filter:blur(4px)}to{opacity:1;transform:none;filter:none}}
+@keyframes draai{to{transform:rotate(360deg)}}
+@keyframes zweef{50%{transform:translateY(5px)}}
+
+/* ---------- het licht ---------- */
+.pijlers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13.5rem),1fr));gap:clamp(1.8rem,3vw,2.6rem);margin-bottom:clamp(3rem,6vw,5rem)}
+.pijler{display:grid;gap:.7rem;align-content:start;min-width:0}
+.pijler-icoon{width:46px;height:46px;color:var(--karmijn)}
+.pijler h3{font-size:var(--t-h3)}
+.pijler blockquote{margin:0;font-style:italic;color:var(--inkt-zacht)}
+.pijler .bron{font-family:var(--font-label);font-size:.85rem;letter-spacing:.08em;color:var(--goud)}
+.tekstknop{background:none;border:0;padding:0;cursor:pointer;font-family:var(--font-label);font-weight:700;letter-spacing:.08em;text-transform:lowercase;color:var(--karmijn);text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;justify-self:start}
+.tekstknop:hover{color:var(--goud)}
+
+.kader{background:var(--perkament);border-radius:4px;box-shadow:inset 0 0 0 1px var(--lijn),inset 0 0 0 7px var(--perkament),inset 0 0 0 8px color-mix(in srgb,var(--karmijn) 45%,transparent),0 20px 50px -24px rgba(40,20,10,.35);transition:background-color .6s ease}
+.vonk{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(1.5rem,4vw,3rem);padding:clamp(1.6rem,4vw,3rem);align-items:center}
+.vonk-tekst{display:grid;gap:1rem;min-width:0}
+.vonk-tekst h3{font-size:clamp(1.6rem,3vw,2.2rem)}
+.vonk-citaat{font-style:italic;color:var(--inkt-zacht)}
+.vonk-groep{display:grid;gap:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{border:0;cursor:pointer;padding:.5em 1em;border-radius:999px;font-family:var(--font-label);font-weight:700;letter-spacing:.06em;font-size:.95rem;text-transform:lowercase;display:inline-flex;align-items:center;gap:.45em;transition:transform .15s ease,background-color .2s,box-shadow .2s}
+.chip:active{transform:scale(.95)}
+.chip svg{width:14px;height:14px}
+.chip-deugd{background:color-mix(in srgb,var(--gloed) 22%,transparent);color:var(--inkt);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--goud) 60%,transparent)}
+.chip-deugd:hover{background:color-mix(in srgb,var(--gloed) 40%,transparent)}
+.chip-zonde{background:color-mix(in srgb,var(--inkt) 8%,transparent);color:var(--inkt-zacht);box-shadow:inset 0 0 0 1px var(--lijn)}
+.chip-zonde:hover{background:color-mix(in srgb,var(--inkt) 15%,transparent)}
+.vonk-status{min-height:3.2em;font-family:var(--font-display);font-size:1.15rem;color:var(--karmijn)}
+.vonk-beeld{position:relative;height:clamp(280px,34vw,360px);min-width:0}
+.vonk-beeld canvas{position:absolute;inset:0;width:100%;height:100%}
+.vonk-lamp{position:absolute;left:50%;bottom:6%;width:min(62%,230px);transform:translateX(-78%)}
+@media (max-width:820px){.vonk{grid-template-columns:minmax(0,1fr)}.vonk-beeld{height:280px;order:-1}}
+.meter{display:flex;align-items:center;gap:.7rem;font-family:var(--font-label);font-size:.85rem;letter-spacing:.08em;color:var(--inkt-zacht)}
+.meter-balk{flex:1;max-width:14rem;height:6px;border-radius:3px;background:var(--lijn);overflow:hidden}
+.meter-balk i{display:block;height:100%;width:55%;background:linear-gradient(90deg,var(--klei),var(--gloed));transition:width .5s ease}
+
+/* ---------- lampen / geboden ---------- */
+.lampen{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(.3rem,1.2vw,1rem);max-width:62rem;margin:0 auto 2.2rem}
+.lamp{background:none;border:0;cursor:pointer;padding:.3rem .2rem .6rem;display:grid;justify-items:center;gap:.35rem;border-radius:6px;position:relative}
+.lamp svg{width:100%;max-width:118px;overflow:visible}
+.lamp .nr{font-family:var(--font-display);font-size:1.15rem;color:var(--inkt-zacht);transition:color .3s}
+.lamp::after{content:"";width:7px;height:7px;background:var(--karmijn);transform:rotate(45deg) scale(0);transition:transform .25s ease}
+.lamp[aria-selected="true"]::after{transform:rotate(45deg) scale(1)}
+.lamp[aria-selected="true"] .nr{color:var(--karmijn)}
+.lamp:hover .lichaam{transform:translateY(-3px)}
+.lichaam{transition:transform .25s ease}
+.l-klei{fill:var(--klei);transition:fill .6s}
+.l-donker{fill:var(--klei-donker);transition:fill .6s}
+.l-schaduw{fill:var(--inkt);opacity:.14}
+.l-greep{fill:none;stroke:var(--klei);stroke-width:6;stroke-linecap:round;transition:stroke .6s}
+.l-lijn{fill:none;stroke:var(--klei-donker);stroke-width:1.6;opacity:.6}
+.vlam{transform-box:fill-box;transform-origin:50% 100%;opacity:0;transform:scaleY(.15);transition:opacity .35s ease,transform .55s cubic-bezier(.2,1.5,.4,1)}
+.vlam-g{transform-box:fill-box;transform-origin:50% 100%}
+.l-vlam{fill:#FFAE3D}.l-kern{fill:#FFF4C9}
+.gloed{opacity:0;transition:opacity .6s ease}
+.brandt .vlam{opacity:1;transform:scaleY(1)}
+.brandt .vlam-g{animation:flakker 1.7s ease-in-out infinite alternate}
+.brandt .gloed{opacity:1}
+.lamp:nth-child(2n) .vlam-g{animation-duration:1.4s}.lamp:nth-child(3n) .vlam-g{animation-duration:2s}
+@keyframes flakker{0%{transform:scale(1,1) skewX(0)}30%{transform:scale(.93,1.07) skewX(2.5deg)}60%{transform:scale(1.05,.95) skewX(-2deg)}100%{transform:scale(.97,1.04) skewX(1deg)}}
+.alle-brandt .lamp .gloed{animation:puls 2.4s ease-in-out infinite}
+@keyframes puls{50%{opacity:.55}}
+
+.gebod{max-width:46rem;margin-inline:auto;text-align:center;display:grid;gap:1.2rem;justify-items:center}
+.gebod-nr{font-family:var(--font-label);font-weight:700;letter-spacing:.16em;text-transform:lowercase;color:var(--karmijn);font-size:var(--t-label)}
+.gebod-tekst{margin:0;font-family:var(--font-display);font-size:clamp(1.3rem,2.5vw,1.85rem);line-height:1.42;text-wrap:balance}
+.gebod-verhaal{display:grid;gap:.45rem;justify-items:center;padding-top:1.3rem;border-top:1px solid var(--lijn);width:min(100%,34rem)}
+.gebod-verhaal h3{font-size:1.3rem}
+.gebod-verhaal p{color:var(--inkt-zacht)}
+.gebod.wissel{animation:wissel .5s ease}
+@keyframes wissel{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}
+.lampen-voet{display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:2rem;font-family:var(--font-label);letter-spacing:.08em;color:var(--inkt-zacht)}
+.alle-lampen{max-width:40rem;margin:2rem auto 0;text-align:center;padding:1.6rem;display:grid;gap:.6rem}
+.alle-lampen p:first-of-type{font-family:var(--font-display);font-size:1.25rem}
+@media (max-width:700px){.lampen{grid-template-columns:repeat(4,minmax(0,1fr));row-gap:.6rem}}
+
+/* ---------- kroniek ---------- */
+.tijdlijn{max-width:54rem;margin-inline:auto;display:grid}
+.tijdperk{display:grid;grid-template-columns:6.5rem 2rem 1fr;gap:0 1rem;padding:1.4rem 0 .4rem}
+.tijdperk span{grid-column:3;font-family:var(--font-label);font-weight:700;letter-spacing:.16em;text-transform:lowercase;font-size:var(--t-label);color:var(--schemer)}
+.moment{position:relative;display:grid;grid-template-columns:6.5rem 2rem minmax(0,1fr);grid-template-areas:"jaar punt inhoud";gap:0 1rem;padding-block:1rem 1.6rem;--p:0}
+.tijdperk{position:relative;--p:0}
+.moment::before,.moment::after,.tijdperk.lijn::before,.tijdperk.lijn::after{content:"";position:absolute;left:calc(6.5rem + 1rem + 1rem - 1px);top:0;width:2px}
+.moment::before,.tijdperk.lijn::before{bottom:0;background:var(--lijn)}
+.moment::after,.tijdperk.lijn::after{height:calc(var(--p) * 100%);background:linear-gradient(var(--gloed),var(--goud));box-shadow:0 0 12px var(--gloed)}
+.jaar{grid-area:jaar;text-align:right;font-family:var(--font-display);font-size:1.75rem;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--inkt)}
+.jaar small{display:block;font-family:var(--font-label);font-size:.78rem;letter-spacing:.14em;color:var(--inkt-zacht)}
+.punt{grid-area:punt;justify-self:center;position:relative;z-index:1;width:16px;height:16px;margin-top:.55rem;transform:rotate(45deg);background:var(--zand);box-shadow:inset 0 0 0 2px var(--goud);transition:background-color .4s,box-shadow .4s}
+.sectie-alt .punt{background:var(--zand-2)}
+.moment.is-verlicht .punt{background:var(--gloed);box-shadow:inset 0 0 0 2px var(--goud),0 0 0 5px color-mix(in srgb,var(--gloed) 22%,transparent),0 0 22px var(--gloed)}
+.moment-inhoud{grid-area:inhoud;display:grid;gap:.4rem;min-width:0}
+.moment-inhoud h3{font-size:var(--t-h3)}
+.moment-inhoud p{color:var(--inkt-zacht)}
+.moment.klein .jaar{font-size:1.35rem}
+.moment.klein h3{font-size:1.15rem}
+.moment.nu h3{color:var(--karmijn)}
+.moment.kloof{padding-block:.4rem}
+.moment.kloof::before{background:repeating-linear-gradient(to bottom,var(--lijn) 0 6px,transparent 6px 13px)}
+.moment.kloof::after{background:repeating-linear-gradient(to bottom,var(--goud) 0 6px,transparent 6px 13px);box-shadow:none}
+.kloof-tekst{grid-area:inhoud;font-family:var(--font-label);letter-spacing:.2em;font-size:.82rem;color:var(--inkt-zacht);padding-block:1.6rem}
+@media (max-width:640px){
+  .tijdperk{grid-template-columns:1.5rem minmax(0,1fr);gap:0 .9rem}
+  .tijdperk span{grid-column:2}
+  .moment{grid-template-columns:1.5rem minmax(0,1fr);grid-template-areas:"punt jaar" ". inhoud";gap:.15rem .9rem}
+  .moment::before,.moment::after,.tijdperk.lijn::before,.tijdperk.lijn::after{left:calc(.75rem - 1px)}
+  .jaar{text-align:left;font-size:1.45rem}
+  .jaar small{display:inline;margin-left:.4rem}
+  .punt{margin-top:.4rem}
+  .kloof-tekst{grid-area:jaar}
+}
+
+.pontifexen{margin-top:clamp(3.5rem,7vw,5rem);display:grid;gap:1.6rem;justify-items:center;text-align:center}
+.pontifexen h3{font-size:clamp(1.5rem,2.6vw,2rem)}
+.pontifex-rij{display:flex;gap:clamp(.4rem,2.4vw,1.6rem);position:relative;padding-block:.4rem;justify-content:center;flex-wrap:nowrap}
+.pontifex-rij::before{content:"";position:absolute;left:8%;right:8%;top:calc(.4rem + 32px);height:1px;background:linear-gradient(90deg,transparent,var(--goud),transparent)}
+.pf{position:relative;flex:0 1 auto;background:none;border:0;cursor:pointer;display:grid;justify-items:center;align-content:start;gap:.35rem;padding:0;min-width:0}
+.pf-munt{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-size:1.7rem;color:var(--karmijn);background:var(--perkament);
+  box-shadow:inset 0 0 0 2px var(--karmijn),inset 0 0 0 5px var(--perkament),inset 0 0 0 6px var(--goud);transition:transform .25s ease,box-shadow .3s}
+.pf:hover .pf-munt{transform:translateY(-3px)}
+.pf[aria-selected="true"] .pf-munt{box-shadow:inset 0 0 0 2px var(--karmijn),inset 0 0 0 5px var(--perkament),inset 0 0 0 6px var(--goud),0 0 0 4px color-mix(in srgb,var(--gloed) 35%,transparent),0 0 26px var(--gloed)}
+.pf-naam{font-family:var(--font-display);font-size:1rem}
+.pf-jaar{font-family:var(--font-label);font-size:.78rem;letter-spacing:.06em;color:var(--inkt-zacht);font-variant-numeric:tabular-nums}
+.pf.mysterie .pf-munt{animation:schim 5s ease-in-out infinite}
+@keyframes schim{0%,100%{opacity:1}46%{opacity:1}50%{opacity:.45}54%{opacity:1}58%{opacity:.7}62%{opacity:1}}
+.pf-detail{max-width:36rem;display:grid;gap:.5rem;padding:1.4rem 1.6rem;min-height:9.5rem;align-content:start}
+.pf-detail h4{font-size:1.4rem}
+.pf-detail p{color:var(--inkt-zacht)}
+.pf-detail .citaat{font-style:italic;color:var(--inkt)}
+@media (max-width:480px){.pf-munt{width:54px;height:54px;font-size:1.4rem}.pontifex-rij::before{top:calc(.4rem + 27px)}.pf-naam{font-size:.92rem}.pf-jaar{font-size:.7rem}}
+
+/* ---------- rangen ---------- */
+.rangen-wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.8fr);gap:clamp(2rem,5vw,4rem);align-items:start}
+.rangen{list-style:none;margin:0;padding:0;display:grid;gap:.35rem;justify-items:center}
+.rang{width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.15rem 1rem;padding:.85rem 1.2rem;border-radius:3px;background:color-mix(in srgb,var(--perkament) 60%,transparent);box-shadow:inset 0 0 0 1px var(--lijn);transition:background-color .25s,box-shadow .25s,transform .25s}
+.rang:hover{background:var(--perkament);box-shadow:inset 0 0 0 1px var(--goud),0 6px 24px -10px var(--gloed);transform:translateX(2px)}
+.rang h3{font-size:1.3rem}
+.rang .gelijk{font-family:var(--font-label);font-size:.85rem;letter-spacing:.1em;text-transform:lowercase;color:var(--goud);align-self:center;text-align:right}
+.rang p{grid-column:1 / -1;font-size:var(--t-klein);color:var(--inkt-zacht)}
+.rang.top{background:var(--perkament);box-shadow:inset 0 0 0 1px var(--karmijn),0 0 0 4px color-mix(in srgb,var(--gloed) 18%,transparent)}
+.rang.top h3{color:var(--karmijn)}
+@media (min-width:901px){
+  .rang:nth-child(1){max-width:62%}.rang:nth-child(2){max-width:67%}.rang:nth-child(3){max-width:72%}.rang:nth-child(4){max-width:77%}
+  .rang:nth-child(5){max-width:82%}.rang:nth-child(6){max-width:87%}.rang:nth-child(7){max-width:92%}.rang:nth-child(8){max-width:96%}
+}
+.rang-citaat{position:sticky;top:110px;padding:clamp(1.6rem,3vw,2.4rem);display:grid;gap:1rem}
+.rang-citaat blockquote{margin:0;font-family:var(--font-display);font-size:clamp(1.25rem,2vw,1.5rem);line-height:1.45}
+.rang-citaat .bron{font-family:var(--font-label);letter-spacing:.08em;color:var(--goud);font-size:.9rem}
+@media (max-width:900px){.rangen-wrap{grid-template-columns:minmax(0,1fr)}.rang-citaat{position:static}}
+
+/* ---------- lantaarn ---------- */
+.lantaarn{position:relative;overflow:hidden;background:var(--nacht);color:var(--nacht-inkt);padding-block:clamp(5.5rem,13vw,10rem);touch-action:pan-y;
+  background-image:radial-gradient(1px 1px at 12% 22%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 78% 14%,rgba(255,255,255,.45),transparent),radial-gradient(1.5px 1.5px at 64% 70%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 30% 82%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 90% 58%,rgba(255,255,255,.4),transparent),radial-gradient(1px 1px at 46% 8%,rgba(255,255,255,.4),transparent)}
+@media (pointer:fine){.lantaarn{cursor:none}}
+.lantaarn-gloed{position:absolute;left:0;top:0;width:620px;height:620px;border-radius:50%;pointer-events:none;
+  transform:translate(calc(var(--gx,50vw) - 50%),calc(var(--gy,50%) - 50%));background:radial-gradient(circle,rgba(255,190,90,.3) 0%,rgba(255,150,60,.09) 38%,transparent 68%)}
+.lantaarn-stapel{position:relative;display:grid;max-width:52rem;margin-inline:auto}
+.lantaarn-laag{grid-area:1 / 1;display:grid;gap:1.4rem;justify-items:center;text-align:center}
+.lantaarn-laag h2{font-size:clamp(1.9rem,4.6vw,3.4rem)}
+.lantaarn-laag p{font-size:clamp(1.1rem,1.8vw,1.3rem);max-width:38em}
+.lantaarn-laag .slot{font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.5rem)}
+.lantaarn-laag .eyebrow{color:inherit}
+.lantaarn-donker{color:rgba(238,228,207,.34)}
+.lantaarn-licht{color:#FFE6AE;text-shadow:0 0 22px rgba(255,180,80,.55);
+  -webkit-mask-image:radial-gradient(circle var(--r,190px) at var(--x,50%) var(--y,50%),#000 0%,rgba(0,0,0,.9) 38%,transparent 100%);
+  mask-image:radial-gradient(circle var(--r,190px) at var(--x,50%) var(--y,50%),#000 0%,rgba(0,0,0,.9) 38%,transparent 100%)}
+.lantaarn-hint{position:relative;text-align:center;margin-top:2.6rem;font-family:var(--font-label);letter-spacing:.16em;font-size:.8rem;text-transform:lowercase;color:rgba(238,228,207,.5)}
+.lantaarn.statisch .lantaarn-licht{-webkit-mask-image:none;mask-image:none}
+.lantaarn.statisch .lantaarn-donker,.lantaarn.statisch .lantaarn-gloed,.lantaarn.statisch .lantaarn-hint{display:none}
+
+/* ---------- stad ---------- */
+.galerij{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1rem)}
+.foto{position:relative;overflow:hidden;border:0;padding:0;cursor:zoom-in;border-radius:3px;background:var(--zand-2);aspect-ratio:16 / 10;display:block;width:100%;max-width:100%}
+.foto.groot{grid-column:1 / -1;aspect-ratio:21 / 9}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s cubic-bezier(.2,.7,.2,1),filter .6s}
+.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,10,20,.72),rgba(18,10,20,0) 52%);pointer-events:none}
+.foto:hover img{transform:scale(1.045);filter:saturate(1.1) brightness(1.04)}
+.onderschrift{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:1rem 1.2rem;text-align:left;color:var(--hero-inkt);font-family:var(--font-display);font-size:clamp(1rem,1.6vw,1.2rem);line-height:1.3}
+.foto.groot .onderschrift{font-size:clamp(1.15rem,2.2vw,1.6rem);padding:1.4rem 1.6rem}
+.stad-noot{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.6rem 2rem;font-family:var(--font-label);letter-spacing:.08em;color:var(--inkt-zacht);font-size:.95rem}
+.stad-noot span{display:inline-flex;align-items:center;gap:.5rem}
+.stad-noot svg{width:12px;height:12px;color:var(--karmijn)}
+@media (max-width:640px){.galerij{grid-template-columns:minmax(0,1fr)}.foto.groot{aspect-ratio:16 / 10}}
+
+.lichtbak{position:fixed;inset:0;z-index:100;display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:.6rem;padding:calc(env(safe-area-inset-top,0px) + 3.4rem) clamp(8px,2vw,24px) calc(env(safe-area-inset-bottom,0px) + 1.2rem);background:rgba(12,8,20,.94);color:var(--hero-inkt);animation:vervaag .3s ease}
+.lichtbak figure{margin:0;display:grid;gap:.8rem;justify-items:center;min-width:0}
+.lichtbak img{max-height:78vh;width:auto;max-width:100%;border-radius:2px;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.lichtbak figcaption{font-family:var(--font-display);font-size:1.1rem;text-align:center}
+.lb-knop{background:rgba(255,244,222,.08);border:0;cursor:pointer;color:inherit;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,244,222,.3)}
+.lb-knop:hover{background:rgba(255,244,222,.18)}
+.lb-knop svg{width:20px;height:20px}
+.lb-sluit{position:absolute;top:calc(env(safe-area-inset-top,0px) + .8rem);right:clamp(8px,2vw,24px)}
+@keyframes vervaag{from{opacity:0}}
+@media (max-width:640px){.lichtbak{grid-template-columns:minmax(0,1fr)}.lb-vorige,.lb-volgende{display:none}}
+
+/* ---------- verhalen ---------- */
+.plank-wrap{overflow-x:auto;padding-bottom:.4rem;margin-bottom:2rem;scrollbar-width:thin}
+.plank{display:flex;align-items:flex-end;gap:6px;min-width:max-content;margin-inline:auto;width:max-content;padding:1.3rem 1rem 12px;position:relative}
+.plank::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:linear-gradient(var(--klei-donker),color-mix(in srgb,var(--klei-donker) 70%,#000));border-radius:2px;box-shadow:0 8px 16px -6px rgba(0,0,0,.4)}
+.rug{--h:230px;height:var(--h);width:58px;border:0;cursor:pointer;padding:.9rem 0;border-radius:3px 3px 1px 1px;color:var(--rug-inkt);display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:.6rem;
+  background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(255,255,255,.08) 22%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.32)),var(--kleur,var(--rug-1));
+  box-shadow:inset 0 10px 0 -6px rgba(255,220,150,.35),inset 0 -12px 0 -7px rgba(255,220,150,.3);transition:transform .3s cubic-bezier(.2,1.4,.4,1),box-shadow .3s}
+.rug:hover{transform:translateY(-8px)}
+.rug[aria-selected="true"]{transform:translateY(-16px);box-shadow:inset 0 10px 0 -6px rgba(255,220,150,.5),inset 0 -12px 0 -7px rgba(255,220,150,.45),0 0 26px -2px var(--gloed)}
+.rug-nr{font-family:var(--font-display);font-size:1.05rem}
+.rug-titel{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--font-sc);font-size:.95rem;letter-spacing:.06em;line-height:1.1;max-height:calc(var(--h) - 4.2rem);overflow:hidden}
+.lezer{display:grid;grid-template-columns:15rem minmax(0,1fr);gap:0;overflow:hidden}
+.lezer-inhoud{padding:clamp(1.4rem,3vw,2.2rem) 1.2rem;border-right:1px solid var(--lijn);display:grid;gap:1rem;align-content:start;min-width:0}
+.lezer-inhoud h3{font-size:1.45rem}
+.lezer-inhoud .sub{font-size:var(--t-klein);color:var(--inkt-zacht);font-style:italic}
+.toc{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.toc button{width:100%;text-align:left;background:none;border:0;cursor:pointer;padding:.42rem .6rem;border-radius:3px;font-size:.98rem;line-height:1.3;display:grid;grid-template-columns:2rem 1fr;color:var(--inkt-zacht)}
+.toc button span{font-family:var(--font-display);color:var(--goud)}
+.toc button:hover{background:color-mix(in srgb,var(--gloed) 14%,transparent);color:var(--inkt)}
+.toc button[aria-current="true"]{background:color-mix(in srgb,var(--gloed) 24%,transparent);color:var(--inkt)}
+.lezer-tekst{padding:clamp(1.6rem,4vw,3rem) clamp(1.2rem,4vw,3.4rem);display:grid;gap:1.2rem;align-content:start;min-width:0}
+.lezer-tekst .label{color:var(--karmijn)}
+.lezer-tekst h4{font-size:clamp(1.6rem,3vw,2.2rem)}
+.passage{display:grid;gap:1rem;max-width:38rem}
+.passage p{font-size:1.16rem;line-height:1.7}
+.passage p:first-child::first-letter{font-family:var(--font-display);float:left;font-size:3.5em;line-height:.82;padding:.06em .1em 0 0;color:var(--karmijn)}
+.passage.vers{justify-items:start}
+.passage.vers p{font-style:italic;font-size:1.22rem;line-height:1.75}
+.passage.vers p:first-child::first-letter{font-family:inherit;float:none;font-size:inherit;padding:0;color:inherit;line-height:inherit}
+.moraal{max-width:38rem;display:grid;gap:.6rem;justify-items:center;text-align:center;padding:1.3rem 0 .4rem}
+.moraal .label{color:var(--goud)}
+.moraal p{font-family:var(--font-display);font-size:clamp(1.2rem,2vw,1.42rem);line-height:1.45}
+.na-moraal{max-width:38rem;color:var(--inkt-zacht);font-size:1.08rem}
+.lezer-voet{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding-top:1.2rem;border-top:1px solid var(--lijn);max-width:38rem;font-family:var(--font-label);letter-spacing:.08em;color:var(--inkt-zacht);font-size:.9rem}
+.lezer-tekst.wissel{animation:wissel .45s ease}
+@media (max-width:860px){
+  .lezer{grid-template-columns:minmax(0,1fr)}
+  .lezer-inhoud{border-right:0;border-bottom:1px solid var(--lijn)}
+  .toc{display:flex;overflow-x:auto;gap:.4rem;padding-bottom:.3rem}
+  .toc li{flex:none}
+  .toc button{white-space:nowrap;display:flex;gap:.4rem;box-shadow:inset 0 0 0 1px var(--lijn)}
+}
+
+/* ---------- aansluiten ---------- */
+.waarden{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:clamp(1.6rem,3vw,2.4rem);margin-bottom:clamp(3rem,6vw,4.5rem)}
+.waarde{display:grid;gap:.5rem;align-content:start;min-width:0}
+.waarde svg{width:34px;height:34px;color:var(--karmijn)}
+.waarde h3{font-size:1.3rem}
+.waarde p{color:var(--inkt-zacht);font-size:var(--t-klein)}
+.stappen{list-style:none;margin:0 0 clamp(3rem,6vw,4.5rem);padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,3vw,2rem);counter-reset:stap}
+.stap{display:grid;gap:.4rem;align-content:start;padding-top:1.1rem;border-top:2px solid var(--goud);min-width:0}
+.stap-nr{font-family:var(--font-display);font-size:2.2rem;line-height:1;color:var(--goud)}
+.stap h3{font-size:1.25rem}
+.stap p{color:var(--inkt-zacht);font-size:var(--t-klein)}
+@media (max-width:760px){.stappen{grid-template-columns:minmax(0,1fr)}}
+.poorten{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(1rem,2.5vw,1.6rem)}
+.poort{padding:clamp(1.6rem,4vw,2.6rem);display:grid;gap:1rem;align-content:start;min-width:0}
+.poort-kop{display:flex;align-items:center;gap:.8rem}
+.poort-kop svg{width:34px;height:34px;color:var(--karmijn);flex:none}
+.poort h3{font-size:clamp(1.6rem,3vw,2.1rem)}
+.poort p{color:var(--inkt-zacht)}
+.kopieer{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+.kopieer code{font-family:var(--font-label);font-size:1.05rem;letter-spacing:.04em;padding:.4em .8em;border-radius:3px;background:color-mix(in srgb,var(--inkt) 7%,transparent);user-select:all;overflow-wrap:anywhere}
+.poort .knoppen{justify-content:flex-start}
+@media (max-width:760px){.poorten{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- voet ---------- */
+.voet{background:var(--nacht);color:var(--nacht-inkt);padding-block:clamp(4rem,8vw,6rem) calc(env(safe-area-inset-bottom,0px) + 2.4rem);text-align:center;position:relative}
+.voet::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px;background:repeating-linear-gradient(90deg,var(--nacht) 0 28px,transparent 28px 56px)}
+.voet-binnen{display:grid;gap:1.4rem;justify-items:center}
+.voet img{width:84px;height:84px}
+.voet blockquote{margin:0;font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.9rem);max-width:30em;color:#FFE6AE}
+.voet nav{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem 1.6rem;font-family:var(--font-label);letter-spacing:.08em}
+.voet nav a{text-decoration:none;opacity:.8}.voet nav a:hover{opacity:1;color:#FFE6AE}
+.voet small{font-size:.85rem;color:rgba(238,228,207,.55);max-width:40em;line-height:1.5}
+
+.lichtcursor{position:fixed;left:-210px;top:-210px;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:60;mix-blend-mode:screen;display:none;
+  background:radial-gradient(circle,rgba(255,190,90,var(--lc-a)) 0%,transparent 62%)}
+.lichtcursor.aan{display:block}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+<!-- symbolen -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="lampGloed"><stop offset="0" stop-color="#FFD27A" stop-opacity=".75"/><stop offset=".45" stop-color="#FFB04A" stop-opacity=".22"/><stop offset="1" stop-color="#FF9A3A" stop-opacity="0"/></radialGradient>
+    <symbol id="ster" viewBox="0 0 24 24"><path fill="currentColor" d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/><circle cx="12" cy="12" r="2.6" style="fill:var(--karmijn)"/></symbol>
+    <symbol id="zon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"/></g></symbol>
+    <symbol id="maan" viewBox="0 0 24 24"><path fill="currentColor" d="M15.5 2.6A9.5 9.5 0 1 0 21.4 15 7.6 7.6 0 0 1 15.5 2.6z"/></symbol>
+    <symbol id="vonk" viewBox="0 0 24 24"><path fill="currentColor" d="M12 1c.6 5.2 2.8 8.4 8 9.4v1.2c-5.2 1-7.4 4.2-8 9.4h-.2c-.6-5.2-2.8-8.4-8-9.4v-1.2c5.2-1 7.4-4.2 8-9.4z"/></symbol>
+    <symbol id="eerste-licht" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="24" cy="24" r="7"/><path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l5 5M33.1 33.1l5 5M9.9 38.1l5-5M33.1 14.9l5-5"/></g><circle cx="24" cy="24" r="2.5" fill="currentColor"/></symbol>
+    <symbol id="lichtvonk" viewBox="0 0 48 48"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M24 5c3 9 8 13 8 21a8 8 0 0 1-16 0c0-8 5-12 8-21z"/><path fill="currentColor" d="M24 24c1.4 3 3 4.6 3 7a3 3 0 0 1-6 0c0-2.4 1.6-4 3-7z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M14 43h20"/></symbol>
+    <symbol id="schaduw" viewBox="0 0 48 48"><circle cx="24" cy="24" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path fill="currentColor" d="M24 9a15 15 0 0 1 0 30z" opacity=".85"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M5 24h3M40 24h3"/></symbol>
+    <symbol id="zonmaan-icoon" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="18" cy="24" r="7"/><path d="M18 9v3M18 36v3M6 24h3M8.5 14.5l2 2M8.5 33.5l2-2"/></g><path fill="currentColor" d="M34 13a11 11 0 1 0 8 18.5A9 9 0 0 1 34 13z"/></symbol>
+    <symbol id="stem" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="18" y="6" width="12" height="22" rx="6"/><path d="M11 22a13 13 0 0 0 26 0M24 35v7M17 42h14"/></g></symbol>
+    <symbol id="weegschaal" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6v36M14 42h20M10 12h28"/><path d="M10 12l-6 14h12zM38 12l-6 14h12z"/><path d="M4 26a6 4 0 0 0 12 0M32 26a6 4 0 0 0 12 0"/></g></symbol>
+    <symbol id="basiliek" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M6 20L24 8l18 12M8 20h32M10 20v18M17 20v18M24 20v18M31 20v18M38 20v18M6 40h36"/></g><circle cx="24" cy="15" r="2" fill="currentColor"/></symbol>
+    <symbol id="beeld" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5" y="11" width="38" height="26" rx="3"/><path d="M21 18l9 6-9 6z" fill="currentColor"/></g></symbol>
+    <symbol id="praat" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 10h32a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z"/></g><circle cx="17" cy="21.5" r="2.2" fill="currentColor"/><circle cx="24" cy="21.5" r="2.2" fill="currentColor"/><circle cx="31" cy="21.5" r="2.2" fill="currentColor"/></symbol>
+    <symbol id="speel" viewBox="0 0 48 48"><rect x="4" y="10" width="40" height="28" rx="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 17l11 7-11 7z" fill="currentColor"/></symbol>
+    <symbol id="pijl-r" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></symbol>
+    <symbol id="pijl-l" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></symbol>
+    <symbol id="pijl-o" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 9l7 7 7-7"/></symbol>
+    <symbol id="kruis" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="uit" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <a class="nav-merk" href="#begin"><img src="img/logo.webp" alt="" width="38" height="38"><span>Verathiel</span></a>
+  <nav class="nav-links" id="navLinks" aria-label="Hoofdmenu">
+    <a href="#licht">Het Licht</a>
+    <a href="#geboden">Geboden</a>
+    <a href="#kroniek">Kroniek</a>
+    <a href="#rangen">Rangen</a>
+    <a href="#stad">De Stad</a>
+    <a href="#verhalen">Verhalen</a>
+    <a href="#aansluiten" class="nav-cta">Aansluiten</a>
+  </nav>
+  <button class="zonmaan" id="zonmaan" type="button" aria-label="Wissel tussen Zon en Maan">
+    <svg class="zm-zon" aria-hidden="true"><use href="#zon"/></svg>
+    <svg class="zm-maan" aria-hidden="true"><use href="#maan"/></svg>
+    <span class="zm-knop" aria-hidden="true"></span>
+  </button>
+  <button class="nav-menu" id="navMenu" type="button" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true"></span>menu</button>
+</header>
+
+<section class="hero" id="begin">
+  <img class="hero-beeld" id="heroBeeld" src="img/klokkentoren.webp" alt="Verathiel bij zonsondergang: zandstenen huizen met rode daken, een klokkentoren en palmen in de woestijn" fetchpriority="high">
+  <div class="hero-waas"></div>
+  <canvas class="vonken" id="vonken" aria-hidden="true"></canvas>
+  <div class="hero-inhoud">
+    <div class="medaillon"><div class="stralen"></div><img src="img/logo.webp" alt="Het wapen van Verathiel: een honingdas op een rots, voor de opkomende woestijnzon" width="186" height="186"></div>
+    <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Theocratie van het Eerste Licht · RepublicMC<svg aria-hidden="true"><use href="#ster"/></svg></p>
+    <h1 aria-label="Verathiel"><span style="--i:0" aria-hidden="true">V</span><span style="--i:1" aria-hidden="true">e</span><span style="--i:2" aria-hidden="true">r</span><span style="--i:3" aria-hidden="true">a</span><span style="--i:4" aria-hidden="true">t</span><span style="--i:5" aria-hidden="true">h</span><span style="--i:6" aria-hidden="true">i</span><span style="--i:7" aria-hidden="true">e</span><span style="--i:8" aria-hidden="true">l</span></h1>
+    <p class="hero-gebed"><span>Voor ons was het Licht.</span> <span>In ons brandt het Licht.</span> <span>Na ons blijft het Licht.</span></p>
+    <div class="knoppen">
+      <a class="knop knop-primair" href="https://discord.gg/6MVmUydGcq" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#praat"/></svg>Word lid op Discord</a>
+      <a class="knop knop-glas" href="https://www.youtube.com/@VerathielRMC" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#speel"/></svg>Bekijk ons op YouTube</a>
+    </div>
+  </div>
+  <a class="daal" href="#licht">daal af<svg aria-hidden="true"><use href="#pijl-o"/></svg></a>
+</section>
+
+<main>
+<!-- ============ HET LICHT ============ -->
+<section class="sectie" id="licht">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Het Luminisme</p>
+      <h2>Iedere ziel draagt een vonk van het Eerste Licht</h2>
+      <p class="intro">Verathiel is een theocratisch kingdom op RepublicMC, in de wereld Quartum. Wij leven naar het Luminisme, het geloof dat de geleerde Elian in 315 N.A. opnieuw samenstelde uit de verspreide geschriften van het oude Aehisme. De wet van de staat is de wet van het Licht. Aan het hoofd staan de Pontifex en de Heilige Raad.</p>
+    </div>
+
+    <div class="pijlers">
+      <article class="pijler">
+        <svg class="pijler-icoon" aria-hidden="true"><use href="#eerste-licht"/></svg>
+        <h3>Het Eerste Licht</h3>
+        <blockquote>“Voor de dagen geteld werden, voor hemel, aarde en adem bestonden, was er het Licht. Niet geschapen en niet geboren. Het was.”</blockquote>
+        <p class="bron">Boek van de Eerste Gloed, I</p>
+      </article>
+      <article class="pijler">
+        <svg class="pijler-icoon" aria-hidden="true"><use href="#lichtvonk"/></svg>
+        <h3>De Lichtvonk</h3>
+        <blockquote>“In de mens brandt het als een vonk. Deze Lichtvonk behoort hem niet toe. Zij is slechts aan hem toevertrouwd zolang hij leeft.”</blockquote>
+        <p class="bron">Boek van de Eerste Gloed, IV</p>
+      </article>
+      <article class="pijler">
+        <svg class="pijler-icoon" aria-hidden="true"><use href="#schaduw"/></svg>
+        <h3>De Schaduw</h3>
+        <blockquote>“Er zijn geen twee machten. Steek een lamp aan en de Schaduw wijkt. Daarom strijdt het Licht niet tegen een vijand.”</blockquote>
+        <p class="bron">Kronieken van Elian, II</p>
+      </article>
+      <article class="pijler">
+        <svg class="pijler-icoon" aria-hidden="true"><use href="#zonmaan-icoon"/></svg>
+        <h3>Zon en Maan</h3>
+        <blockquote>“De Zon is het Licht van handelen. De Maan is het Licht van inzicht. Daarom dient de wijze beiden te kennen.”</blockquote>
+        <button class="tekstknop" type="button" data-wissel-thema data-thema-tekst>Wissel naar de Maan</button>
+      </article>
+    </div>
+
+    <div class="vonk kader">
+      <div class="vonk-tekst">
+        <p class="label">Probeer het zelf</p>
+        <h3>Jouw Lichtvonk</h3>
+        <p class="vonk-citaat">“Door waarheid, barmhartigheid, inzicht en rechtvaardigheid brandt zij helder. Door hoogmoed, bedrog, verraad en wreedheid wordt zij verduisterd. Doch niemand wordt zonder Licht geboren.”</p>
+        <div class="vonk-groep">
+          <p class="label">Brengt Licht</p>
+          <div class="chips" id="deugden">
+            <button class="chip chip-deugd" type="button" data-d="1"><svg aria-hidden="true"><use href="#vonk"/></svg>Waarheid</button>
+            <button class="chip chip-deugd" type="button" data-d="1"><svg aria-hidden="true"><use href="#vonk"/></svg>Barmhartigheid</button>
+            <button class="chip chip-deugd" type="button" data-d="1"><svg aria-hidden="true"><use href="#vonk"/></svg>Inzicht</button>
+            <button class="chip chip-deugd" type="button" data-d="1"><svg aria-hidden="true"><use href="#vonk"/></svg>Rechtvaardigheid</button>
+          </div>
+        </div>
+        <div class="vonk-groep">
+          <p class="label">Verduistert</p>
+          <div class="chips" id="zonden">
+            <button class="chip chip-zonde" type="button" data-d="-1">Hoogmoed</button>
+            <button class="chip chip-zonde" type="button" data-d="-1">Bedrog</button>
+            <button class="chip chip-zonde" type="button" data-d="-1">Verraad</button>
+            <button class="chip chip-zonde" type="button" data-d="-1">Wreedheid</button>
+          </div>
+        </div>
+        <div class="meter" aria-hidden="true">helderheid <span class="meter-balk"><i id="meterVulling"></i></span></div>
+        <p class="vonk-status" id="vonkStatus" aria-live="polite">Je vonk brandt rustig. Kies hierboven hoe je leeft.</p>
+      </div>
+      <div class="vonk-beeld" id="vonkBeeld">
+        <canvas id="vonkCanvas" aria-hidden="true"></canvas>
+        <svg class="vonk-lamp" id="vonkLamp" viewBox="0 0 120 100" aria-hidden="true">
+          <ellipse class="l-schaduw" cx="58" cy="92" rx="30" ry="4"/>
+          <path class="l-greep" d="M28 72 Q 10 70 11 58 Q 13 48 22 52"/>
+          <path class="l-klei" d="M80 66 Q 98 61 106 63 Q 113 65 111 71 Q 107 78 84 80 Z"/>
+          <ellipse class="l-klei" cx="56" cy="74" rx="32" ry="14"/>
+          <path class="l-lijn" d="M33 77 Q 56 86 79 77"/>
+          <ellipse class="l-donker" cx="56" cy="66" rx="21" ry="5.5"/>
+          <circle cx="56" cy="66" r="2.6" fill="#2A1A12" opacity=".6"/>
+          <ellipse cx="106" cy="64.5" rx="3.2" ry="1.4" fill="#2A1A12" opacity=".7"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GEBODEN ============ -->
+<section class="sectie sectie-alt" id="geboden">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>De Acht Geboden</p>
+      <h2>Acht lampen, ontstoken uit dezelfde vlam</h2>
+      <p class="intro">Aelar de Vredesbrenger trok door de landen en schreef na elke ontmoeting één regel op. Wetten noemde hij ze nooit: “Ik heb slechts gezien wat reeds voor ieder zichtbaar was.” Ontsteek een lamp om haar gebod te lezen.</p>
+    </div>
+    <div class="lampen" id="lampen" role="tablist" aria-label="De acht geboden"></div>
+    <article class="gebod" id="gebod" role="tabpanel" aria-live="polite">
+      <p class="gebod-nr" id="gebodNr">Gebod I · Gelijkwaardigheid</p>
+      <blockquote class="gebod-tekst" id="gebodTekst">Gij zult het Licht zoeken dat in u woont, en de vonk erkennen die in uw naaste brandt; want uit hetzelfde Eerste Licht zijt gij allen voortgekomen.</blockquote>
+      <div class="gebod-verhaal">
+        <p class="label">Uit De Leer van Aelar</p>
+        <h3 id="gebodVerhaal">De Vonk in de Ander</h3>
+        <p id="gebodKern">Twee families leven al jaren in twist. Aelar ontsteekt acht lampen uit dezelfde vlam en vraagt: “Ziet gij verschil in het Licht dat zij dragen?”</p>
+        <button class="tekstknop" type="button" id="gebodLees">Lees het hele verhaal</button>
+      </div>
+    </article>
+    <div class="lampen-voet">
+      <span id="lampenTeller">1 van 8 lampen brandt</span>
+      <button class="knop knop-lijn knop-klein" type="button" id="doof" hidden>doof de lampen</button>
+    </div>
+    <div class="alle-lampen kader" id="alleLampen" hidden>
+      <p class="label">De Acht Leringen van Aelar</p>
+      <p>“Dit zijn geen woorden die mij gegeven zijn. Het Licht spreekt niet. Ik heb slechts gezien wat reeds voor ieder zichtbaar was.”</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KRONIEK ============ -->
+<section class="sectie" id="kroniek">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Kroniek</p>
+      <h2>Van verboden geloof tot theocratie</h2>
+      <p class="intro">Bijna anderhalve eeuw geschiedenis, van het verbod in Doveport tot het bewind van Pontifex Lars. Scroll naar beneden en volg het Licht.</p>
+    </div>
+
+    <div class="tijdlijn" id="tijdlijn">
+      <div class="tijdperk"><span>Het Aehisme in ballingschap</span></div>
+      <div class="moment">
+        <p class="jaar">280<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Het Verbod van Doveport</h3><p>Na het openbarsten van de Esfarr raakt raadslid Joachym Blook in paniek. Hij verdenkt Pius en de gelovigen van Doveport van samenzwering, verbiedt het geloof en sluit de deuren van de grote kerk.</p></div>
+      </div>
+      <div class="moment">
+        <p class="jaar">282<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Het Verborgen Aehisme</h3><p>Het geloof leeft ondergronds verder. Terwijl oorlog en rampen het continent teisteren, zoeken steeds meer inwoners in het geheim hoop bij het oude geloof.</p></div>
+      </div>
+      <div class="moment">
+        <p class="jaar">293<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>De zoektocht naar een beter leven</h3><p>De oorlog van Joachym Blook brengt honger en tekorten. Een grote stroom vluchtelingen trekt naar het rustige Wynnhog en neemt het verboden Aehisme in het geheim mee.</p></div>
+      </div>
+      <div class="moment">
+        <p class="jaar">296<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Het geloof valt op</h3><p>De gemeenschap in Wynnhog groeit en durft zich te tonen. De nieuwe regent Marius Blook deelt het wantrouwen van zijn vader en beveelt een klopjacht. Wie niet gepakt wordt, vlucht opnieuw of duikt onder.</p></div>
+      </div>
+      <div class="tijdperk lijn"><span>Het Luminisme</span></div>
+      <div class="moment">
+        <p class="jaar">315<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>De Openbaring van Elian</h3><p>De geleerde Elian publiceert zijn Verlichte Verhandelingen. Aelar kwam niet om balans te brengen, maar om het Eerste Licht te schenken. Zijn volgelingen, de Aelarianen, verspreiden het Luminisme snel onder het volk.</p></div>
+      </div>
+      <div class="moment kloof" aria-hidden="true"><span class="kloof-tekst">· · · 45 jaar · · ·</span></div>
+      <div class="moment">
+        <p class="jaar">360<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>De Oprichting van Verathiel</h3><p>De Aelarianen verenigen de verspreide nederzettingen onder het vaandel van het Luminisme. De wet van de staat wordt de wet van het Licht. Elian wordt de eerste Pontifex en de hiërarchie van Aartsvicarissen wordt vastgelegd.</p></div>
+      </div>
+      <div class="moment klein">
+        <p class="jaar">370<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Pontifex Arie gekroond</h3><p>Pontifex Elian I overlijdt. Arie volgt hem op.</p></div>
+      </div>
+      <div class="moment klein">
+        <p class="jaar">390<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Pontifex Cornelis gekroond</h3><p>Pontifex Arie sterft aan een hartaanval. Cornelis neemt het ambt over.</p></div>
+      </div>
+      <div class="moment klein">
+        <p class="jaar">410<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Pontifex Paulus gekroond</h3><p>Pontifex Cornelis overlijdt een natuurlijke dood. Paulus wordt gekroond.</p></div>
+      </div>
+      <div class="moment nu">
+        <p class="jaar">428<small>N.A.</small></p><span class="punt" aria-hidden="true"></span>
+        <div class="moment-inhoud"><h3>Het Verlichte Bewind</h3><p>Pontifex Paulus overlijdt onder schimmige omstandigheden en Pontifex Lars neemt zijn plaats in. Verathiel is uitgegroeid tot een welvarende, strikte theocratie die met ijzeren hand wordt geregeerd. Het oude Aehisme is een verboden, ketterse herinnering.</p></div>
+      </div>
+    </div>
+
+    <div class="pontifexen">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>De lijn der Pontifexen</p>
+      <h3>Vijf dragers van het hoogste ambt</h3>
+      <div class="pontifex-rij" id="pontifexRij" role="tablist" aria-label="Pontifexen van Verathiel"></div>
+      <div class="pf-detail kader" id="pfDetail" role="tabpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RANGEN ============ -->
+<section class="sectie sectie-alt" id="rangen">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Hiërarchie</p>
+      <h2>Heersen is een last, geen beloning</h2>
+      <p class="intro">In Verathiel zijn kerk en staat één. Elke rang draagt een kerkelijke titel. Naast elke titel staat de rang waarmee hij op de server overeenkomt.</p>
+    </div>
+    <div class="rangen-wrap">
+      <ol class="rangen">
+        <li class="rang top"><h3>Pontifex</h3><span class="gelijk">koning</span><p>Hoogste geestelijke leider en staatshoofd van Verathiel, gekozen door de Heilige Raad.</p></li>
+        <li class="rang"><h3>Bisschop</h3><span class="gelijk">hertog</span><p>Draagt het Licht over een bisdom. Ons doel is van heel Quartum één bisdom te maken.</p></li>
+        <li class="rang"><h3>Maarschalk</h3><span class="gelijk">generaal</span><p>Voert de Wacht van het Licht aan.</p></li>
+        <li class="rang"><h3>Aartsvicaris</h3><span class="gelijk">raadgever</span><p>Ziet toe op de geestelijke en politieke zuiverheid van het land.</p></li>
+        <li class="rang"><h3>Abtsheer</h3><span class="gelijk">graaf</span><p>Heer over een abdij en de landen die erbij horen.</p></li>
+        <li class="rang"><h3>Tempelier</h3><span class="gelijk">elitesoldaat</span><p>“Ik draag het zwaard, maar zal het niet liefhebben.”</p></li>
+        <li class="rang"><h3>Geloofswachter</h3><span class="gelijk">soldaat</span><p>“Hij draagt het zwaard opdat anderen het niet hoeven dragen.”</p></li>
+        <li class="rang"><h3>Monnik</h3><span class="gelijk">herbergier</span><p>Houdt de Lichthuizen open, waar reizigers voedsel, warmte en kennis vinden.</p></li>
+        <li class="rang"><h3>Gelovige</h3><span class="gelijk">burger</span><p>Geestelijke, gelovige of gewoon burger. Ieder draagt een Lichtvonk.</p></li>
+      </ol>
+      <aside class="rang-citaat kader">
+        <svg class="pijler-icoon" aria-hidden="true"><use href="#lichtvonk"/></svg>
+        <blockquote>“Het Licht kent geen koning. Geen priester wordt geboren met een helderder vonk dan een boer. Ambt kan verantwoordelijkheid geven. Kennis kan inzicht geven. Maar geen titel maakt de ziel zuiver.”</blockquote>
+        <p class="bron">Boek der Schaduwen, IV · Van Hoogmoed</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LANTAARN ============ -->
+<section class="lantaarn" id="schaduw" aria-labelledby="schaduwKop">
+  <div class="lantaarn-gloed" aria-hidden="true"></div>
+  <div class="binnen">
+    <div class="lantaarn-stapel">
+      <div class="lantaarn-laag lantaarn-donker">
+        <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Uit het Boek der Schaduwen</p>
+        <h2 id="schaduwKop">De gevaarlijkste Schaduw is die welke zichzelf Licht noemt.</h2>
+        <p>Tegen zichtbaar kwaad wapent de mens zich. Doch wanneer wreedheid rechtvaardigheid wordt genoemd, wanneer hebzucht plicht wordt genoemd en wanneer hoogmoed heiligheid wordt genoemd, volgen velen zonder te zien waarheen zij geleid worden.</p>
+        <p class="slot">Zie wat de daden van een mens achterlaten. Want de vrucht verraadt de boom.</p>
+      </div>
+      <div class="lantaarn-laag lantaarn-licht" id="lantaarnLicht" aria-hidden="true">
+        <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Uit het Boek der Schaduwen</p>
+        <h2>De gevaarlijkste Schaduw is die welke zichzelf Licht noemt.</h2>
+        <p>Tegen zichtbaar kwaad wapent de mens zich. Doch wanneer wreedheid rechtvaardigheid wordt genoemd, wanneer hebzucht plicht wordt genoemd en wanneer hoogmoed heiligheid wordt genoemd, volgen velen zonder te zien waarheen zij geleid worden.</p>
+        <p class="slot">Zie wat de daden van een mens achterlaten. Want de vrucht verraadt de boom.</p>
+      </div>
+    </div>
+    <p class="lantaarn-hint" id="lantaarnHint">beweeg je lantaarn over de tekst</p>
+  </div>
+</section>
+
+<!-- ============ STAD ============ -->
+<section class="sectie" id="stad">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>De Stad</p>
+      <h2>Zandsteen onder de woestijnzon</h2>
+      <p class="intro">Tussen de duinen en cactussen van Quartum verrijst Verathiel: zandstenen muren, rode daken, zuilengangen en klokkentorens. Dit is pas het begin. Het plan is een grote stad in Romeinse stijl, met basilieken waar het Licht gevierd wordt.</p>
+    </div>
+    <div class="galerij" id="galerij">
+      <button class="foto groot" type="button" data-i="0"><img src="img/stallen.webp" alt="Een zandstenen gebouw met stallen en varkens, een hoge toren en de woestijn op de achtergrond" loading="lazy"><span class="onderschrift">Aan de rand van de stad, waar de woestijn begint</span></button>
+      <button class="foto" type="button" data-i="1"><img src="img/binnenhof-klein.webp" alt="Een binnenhof met gras, een bank en zuilengangen met lantaarns" loading="lazy"><span class="onderschrift">Een stille binnenhof achter de zuilengang</span></button>
+      <button class="foto" type="button" data-i="2"><img src="img/korenveld-klein.webp" alt="Een groot zandstenen gebouw met rode daken naast een korenveld bij zonsondergang" loading="lazy"><span class="onderschrift">Tussen stenen muren en gouden korenvelden</span></button>
+      <button class="foto" type="button" data-i="3"><img src="img/klokkentoren-klein.webp" alt="Huizen en een klokkentoren bij zonsondergang, met palmen ernaast" loading="lazy"><span class="onderschrift">De klokkentoren bij zonsondergang</span></button>
+    </div>
+    <div class="stad-noot">
+      <span><svg aria-hidden="true"><use href="#ster"/></svg>Romeinse bouwstijl</span>
+      <span><svg aria-hidden="true"><use href="#ster"/></svg>Basilieken in aanbouw</span>
+      <span><svg aria-hidden="true"><use href="#ster"/></svg>Klik op een beeld om het te vergroten</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VERHALEN ============ -->
+<section class="sectie sectie-alt" id="verhalen">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>De Verlichte Verhalen</p>
+      <h2>Het heilige boek van Verathiel</h2>
+      <p class="intro">Acht boeken over het Eerste Licht, de reizen van Aelar, de leer van Elian en het einde van alle dingen. Kies een boek van de plank en lees.</p>
+    </div>
+    <div class="plank-wrap"><div class="plank" id="plank" role="tablist" aria-label="De acht boeken"></div></div>
+    <div class="lezer kader" id="lezer">
+      <div class="lezer-inhoud">
+        <p class="label" id="boekNr">Boek I</p>
+        <h3 id="boekTitel">Het Boek van de Eerste Gloed</h3>
+        <p class="sub" id="boekSub">Over het begin van alle dingen, de Lichtvonk en de Eerste Belofte.</p>
+        <ol class="toc" id="toc" aria-label="Hoofdstukken"></ol>
+      </div>
+      <div class="lezer-tekst" id="lezerTekst" aria-live="polite">
+        <p class="label" id="passageNr">Hoofdstuk I</p>
+        <h4 id="passageTitel">Voor het Begin</h4>
+        <div class="passage" id="passage"><p>Voor de dagen geteld werden, voor hemel, aarde en adem bestonden, was er het Licht. Niet geschapen en niet geboren. Het was.</p></div>
+        <div class="moraal" id="moraal" hidden></div>
+        <p class="na-moraal" id="naMoraal" hidden></p>
+        <div class="lezer-voet">
+          <button class="knop knop-lijn knop-klein" type="button" id="vorige"><svg aria-hidden="true"><use href="#pijl-l"/></svg>vorige</button>
+          <span id="positie">1 / 8</span>
+          <button class="knop knop-lijn knop-klein" type="button" id="volgende">volgende<svg aria-hidden="true"><use href="#pijl-r"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AANSLUITEN ============ -->
+<section class="sectie" id="aansluiten">
+  <div class="binnen">
+    <div class="kop">
+      <p class="eyebrow"><svg aria-hidden="true"><use href="#ster"/></svg>Aansluiten</p>
+      <h2>Draag het Licht met ons mee</h2>
+      <p class="intro">Verathiel zoekt gelovigen, bouwers, wachters en verhalenvertellers. Dit is waar wij voor staan.</p>
+    </div>
+    <div class="waarden">
+      <div class="waarde"><svg aria-hidden="true"><use href="#stem"/></svg><h3>Voice RP</h3><p>Wij spelen het liefst met stem. Het grootste deel van onze leden kiest voice RP boven tekst.</p></div>
+      <div class="waarde"><svg aria-hidden="true"><use href="#weegschaal"/></svg><h3>Neutraal met principes</h3><p>We blijven buiten de politieke conflicten van Quartum, tenzij die ingaan tegen de geboden van het Licht.</p></div>
+      <div class="waarde"><svg aria-hidden="true"><use href="#basiliek"/></svg><h3>Eén bisdom, heel Quartum</h3><p>Ons doel is in elk rijk een kerk of basiliek te stichten en het Licht over het hele continent te dragen.</p></div>
+      <div class="waarde"><svg aria-hidden="true"><use href="#beeld"/></svg><h3>Verhalen op beeld</h3><p>Shorts en roleplayvideo's, van live RP tot opgenomen misvieringen.</p></div>
+    </div>
+    <ol class="stappen">
+      <li class="stap"><span class="stap-nr">I</span><h3>Kom binnen op Discord</h3><p>Stel je voor, lees de regels en maak kennis met de gemeenschap.</p></li>
+      <li class="stap"><span class="stap-nr">II</span><h3>Bedenk je karakter</h3><p>Wie is jouw gelovige? Monnik, Geloofswachter of gewone burger: iedereen draagt een Lichtvonk.</p></li>
+      <li class="stap"><span class="stap-nr">III</span><h3>Speel mee op RepublicMC</h3><p>Bouw mee aan de stad, woon een misviering bij en speel mee in voice RP.</p></li>
+    </ol>
+    <div class="poorten">
+      <article class="poort kader">
+        <div class="poort-kop"><svg aria-hidden="true"><use href="#praat"/></svg><h3>Discord</h3></div>
+        <p>Hier komt Verathiel samen: aankondigingen, roleplay, taken voor de stad en alles wat er in het kingdom gebeurt.</p>
+        <div class="kopieer"><code id="dcLink">discord.gg/6MVmUydGcq</code><button class="knop knop-lijn knop-klein" type="button" data-kopieer="https://discord.gg/6MVmUydGcq" data-doel="dcLink">kopieer</button></div>
+        <div class="knoppen"><a class="knop knop-primair" href="https://discord.gg/6MVmUydGcq" target="_blank" rel="noopener">Open de Discord<svg aria-hidden="true"><use href="#uit"/></svg></a></div>
+      </article>
+      <article class="poort kader">
+        <div class="poort-kop"><svg aria-hidden="true"><use href="#speel"/></svg><h3>YouTube</h3></div>
+        <p>Shorts en roleplayvideo's uit Verathiel, op ons kanaal <strong>@VerathielRMC</strong>.</p>
+        <div class="knoppen"><a class="knop knop-lijn" href="https://www.youtube.com/@VerathielRMC" target="_blank" rel="noopener">Naar het kanaal<svg aria-hidden="true"><use href="#uit"/></svg></a></div>
+      </article>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="voet">
+  <div class="binnen voet-binnen">
+    <img src="img/logo.webp" alt="" width="84" height="84" loading="lazy">
+    <blockquote>“Waar Licht wordt gedeeld, wordt het niet kleiner maar groter.”</blockquote>
+    <nav aria-label="Voettekst">
+      <a href="https://discord.gg/6MVmUydGcq" target="_blank" rel="noopener">Discord</a>
+      <a href="https://www.youtube.com/@VerathielRMC" target="_blank" rel="noopener">YouTube</a>
+      <a href="#verhalen">De Verlichte Verhalen</a>
+      <a href="#begin">Terug naar boven</a>
+    </nav>
+    <small>Verathiel is een kingdom op RepublicMC (RMC). Minecraft is een merk van Mojang; deze site is daar niet aan verbonden.</small>
+  </div>
+</footer>
+
+<div class="lichtbak" id="lichtbak" role="dialog" aria-modal="true" aria-label="Vergrote foto" hidden>
+  <button class="lb-knop lb-sluit" type="button" id="lbSluit" aria-label="Sluiten"><svg aria-hidden="true"><use href="#kruis"/></svg></button>
+  <button class="lb-knop lb-vorige" type="button" id="lbVorige" aria-label="Vorige foto"><svg aria-hidden="true"><use href="#pijl-l"/></svg></button>
+  <figure><img id="lbImg" src="" alt=""><figcaption id="lbCap"></figcaption></figure>
+  <button class="lb-knop lb-volgende" type="button" id="lbVolgende" aria-label="Volgende foto"><svg aria-hidden="true"><use href="#pijl-r"/></svg></button>
+</div>
+<div class="lichtcursor" id="lichtcursor" aria-hidden="true"></div>
+
+<script>
+(() => {
+"use strict";
+const root = document.documentElement;
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const minder = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const fijn = matchMedia('(pointer: fine)').matches;
+const ROM = ['I','II','III','IV','V','VI','VII','VIII'];
+
+/* ================= thema: Zon en Maan ================= */
+const donkerMQ = matchMedia('(prefers-color-scheme: dark)');
+const thema = () => root.getAttribute('data-theme') || (donkerMQ.matches ? 'dark' : 'light');
+const zm = $('#zonmaan');
+function themaLabels(){
+  const d = thema() === 'dark';
+  zm.setAttribute('aria-label', d ? 'Wissel naar de Zon (licht)' : 'Wissel naar de Maan (donker)');
+  zm.setAttribute('aria-pressed', String(d));
+  $$('[data-thema-tekst]').forEach(b => b.textContent = d ? 'Wissel naar de Zon' : 'Wissel naar de Maan');
+}
+function wissel(){
+  const nieuw = thema() === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', nieuw);
+  try { localStorage.setItem('verathiel-thema', nieuw); } catch (e) {}
+  themaLabels();
+}
+zm.addEventListener('click', wissel);
+$$('[data-wissel-thema]').forEach(b => b.addEventListener('click', wissel));
+if (donkerMQ.addEventListener) donkerMQ.addEventListener('change', themaLabels);
+new MutationObserver(themaLabels).observe(root, { attributes: true, attributeFilter: ['data-theme'] });
+themaLabels();
+
+/* ================= zandsteentextuur ================= */
+try {
+  const c = document.createElement('canvas'); c.width = c.height = 16;
+  const x = c.getContext('2d'); let s = 11;
+  const r = () => (s = (s * 16807) % 2147483647) / 2147483647;
+  for (let y = 0; y < 16; y++) for (let i = 0; i < 16; i++) {
+    const v = r();
+    if (v < .42) { x.fillStyle = `rgba(70,40,12,${(.018 + r() * .045).toFixed(3)})`; x.fillRect(i, y, 1, 1); }
+    else if (v > .82) { x.fillStyle = `rgba(255,246,226,${(.02 + r() * .05).toFixed(3)})`; x.fillRect(i, y, 1, 1); }
+  }
+  x.fillStyle = 'rgba(70,40,12,.045)'; x.fillRect(0, 4, 16, 1); x.fillRect(0, 12, 16, 1);
+  root.style.setProperty('--textuur', `url(${c.toDataURL()})`);
+} catch (e) {}
+
+/* ================= navigatie ================= */
+const nav = $('#nav'), navMenu = $('#navMenu'), navLinks = $('#navLinks');
+navMenu.addEventListener('click', () => {
+  const open = navMenu.getAttribute('aria-expanded') === 'true';
+  navMenu.setAttribute('aria-expanded', String(!open)); nav.classList.toggle('menu-open', !open);
+});
+navLinks.addEventListener('click', e => { if (e.target.closest('a')) { navMenu.setAttribute('aria-expanded', 'false'); nav.classList.remove('menu-open'); } });
+const sectieIO = new IntersectionObserver(items => {
+  items.forEach(it => { if (it.isIntersecting) $$('a', navLinks).forEach(a => a.classList.toggle('actief', a.getAttribute('href') === '#' + it.target.id)); });
+}, { rootMargin: '-45% 0px -50% 0px' });
+$$('main > section[id]').forEach(s => sectieIO.observe(s));
+
+/* ================= hero: lichtvonken ================= */
+const hero = $('#begin'), heroBeeld = $('#heroBeeld');
+const cv = $('#vonken'), cx = cv.getContext('2d');
+let W = 0, H = 0, vonken = [], heroZicht = true;
+const muis = { x: -999, y: -999 };
+function nieuweVonk(start){
+  return { x: Math.random() * W, y: start ? Math.random() * H : H + 10, r: .6 + Math.random() * 1.7, vy: .22 + Math.random() * .65,
+    f: Math.random() * 6.28, zw: .3 + Math.random() * .8, a: .35 + Math.random() * .55, t: Math.random() * 1000 };
+}
+function heroMaat(){
+  const d = Math.min(devicePixelRatio || 1, 2), r = cv.getBoundingClientRect();
+  W = r.width; H = r.height; cv.width = Math.round(W * d); cv.height = Math.round(H * d); cx.setTransform(d, 0, 0, d, 0, 0);
+  const n = Math.round(Math.min(90, Math.max(28, W / 16)));
+  vonken = Array.from({ length: n }, () => nieuweVonk(true));
+}
+function heroTeken(stap){
+  cx.clearRect(0, 0, W, H); cx.globalCompositeOperation = 'lighter';
+  for (const v of vonken) {
+    if (stap) { v.t++; v.y -= v.vy; v.x += Math.sin(v.t * .02 + v.f) * v.zw * .4; }
+    const dx = muis.x - v.x, dy = muis.y - v.y, d = Math.hypot(dx, dy);
+    let b = 0;
+    if (d < 170) { b = 1 - d / 170; if (stap) { v.x += dx * .012 * b; v.y += dy * .012 * b; } }
+    const flak = .65 + .35 * Math.sin(v.t * .15 + v.f);
+    const vaag = Math.min(1, v.y / (H * .28));
+    const a = Math.max(0, Math.min(1, (v.a * flak + b * .6) * vaag));
+    const rad = v.r * (1 + b * 1.4) * 5;
+    const g = cx.createRadialGradient(v.x, v.y, 0, v.x, v.y, rad);
+    g.addColorStop(0, `rgba(255,228,165,${a})`); g.addColorStop(.3, `rgba(255,172,72,${a * .5})`); g.addColorStop(1, 'rgba(255,120,40,0)');
+    cx.fillStyle = g; cx.beginPath(); cx.arc(v.x, v.y, rad, 0, 6.2832); cx.fill();
+    if (v.y < -20) Object.assign(v, nieuweVonk(false));
+  }
+  cx.globalCompositeOperation = 'source-over';
+}
+hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); muis.x = e.clientX - r.left; muis.y = e.clientY - r.top; });
+hero.addEventListener('pointerleave', () => { muis.x = muis.y = -999; });
+new IntersectionObserver(([it]) => { heroZicht = it.isIntersecting; }).observe(hero);
+heroMaat();
+if (minder) heroTeken(false);
+
+/* ================= lichtvonk ================= */
+const vBeeld = $('#vonkBeeld'), vCv = $('#vonkCanvas'), vCx = vCv.getContext('2d'), vLamp = $('#vonkLamp');
+const vStatus = $('#vonkStatus'), meter = $('#meterVulling');
+let vW = 0, vH = 0, oX = 0, oY = 0, helder = .55, doelHelder = .55, deeltjes = [], rook = [], vZicht = false;
+const MIN = .1, MAX = 1;
+function vonkMaat(){
+  const d = Math.min(devicePixelRatio || 1, 2), r = vCv.getBoundingClientRect(), l = vLamp.getBoundingClientRect();
+  vW = r.width; vH = r.height; vCv.width = Math.round(vW * d); vCv.height = Math.round(vH * d); vCx.setTransform(d, 0, 0, d, 0, 0);
+  oX = l.left - r.left + l.width * (106 / 120); oY = l.top - r.top + l.height * (63 / 100);
+}
+function vonkStatusTekst(){
+  const h = doelHelder;
+  let t;
+  if (h <= MIN + .001) t = 'Een vonk kan klein worden, doch klein is niet hetzelfde als gedoofd.';
+  else if (h >= MAX - .001) t = 'Je vonk brandt zo helder als zij kan. Waar Licht wordt gedeeld, wordt het niet kleiner maar groter.';
+  else if (h >= .75) t = 'Je vonk brandt helder.';
+  else if (h >= .45) t = 'Je vonk brandt rustig.';
+  else t = 'Je vonk wordt zwakker. Reik de hand, en zij kan weer gaan schijnen.';
+  vStatus.textContent = t;
+  meter.style.width = Math.round(h * 100) + '%';
+}
+function spuit(n, kleur){
+  for (let i = 0; i < n; i++) {
+    const hoek = -Math.PI / 2 + (Math.random() - .5) * 2.4, snel = 1.5 + Math.random() * 3.5;
+    (kleur ? deeltjes : rook).push(kleur
+      ? { x: oX, y: oY - 10, vx: Math.cos(hoek) * snel, vy: Math.sin(hoek) * snel, life: 0, max: 40 + Math.random() * 30, size: 2 + Math.random() * 3, burst: true }
+      : { x: oX + (Math.random() - .5) * 8, y: oY - 8, vx: (Math.random() - .5) * .6, vy: -.6 - Math.random() * .8, life: 0, max: 70 + Math.random() * 40, size: 5 + Math.random() * 6 });
+  }
+}
+$$('#deugden .chip, #zonden .chip').forEach(b => b.addEventListener('click', () => {
+  const plus = b.dataset.d === '1';
+  doelHelder = Math.max(MIN, Math.min(MAX, doelHelder + (plus ? .12 : -.14)));
+  if (!minder) spuit(plus ? 18 : 10, plus);
+  vonkStatusTekst();
+  if (minder) { helder = doelHelder; vonkTeken(false); }
+}));
+function vonkTeken(stap){
+  if (stap) helder += (doelHelder - helder) * .05;
+  vCx.clearRect(0, 0, vW, vH);
+  const flak = stap ? (Math.sin(performance.now() * .011) * .04 + Math.sin(performance.now() * .023) * .03) : 0;
+  const R = Math.min(34 + helder * 150 * (1 + flak), vW * .5, oY + 10);
+  const halo = vCx.createRadialGradient(oX, oY - 20, 0, oX, oY - 20, R);
+  halo.addColorStop(0, `rgba(255,205,110,${.25 + helder * .4})`); halo.addColorStop(.4, `rgba(255,160,60,${.08 + helder * .16})`); halo.addColorStop(1, 'rgba(255,140,50,0)');
+  vCx.fillStyle = halo; vCx.beginPath(); vCx.arc(oX, oY - 20, R, 0, 6.2832); vCx.fill();
+  vCx.globalCompositeOperation = 'lighter';
+  if (stap) {
+    const n = 1 + Math.round(helder * 4);
+    for (let i = 0; i < n; i++) deeltjes.push({ x: oX + (Math.random() - .5) * 5 * helder, y: oY - 1, vx: (Math.random() - .5) * .35, vy: -(.7 + Math.random() * 1.4) * (.55 + helder * .8), life: 0, max: 22 + helder * 38 + Math.random() * 10, size: 3 + helder * 9 });
+  } else if (!deeltjes.length) {
+    for (let i = 0; i < 26; i++) deeltjes.push({ x: oX, y: oY - i * (1 + helder * 2), vx: 0, vy: 0, life: i, max: 40, size: (3 + helder * 9) * (1 - i / 34) });
+  }
+  for (let i = deeltjes.length - 1; i >= 0; i--) {
+    const p = deeltjes[i];
+    if (stap) { p.life++; p.x += p.vx + Math.sin((p.life + i) * .3) * .15; p.y += p.vy; if (p.burst) { p.vy += .04; p.vx *= .98; } }
+    const t = p.life / p.max;
+    if (t >= 1) { deeltjes.splice(i, 1); continue; }
+    const s = p.burst ? p.size * (1 - t) : p.size * (1 - t * .75);
+    const a = (1 - t) * (p.burst ? .9 : .55);
+    const g = vCx.createRadialGradient(p.x, p.y, 0, p.x, p.y, s * 2);
+    const rr = 255, gg = Math.round(240 - t * 150), bb = Math.round(190 - t * 170);
+    g.addColorStop(0, `rgba(${rr},${gg},${bb},${a})`); g.addColorStop(1, `rgba(${rr},${gg - 40},${Math.max(0, bb - 40)},0)`);
+    vCx.fillStyle = g; vCx.beginPath(); vCx.arc(p.x, p.y, s * 2, 0, 6.2832); vCx.fill();
+  }
+  if (!stap) deeltjes.length = 0;
+  vCx.globalCompositeOperation = 'source-over';
+  for (let i = rook.length - 1; i >= 0; i--) {
+    const p = rook[i]; p.life++; p.x += p.vx; p.y += p.vy; p.size += .12;
+    const t = p.life / p.max; if (t >= 1) { rook.splice(i, 1); continue; }
+    vCx.fillStyle = `rgba(110,98,104,${(1 - t) * .22})`; vCx.beginPath(); vCx.arc(p.x, p.y, p.size, 0, 6.2832); vCx.fill();
+  }
+}
+new IntersectionObserver(([it]) => { vZicht = it.isIntersecting; }).observe(vBeeld);
+vonkMaat(); vonkStatusTekst();
+if (minder) vonkTeken(false);
+
+/* ================= geboden ================= */
+const GEBODEN = [
+  { thema: 'Gelijkwaardigheid', tekst: 'Gij zult het Licht zoeken dat in u woont, en de vonk erkennen die in uw naaste brandt; want uit hetzelfde Eerste Licht zijt gij allen voortgekomen.', verhaal: 'De Vonk in de Ander', kern: 'Twee families leven al jaren in twist. Aelar ontsteekt acht lampen uit dezelfde vlam en vraagt: “Ziet gij verschil in het Licht dat zij dragen?”' },
+  { thema: 'Waarheid', tekst: 'Gij zult geen leugen spreken, noch bedrog verkiezen boven waarheid; want waar de leugen wortel schiet, daar groeit de Schaduw.', verhaal: 'De Leugenaar aan de Weg', kern: 'Een koopman liegt om zijn kinderen te voeden, tot niemand in het dorp elkaar nog vertrouwt.' },
+  { thema: 'Inzicht', tekst: 'Gij zult acht slaan op rede, geweten en helder inzicht; want niet door woorden spreekt de Allerhoogste, maar door het Licht dat Hij in de ziel heeft gelegd.', verhaal: 'De Stilte op de Berg', kern: 'Zeven dagen wacht Aelar op een berg op een stem. Die stem komt nooit, en juist daarin vindt hij zijn antwoord.' },
+  { thema: 'Verspreiding van kennis', tekst: 'Gij zult het Licht dragen tot hen die nog in duisternis wandelen, en de waarheid niet voor uzelf bewaren; want een lamp wordt niet ontstoken om verborgen te blijven.', verhaal: 'De Lamp achter de Deur', kern: 'Een geleerde houdt zijn geschriften voor zichzelf, tot een brand ze voorgoed verwoest.' },
+  { thema: 'Barmhartigheid', tekst: 'Gij zult de duisternis verwerpen, doch de dwalende niet zonder barmhartigheid behandelen; reik hem eerst de hand, opdat hij wederom tot het Licht moge keren.', verhaal: 'De Dwalende', kern: 'Een dief keert terug naar zijn dorp en wordt met stenen opgewacht. Aelar gaat tussen hem en de dorpelingen in staan.' },
+  { thema: 'Nederigheid', tekst: 'Gij zult uzelf niet verheffen boven het Licht, noch macht, rijkdom of eer boven Zijn wil stellen; want hoogmoed verblindt zelfs hem wiens vonk eenmaal helder brandde.', verhaal: 'De Troon zonder Gloed', kern: 'Een vorst verlicht zijn paleis met honderden lampen, terwijl buiten de muren de armen in het donker zitten.' },
+  { thema: 'Dienstbaarheid', tekst: 'Gij zult door woord en daad het Licht vermeerderen, opdat hetgeen na u komt helderder zij dan hetgeen vóór u was; bouw, genees, leer en dien, tot gij wederkeert tot het Eerste Licht.', verhaal: 'Het Dorp na de Storm', kern: 'Na een storm begint Aelar zonder een woord stenen te dragen. Eén voor één helpt het dorp mee.' },
+  { thema: 'De wijsheid van Zon en Maan', tekst: 'Gij zult de Zon eren om haar kracht en de Maan om haar wijsheid; want het Licht kent zowel het uur van handelen als het uur van bezinning, en wie slechts één van beide volgt, dwaalt van het rechte pad.', verhaal: 'De Zon en de Maan', kern: 'Aan het einde van zijn reizen kijkt Aelar van zonsopgang tot diep in de nacht naar de Zon en de Maan.' }
+];
+const lampSVG = `<svg viewBox="0 0 120 100" aria-hidden="true">
+  <circle class="gloed" cx="106" cy="46" r="34" fill="url(#lampGloed)"/>
+  <g class="vlam"><g class="vlam-g"><path class="l-vlam" d="M106 20 C 116 37, 117 50, 106 63 C 95 50, 96 37, 106 20 Z"/><path class="l-kern" d="M106 35 C 111 45, 112 52, 106 61 C 100 52, 101 45, 106 35 Z"/></g></g>
+  <ellipse class="l-schaduw" cx="58" cy="93" rx="30" ry="4"/>
+  <g class="lichaam">
+    <path class="l-greep" d="M28 72 Q 10 70 11 58 Q 13 48 22 52"/>
+    <path class="l-klei" d="M80 66 Q 98 61 106 63 Q 113 65 111 71 Q 107 78 84 80 Z"/>
+    <ellipse class="l-klei" cx="56" cy="74" rx="32" ry="14"/>
+    <path class="l-lijn" d="M33 77 Q 56 86 79 77"/>
+    <ellipse class="l-donker" cx="56" cy="66" rx="21" ry="5.5"/>
+    <circle cx="56" cy="66" r="2.6" fill="#2A1A12" opacity=".6"/>
+  </g></svg>`;
+const lampenEl = $('#lampen'), gebodEl = $('#gebod');
+const brandend = new Set([0]); let gekozen = 0;
+GEBODEN.forEach((g, i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'lamp' + (i === 0 ? ' brandt' : ''); b.setAttribute('role', 'tab');
+  b.setAttribute('aria-selected', String(i === 0)); b.setAttribute('aria-controls', 'gebod'); b.id = 'lamp-' + i;
+  b.setAttribute('aria-label', `Gebod ${ROM[i]}: ${g.thema}`);
+  b.innerHTML = lampSVG + `<span class="nr" aria-hidden="true">${ROM[i]}</span>`;
+  b.addEventListener('click', () => kiesGebod(i));
+  b.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); const n = (i + (e.key === 'ArrowRight' ? 1 : 7)) % 8; kiesGebod(n); $('#lamp-' + n).focus(); }
+  });
+  lampenEl.appendChild(b);
+});
+function kiesGebod(i){
+  gekozen = i; brandend.add(i);
+  $$('.lamp', lampenEl).forEach((b, j) => { b.classList.toggle('brandt', brandend.has(j)); b.setAttribute('aria-selected', String(j === i)); b.tabIndex = j === i ? 0 : -1; });
+  const g = GEBODEN[i];
+  $('#gebodNr').textContent = `Gebod ${ROM[i]} · ${g.thema}`;
+  $('#gebodTekst').textContent = g.tekst;
+  $('#gebodVerhaal').textContent = g.verhaal;
+  $('#gebodKern').textContent = g.kern;
+  gebodEl.setAttribute('aria-labelledby', 'lamp-' + i);
+  gebodEl.classList.remove('wissel'); void gebodEl.offsetWidth; gebodEl.classList.add('wissel');
+  const n = brandend.size;
+  $('#lampenTeller').textContent = n === 8 ? 'Alle acht lampen branden' : `${n} van 8 lampen ${n === 1 ? 'brandt' : 'branden'}`;
+  $('#doof').hidden = n < 2;
+  $('#alleLampen').hidden = n < 8;
+  lampenEl.classList.toggle('alle-brandt', n === 8);
+}
+$('#doof').addEventListener('click', () => { brandend.clear(); kiesGebod(gekozen); });
+$$('.lamp', lampenEl).forEach((b, j) => b.tabIndex = j === 0 ? 0 : -1);
+$('#gebodLees').addEventListener('click', () => { openBoek(1, gekozen); $('#verhalen').scrollIntoView({ behavior: minder ? 'auto' : 'smooth' }); });
+
+/* ================= kroniek ================= */
+const momenten = $$('.moment, .tijdperk.lijn');
+function tijdlijn(){
+  const anker = innerHeight * .62;
+  for (const m of momenten) {
+    const r = m.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (anker - r.top) / r.height));
+    m.style.setProperty('--p', p.toFixed(3));
+    m.classList.toggle('is-verlicht', anker > r.top + 20);
+  }
+}
+const PONTIFEXEN = [
+  { naam: 'Elian I', jaren: '360 – 370 N.A.', titel: 'De Geleerde · eerste Pontifex', tekst: 'Verzamelde de verspreide geschriften van het Aehisme, schreef de Verlichte Verhandelingen en verenigde de Aelarianen tot één staat.', citaat: '“Vrees de dag waarop men mijn woorden heilig noemt enkel omdat zij de mijne zijn.”' },
+  { naam: 'Arie', jaren: '370 – 390 N.A.', titel: 'Tweede Pontifex', tekst: 'Volgde Elian op en droeg het ambt twintig jaar. Hij stierf aan een hartaanval.' },
+  { naam: 'Cornelis', jaren: '390 – 410 N.A.', titel: 'Derde Pontifex', tekst: 'Droeg het ambt twintig jaar en overleed een natuurlijke dood.' },
+  { naam: 'Paulus', jaren: '410 – 428 N.A.', titel: 'Vierde Pontifex', tekst: 'Overleed in 428 N.A. onder schimmige omstandigheden.', mysterie: true },
+  { naam: 'Lars', jaren: 'sinds 428 N.A.', titel: 'De huidige Pontifex', tekst: 'Volgde Paulus op na diens dood. Onder zijn leiding is Verathiel een welvarende en strikte theocratie.' }
+];
+const pfRij = $('#pontifexRij'), pfDetail = $('#pfDetail');
+PONTIFEXEN.forEach((p, i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.className = 'pf' + (p.mysterie ? ' mysterie' : ''); b.setAttribute('role', 'tab'); b.id = 'pf-' + i;
+  b.setAttribute('aria-controls', 'pfDetail');
+  b.innerHTML = `<span class="pf-munt" aria-hidden="true">${p.naam[0]}</span><span class="pf-naam">${p.naam}</span><span class="pf-jaar">${p.jaren.replace(' N.A.', '')}</span>`;
+  b.addEventListener('click', () => kiesPontifex(i));
+  pfRij.appendChild(b);
+});
+function kiesPontifex(i){
+  $$('.pf', pfRij).forEach((b, j) => b.setAttribute('aria-selected', String(i === j)));
+  const p = PONTIFEXEN[i];
+  pfDetail.setAttribute('aria-labelledby', 'pf-' + i);
+  pfDetail.innerHTML = `<p class="label">${p.titel} · ${p.jaren}</p><h4>Pontifex ${p.naam}</h4><p>${p.tekst}</p>${p.citaat ? `<p class="citaat">${p.citaat}</p>` : ''}`;
+}
+kiesPontifex(4);
+
+/* ================= lantaarn ================= */
+const lt = $('#schaduw'), ltLicht = $('#lantaarnLicht');
+let lx = 0, ly = 0, ldx = 0, ldy = 0, lActief = false, lZicht = false, lStart = false;
+if (minder) lt.classList.add('statisch');
+function lantaarnZet(x, y){
+  const sr = lt.getBoundingClientRect(), lr = ltLicht.getBoundingClientRect();
+  lt.style.setProperty('--gx', x + 'px'); lt.style.setProperty('--gy', y + 'px');
+  ltLicht.style.setProperty('--x', (x - (lr.left - sr.left)) + 'px'); ltLicht.style.setProperty('--y', (y - (lr.top - sr.top)) + 'px');
+}
+function lantaarnDoel(e){ const sr = lt.getBoundingClientRect(); ldx = e.clientX - sr.left; ldy = e.clientY - sr.top; lActief = true; }
+lt.addEventListener('pointermove', lantaarnDoel);
+lt.addEventListener('pointerdown', lantaarnDoel);
+lt.addEventListener('pointerleave', () => { lActief = false; });
+function lantaarnStap(t){
+  const sr = lt.getBoundingClientRect();
+  if (!lStart) { lx = sr.width / 2; ly = sr.height / 2; lStart = true; }
+  if (!lActief) { ldx = sr.width / 2 + Math.sin(t * .00042) * sr.width * .3; ldy = sr.height / 2 + Math.sin(t * .00071 + 1) * sr.height * .2; }
+  lx += (ldx - lx) * (lActief ? .16 : .04); ly += (ldy - ly) * (lActief ? .16 : .04);
+  lantaarnZet(lx, ly);
+}
+new IntersectionObserver(([it]) => { lZicht = it.isIntersecting; }).observe(lt);
+
+/* ================= galerij + lichtbak ================= */
+const FOTOS = $$('#galerij .foto').map(b => {
+  const img = $('img', b);
+  return { src: img.getAttribute('src').replace('-klein', ''), alt: img.alt, cap: $('.onderschrift', b).textContent };
+});
+const lb = $('#lichtbak'), lbImg = $('#lbImg'), lbCap = $('#lbCap');
+let lbI = 0, lbTerug = null;
+function lbToon(i){ lbI = (i + FOTOS.length) % FOTOS.length; const f = FOTOS[lbI]; lbImg.src = f.src; lbImg.alt = f.alt; lbCap.textContent = f.cap; }
+function lbOpen(i, bron){ lbTerug = bron; lbToon(i); lb.hidden = false; document.body.style.overflow = 'hidden'; $('#lbSluit').focus(); }
+function lbDicht(){ lb.hidden = true; document.body.style.overflow = ''; if (lbTerug) lbTerug.focus(); }
+$$('#galerij .foto').forEach(b => b.addEventListener('click', () => lbOpen(+b.dataset.i, b)));
+$('#lbSluit').addEventListener('click', lbDicht);
+$('#lbVorige').addEventListener('click', () => lbToon(lbI - 1));
+$('#lbVolgende').addEventListener('click', () => lbToon(lbI + 1));
+let geveegd = false;
+lb.addEventListener('click', e => { if (geveegd) { geveegd = false; return; } if (e.target === lb || e.target.tagName === 'FIGURE') lbDicht(); });
+document.addEventListener('keydown', e => {
+  if (lb.hidden) return;
+  if (e.key === 'Escape') lbDicht(); else if (e.key === 'ArrowRight') lbToon(lbI + 1); else if (e.key === 'ArrowLeft') lbToon(lbI - 1);
+  else if (e.key === 'Tab') { const f = $$('button', lb).filter(b => b.offsetParent); const k = f.indexOf(document.activeElement); if (e.shiftKey && k <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && k === f.length - 1) { e.preventDefault(); f[0].focus(); } }
+});
+let veegX = null;
+lb.addEventListener('pointerdown', e => { veegX = e.clientX; });
+lb.addEventListener('pointerup', e => { if (veegX === null) return; const d = e.clientX - veegX; if (Math.abs(d) > 50) { geveegd = true; lbToon(lbI + (d < 0 ? 1 : -1)); } veegX = null; });
+
+/* ================= de Verlichte Verhalen ================= */
+const BOEKEN = [
+ { titel: 'Het Boek van de Eerste Gloed', kort: 'De Eerste Gloed', sub: 'Over het begin van alle dingen, de Lichtvonk en de Eerste Belofte.', kleur: 'var(--rug-1)', h: 238, delen: [
+  { t: 'Voor het Begin', x: 'Voor de dagen geteld werden, voor hemel, aarde en adem bestonden, was er het Licht. Niet geschapen en niet geboren. Het was.\n\nEn waar het Licht niet reikte, was de Schaduw. Niet als een tweede macht, noch als een vijand van het Licht. Want de Schaduw heeft geen wil, geen stem en geen wezen. Zij is slechts waar het Licht niet is.', m: 'Zo was het in den beginne, en zo zal het zijn wanneer alle namen vergeten zijn.' },
+  { t: 'De Eerste Gloed', x: 'Het Licht bewoog door de leegte en verzamelde zich. Waar het bijeenkwam, ontstond warmte. Waar warmte zich verdichtte, ontstond stof. En uit het stof kwamen de sterren voort. Hun gloed brak door de eindeloze Schaduw.\n\nRondom de sterren vormden zich de werelden, en onder deze werelden was er één waarop steen, water en lucht elkander ontmoetten.', m: 'Daar rustte het Licht. En uit die rust ontstond leven.' },
+  { t: 'Van Zon en Maan', x: 'De Zon schonk de wereld warmte en deed het levende groeien. Maar wanneer haar gloed verdween, kwam de nacht. Toen verscheen de Maan. Zij droeg geen vuur van zichzelf, doch ving het Licht op en gaf het weder door.\n\nDaarom leert de Zon ons kracht. En de Maan leert ons bezinning. De Zon is het Licht van handelen. De Maan is het Licht van inzicht.', m: 'Wie slechts handelt, zal verbranden wat hij liefheeft. Wie slechts aanschouwt, zal niets beschermen. Daarom dient de wijze beiden te kennen.' },
+  { t: 'De Lichtvonk', x: 'Al wat leeft draagt het Licht. Het rust in het blad dat groeit, in het dier dat ademhaalt, en in het hart van de mens. In de mens brandt het als een vonk. Deze Lichtvonk behoort hem niet toe. Zij is slechts aan hem toevertrouwd zolang hij leeft.\n\nDoor waarheid, barmhartigheid, inzicht en rechtvaardigheid brandt zij helder. Door hoogmoed, bedrog, verraad en wreedheid wordt zij verduisterd.', m: 'Doch niemand wordt zonder Licht geboren.' },
+  { t: 'Van Leven en Sterven', x: 'Waar leven bestaat, daar bestaat ook zijn einde. Het blad groeit en verdort. Het dier ademt en zwijgt. De mens wordt geboren en keert weder tot de aarde.\n\nDoch hetgeen in hem brandde, gaat niet verloren. Zoals warmte een gestorven vuur verlaat, zo laat ook de Lichtvonk het lichaam los. Het lichaam keert tot aarde. De adem tot lucht. Het Licht tot het Licht.', m: 'Daarom is de dood niet de overwinning van de Schaduw. Zij is slechts het einde van één drager.' },
+  { t: 'Van de Schaduw', x: 'En de mensen vroegen: “Indien de Schaduw geen kwaad is, vanwaar komt dan het kwaad?” De wijzen antwoordden: “Niet iedere duisternis is kwaad.”\n\nDe nacht is niet kwaad. De winter is niet kwaad. De dood is niet kwaad. Kwaad ontstaat waar iemand het Licht kent en het bewust verduistert. Waar waarheid kan worden gesproken, maar leugen wordt gekozen. Waar barmhartigheid mogelijk is, maar wreedheid wordt verkozen. Waar iemand het Licht van een ander dooft om het zijne groter te doen lijken.', m: 'Daar begint de ware Schaduw van de mens.' },
+  { t: 'De Eerste Orde', x: 'Zo zagen de ouden dat alles beweegt tussen verschijnen en verdwijnen. De Zon rijst en daalt. De Maan groeit en neemt af. De zomer wordt gevolgd door winter. Het levende maakt plaats voor hetgeen na hem komt.\n\nDaarom kan niets eeuwig worden vastgehouden. Macht niet. Rijkdom niet. Jeugd niet. Zelfs koninkrijken niet.', m: 'Wie weigert los te laten, strijdt tegen de orde van de wereld. Wie alles wil bezitten, verduistert het Licht in zichzelf.' },
+  { t: 'De Eerste Belofte', x: 'Toen kwamen de mensen bijeen onder de sterren. Geen stem sprak tot hen. Geen god gebood hen. Geen hand schreef wetten in steen. En toch begrepen zij.\n\nDaarom spraken zij: “Het Licht was vóór ons en zal na ons blijven. Wij zullen het zoeken in onszelf en in elkander. Wij zullen het niet voor onszelf opeisen. Wij zullen waarheid spreken waar leugen heerst. Wij zullen Licht brengen waar het ontbreekt. Wij zullen niet vrezen wanneer onze eigen vonk eens dooft. Want wat ons werd gegeven, keren wij weder terug.”\n\nEn dit werd de Eerste Belofte.', m: 'Voor ons was het Licht. In ons brandt het Licht. Na ons blijft het Licht.' }
+ ]},
+ { titel: 'De Leer van Aelar', kort: 'De Leer van Aelar', sub: 'De reizen van Aelar de Vredesbrenger en de acht regels die hij onderweg opschreef.', kleur: 'var(--rug-2)', h: 252, delen: [
+  { t: 'De Vonk in de Ander', x: 'In de dagen dat Aelar nog zonder volgelingen door de landen trok, kwam hij aan een dorp waar twee families reeds vele jaren met elkander in twist leefden. De ene familie noemde de andere onrein en zei dat hun Licht zwakker brandde. De andere antwoordde dat juist zij dichter bij de Schaduw stonden.\n\nAelar bleef drie dagen onder hen. Hij at aan de tafel van de ene familie en sliep onder het dak van de andere. Hij zag dat beiden hun kinderen liefhadden, beiden hun doden beweenden en beiden voedsel deelden wanneer de winter streng was.\n\nToen bracht hij hen bijeen en ontstak acht kleine lampen uit dezelfde vlam. Hij sprak: “Ziet gij verschil in het Licht dat zij dragen?” En niemand antwoordde. Daarop schreef Aelar:', m: 'Gij zult het Licht zoeken dat in u woont, en de vonk erkennen die in uw naaste brandt; want uit hetzelfde Eerste Licht zijt gij allen voortgekomen.' },
+  { t: 'De Leugenaar aan de Weg', x: 'Daarna ontmoette Aelar een koopman die reizigers vals gewicht gaf en zijn waren rijker voorstelde dan zij waren. Toen Aelar hem hierover aansprak, antwoordde de koopman: “Mijn woorden berokkenen niemand kwaad. Een kleine leugen houdt mijn kinderen gevoed.”\n\nMaar enige tijd later keerde Aelar terug. Niemand vertrouwde de koopman nog. Zijn buren vertrouwden elkander evenmin, want ieder vreesde bedrogen te worden. Aelar sprak: “Een leugen blijft zelden bij hem die haar spreekt. Zij werpt Schaduw over allen die haar moeten geloven.” En hij schreef:', m: 'Gij zult geen leugen spreken, noch bedrog verkiezen boven waarheid; want waar de leugen wortel schiet, daar groeit de Schaduw.' },
+  { t: 'De Stilte op de Berg', x: 'Aelar trok vervolgens naar een hoge berg en bleef daar alleen. Zeven dagen sprak hij met niemand. Hij wachtte op een stem. Hij verwachtte een teken. Hij zag slechts de Zon opkomen en ondergaan. Hij hoorde de wind tussen de stenen en zijn eigen adem in de nacht.\n\nOp de zevende dag begreep hij dat het Licht hem nooit woorden had gegeven. Het gaf hem geen bevelen. Het had hem slechts het vermogen gegeven te denken, te twijfelen en te weten wanneer zijn handelen rechtvaardig of onrechtvaardig was. Toen daalde Aelar af en schreef:', m: 'Gij zult acht slaan op rede, geweten en helder inzicht; want het Licht spreekt niet met woorden, doch openbaart zich in inzicht en waarheid.' },
+  { t: 'De Lamp achter de Deur', x: 'In een stad ontmoette Aelar een geleerde die vele geschriften bezat over het Licht. Niemand buiten zijn huis mocht ze lezen. “De mensen zijn niet gereed voor deze kennis,” zei de geleerde. “Zij zouden haar verkeerd begrijpen.”\n\nDie nacht brak brand uit in het huis. De geleerde werd gered, maar zijn geschriften gingen verloren. Toen weende hij, want hetgeen slechts hij had geweten, was nu verdwenen. Aelar gaf hem een nieuwe rol perkament en sprak: “Kennis die verborgen blijft, sterft met haar bewaarder.” Daarop schreef hij:', m: 'Gij zult het Licht dragen tot hen die nog in duisternis wandelen, en de waarheid niet voor uzelf bewaren; want een lamp wordt niet ontstoken om verborgen te blijven.' },
+  { t: 'De Dwalende', x: 'Verder op zijn reis trof Aelar een man die wegens diefstal uit zijn gemeenschap was verdreven. De dorpelingen wilden hem stenigen toen hij terugkeerde. Maar Aelar ging tussen hen staan. Hij vroeg de man waarom hij gestolen had. Deze antwoordde dat zijn kinderen honger hadden geleden.\n\nAelar sprak tot de dorpelingen: “Zijn daad was verkeerd. Maar indien gij hem doodt voordat gij hem de mogelijkheid geeft haar recht te zetten, brengt gij geen Licht waar Schaduw was.”\n\nDe man werkte daarna een jaar voor degenen die hij had bestolen. Toen het jaar voorbij was, werd hij opnieuw in het dorp opgenomen. En Aelar schreef:', m: 'Gij zult de duisternis verwerpen, doch de dwalende niet zonder barmhartigheid behandelen; reik hem eerst de hand, opdat hij wederom tot het Licht moge keren.' },
+  { t: 'De Troon zonder Gloed', x: 'Aelar kwam daarna bij een vorst die zijn paleis met honderden lampen had laten verlichten. Zelfs midden in de nacht straalden zijn zalen alsof het dag was. De vorst zei: “Zie hoe helder mijn Licht brandt. Geen mens in mijn rijk bezit zoveel als ik.”\n\nAelar keek buiten de paleismuren. Daar zaten armen in koude huizen zonder olie voor één enkele lamp. Toen nam Aelar een schaal en hield die boven een van de paleislampen totdat de vlam stikte. Hij sprak: “Gij hebt het Licht niet groter gemaakt door het bijeen te brengen. Gij hebt slechts anderen beroofd van hetgeen ook hen had kunnen verwarmen.”\n\nDe vorst werd vertoornd en liet Aelar uit zijn stad zetten. Buiten de poort schreef Aelar:', m: 'Gij zult uzelf niet verheffen boven het Licht, noch macht, rijkdom of eer boven de waarheid stellen; want hoogmoed verblindt zelfs hem wiens vonk eenmaal helder brandde.' },
+  { t: 'Het Dorp na de Storm', x: 'Na vele maanden bereikte Aelar een nederzetting die door een zware storm was verwoest. Huizen waren ingestort. Water had de velden meegenomen en velen hadden geen dak meer boven hun hoofd.\n\nAelar begon zonder woorden stenen te dragen. Een timmerman zag hem en hielp. Daarna kwamen een bakker, een geneesheer en enkele kinderen. De één bouwde. De ander bracht voedsel. Een derde verzorgde de gewonden. Na vele dagen stond het eerste huis opnieuw overeind.\n\nToen zei Aelar: “Het Licht leeft niet in woorden alleen. Wie slechts over het goede spreekt, maar nooit de handen uitsteekt, laat zijn lamp branden in een lege kamer.” En hij schreef:', m: 'Gij zult door woord en daad het Licht vermeerderen, opdat hetgeen na u komt helderder zij dan hetgeen vóór u was; bouw, genees, leer en dien, tot gij wederkeert tot het Eerste Licht.' },
+  { t: 'De Zon en de Maan', x: 'Aan het einde van zijn reizen keerde Aelar terug naar de plaats waar hij als jongeman vaak alleen had gezeten. Hij bleef er van zonsopgang tot diep in de nacht. Overdag zag hij de Zon. Haar warmte bracht leven voort, maar waar zij zonder einde zou branden, zou niets kunnen rusten. Toen de nacht kwam, verscheen de Maan. Zij gaf geen warmte zoals de Zon, maar haar zachte gloed maakte zichtbaar wat overdag verborgen bleef.\n\nAelar begreep dat ook de mens beide nodig had. Er is een uur om te spreken en een uur om te luisteren. Een uur om te strijden en een uur om te denken. Een uur om te bouwen en een uur om hetgeen gebouwd is te beschouwen. Daarom schreef hij zijn laatste gebod:', m: 'Gij zult de Zon eren om haar kracht en de Maan om haar wijsheid; want het Licht kent zowel het uur van handelen als het uur van bezinning, en wie slechts één van beide volgt, dwaalt van het rechte pad.', na: 'En toen hij de acht regels bijeenlegde, noemde Aelar hen niet zijn wetten. Hij sprak: “Dit zijn geen woorden die mij gegeven zijn. Het Licht spreekt niet. Ik heb slechts gezien wat reeds voor ieder zichtbaar was.” Daarom werden zij later genoemd: De Acht Leringen van Aelar.' }
+ ]},
+ { titel: 'De Gelijkenissen van de Lantaarn', kort: 'De Gelijkenissen', sub: 'Korte verhalen over het dragen en delen van het Licht.', kleur: 'var(--rug-4)', h: 214, mk: 'Daarom wordt gezegd', delen: [
+  { t: 'De Drie Lantaarns', x: 'Een reiziger bezat drie lantaarns. De eerste hield hij voor zichzelf. De tweede gaf hij aan zijn broeder. De derde hing hij aan de weg.\n\nToen de nacht viel, vroeg men hem: “Welke van deze lantaarns is de uwe?” De reiziger antwoordde: “Geen van hen. Het Licht behoort niet aan de hand die het draagt.”', m: 'Wie het Licht bezit als ware het eigendom, heeft niet begrepen wat hij draagt.' },
+  { t: 'De Lantaarn onder het Kleed', x: 'Een vrouw ontstak iedere avond een lantaarn, maar vreesde dat de wind haar vlam zou doven. Daarom wikkelde zij haar lantaarn in dikke doeken. De wind kon haar niet bereiken. Maar ook het Licht bereikte niemand meer.\n\nToen zij haar huis verliet, struikelde zij in haar eigen duisternis. En de wijze sprak: “Wat gij te zeer beschermt, kunt gij ook verborgen maken.”', m: 'Licht dat nimmer wordt gedeeld, verschilt weinig van Licht dat reeds gedoofd is.' },
+  { t: 'De Gebarsten Lamp', x: 'Een pottenbakker maakte een lamp die scheef was en aan één zijde gebarsten. Hij wilde haar wegwerpen. Maar zijn leerling vulde haar met olie en ontstak de pit. Door de scheur viel een smalle straal Licht op de grond.\n\nDie nacht vond een verdwaalde reiziger daardoor de deur van de werkplaats. De meester zag dit en sprak: “Het vat behoeft niet volmaakt te zijn om het Licht te dragen.”', m: 'Zoek niet alleen Licht in hetgeen zonder gebrek is.' },
+  { t: 'De Wachter bij de Brug', x: 'Een wachter kreeg bevel iedere nacht een lamp bij een brug te branden. Jarenlang kwam niemand voorbij. Op een avond dacht hij: “Waarom verspil ik olie voor reizigers die nooit komen?” En hij doofde de lamp.\n\nDiezelfde nacht kwam een vreemdeling aan de rivier. Hij zag de brug niet en werd door het water meegenomen. Toen de wachter dit hoorde, weende hij. De wijze sprak tot hem: “Gij wist niet voor wie gij het Licht droeg. Dat maakte uw taak niet minder.”', m: 'Een goede daad verliest haar waarde niet omdat niemand haar aanschouwt.' },
+  { t: 'De Man met Honderd Kaarsen', x: 'Een rijke man vulde zijn zaal met honderd kaarsen. Toen zijn buurman om één vlam vroeg om zijn eigen huis te verlichten, antwoordde de rijke: “Indien ik u Licht geef, zal het mijne minder worden.”\n\nMaar een kind nam één kaars en ontstak daarmee die van de buurman. De honderd kaarsen in de zaal brandden nog even helder. Toen sprak het kind: “Zie, heer. Het Licht werd gedeeld en toch verloort gij niets.”', m: 'Waar Licht wordt gedeeld, wordt het niet kleiner maar groter.' },
+  { t: 'De Twee Wegen', x: 'Twee reizigers kwamen ’s nachts bij een splitsing. De eerste verhief zijn lantaarn en liep onmiddellijk verder. De tweede bleef zitten en bestudeerde ieder spoor in de aarde. De eerste liep snel, maar nam de verkeerde weg. De tweede dacht tot zijn olie bijna op was en kwam nergens.\n\nToen ontmoetten zij een derde reiziger. Deze hield zijn lantaarn laag, bekeek het pad en begon daarna te lopen. En voor het ochtendlicht bereikte hij zijn bestemming.', m: 'De Zon leert de hand te handelen en de Maan leert het oog te zien; wijsheid ligt in het kennen van hun uur.' },
+  { t: 'De Lantaarn van de Leugenaar', x: 'Een man beweerde dat zijn lantaarn de helderste van het gehele dorp was. Wanneer iemand dichterbij kwam, bedekte hij haar met zijn hand, opdat niemand de zwakke vlam zou zien. Iedere dag vertelde hij dat zijn Licht groter geworden was. En iedere dag geloofden minder mensen hem.\n\nToen zijn lantaarn uiteindelijk doofde, riep hij: “Waarom gelooft niemand dat zij nog brandt?” Een oude vrouw antwoordde: “Omdat gij uw woorden helderder hebt gemaakt dan uw Licht.”', m: 'Wie waarheid met woorden vervangt, zal eenmaal alleen nog woorden bezitten.' },
+  { t: 'De Lantaarn bij het Venster', x: 'Een oude vrouw zette iedere avond een kleine lantaarn voor haar venster. Een jongen vroeg haar: “Voor wie brandt zij?” Zij antwoordde: “Voor wie haar nodig heeft.”\n\n“Maar kent gij die persoon?”\n“Nee.”\n“Weet gij of iemand haar ooit ziet?”\n“Nee.”\n“Waarom steekt gij haar dan aan?”\n\nDe vrouw glimlachte. “Omdat iemand die verdwaald is niet eerst mijn naam behoeft te kennen om mijn Licht te mogen zien.” En zo bleef haar lantaarn iedere nacht branden.', m: 'Vraag niet altijd wie het Licht verdient. Vraag waar het ontbreekt.' }
+ ]},
+ { titel: 'De Zangen der Gloed', kort: 'De Zangen der Gloed', sub: 'Liederen voor de viering, de nacht, de dwalende en het afscheid.', kleur: 'var(--rug-3)', h: 226, vers: true, delen: [
+  { t: 'Zang van de Eerste Gloed', x: 'Voor ons was het Licht,\nna ons blijft het Licht.\nWij dragen slechts de vonk\ndie even in ons brandt.\n\nLaat waarheid onze stem zijn,\nlaat recht ons handelen leiden.\nWaar Schaduw valt,\ndaar brengen wij de Gloed.' },
+  { t: 'Zang van Zon en Maan', x: 'Zon boven ons, leer ons handelen.\nMaan boven ons, leer ons zien.\nGeef kracht aan onze handen,\nrust aan onze gedachten.\n\nWant wie slechts brandt, verteert.\nEn wie slechts wacht, verstilt.\nLaat ons weten wanneer wij spreken,\nen wanneer wij zwijgen moeten.' },
+  { t: 'Zang voor de Dwalende', x: 'Wie ver van het Licht is geraakt,\nis niet voor eeuwig verloren.\nEen vonk kan klein worden,\ndoch klein is niet hetzelfde als gedoofd.\n\nReik daarom de hand aan wie struikelt,\nspreek waarheid tot wie dwaalt.\nWant wie één vlam weder ontsteekt,\nbrengt meer Licht dan hij alleen dragen kan.' },
+  { t: 'Zang van de Laatste Vlam', x: 'Wanneer mijn hand niet langer draagt,\nwanneer mijn stem tot stilte komt,\nlaat dan geen vrees in mij wonen.\nMijn Licht was nimmer van mij.\n\nWat ik ontving, geef ik terug.\nWat ik deelde, blijft achter.\nLaat aarde weder aarde worden,\nadem weder lucht,\nen Licht weder Licht.\n\nVoor mij was de Gloed.\nIn mij brandde de Gloed.\nNa mij blijft de Gloed.' }
+ ]},
+ { titel: 'Het Boek der Schaduwen', kort: 'Boek der Schaduwen', sub: 'Over het kwaad dat de mens zelf voortbrengt.', kleur: 'var(--rug-2)', h: 244, delen: [
+  { t: 'Van de Schaduw in de Mens', x: 'De Schaduw leeft niet. Zij spreekt niet, denkt niet en verlangt niets. Doch de mens kan haar groter maken. Niet door de nacht te brengen, maar door het Licht te verbergen dat hem gegeven is.\n\nWanneer waarheid wordt verzwegen uit eigenbelang, groeit de Schaduw. Wanneer macht wordt gebruikt om de zwakke te breken, groeit de Schaduw. Wanneer iemand zichzelf verheft door het Licht van een ander te doven, groeit de Schaduw.\n\nDaarom moet niemand zeggen: “De Duisternis dwong mij.”', m: 'Want de Schaduw bezit geen handen. De mens bezit die wel.' },
+  { t: 'De Heer van de Gesloten Deur', x: 'Er leefde eens een heer die tijdens een strenge winter zijn voorraadschuren gesloten hield. Buiten zijn muren leden de mensen honger. Toen men hem smeekte de deuren te openen, antwoordde hij: “Wat ik bezit, heb ik verdiend.”\n\nIn zijn zalen brandden grote vuren terwijl buiten kinderen stierven van de koude. Toen de lente kwam, waren zijn velden verlaten. Geen arbeider bleef om zijn grond te bewerken. En de heer verloor hetgeen hij zo angstvallig had bewaard.', mk: 'Daarom staat geschreven', m: 'Wie al het Licht voor zichzelf verzamelt, zal uiteindelijk alleen zitten bij zijn eigen vlam.' },
+  { t: 'De Vrome Leugenaar', x: 'Een geestelijke sprak iedere dag over waarheid. Doch wanneer zijn eigen fouten aan het licht kwamen, verborg hij ze. Hij veroordeelde de leugen van anderen en noemde zijn eigen bedrog noodzakelijk.\n\nEen leerling vroeg hem: “Meester, wanneer wordt een leugen waarheid?” De geestelijke antwoordde niet. Want hij wist dat woorden het Licht niet veranderen.', mk: 'Daarom staat geschreven', m: 'Wie het Licht predikt, maar voor zichzelf een uitzondering verlangt, wandelt reeds in zijn eigen Schaduw.' },
+  { t: 'Van Hoogmoed', x: 'Waak bovenal voor hem die zegt: “Mijn Licht is groter dan het uwe.” Want het Licht kent geen koning. Het kent geen rijke en geen arme. Geen priester wordt geboren met een helderder vonk dan een boer. Geen krijger draagt meer Licht omdat hij een zwaard bezit.\n\nAmbt kan verantwoordelijkheid geven. Kennis kan inzicht geven. Maar geen titel maakt de ziel zuiver.', m: 'Wie zichzelf tot bron van het Licht verklaart, heeft de bron reeds uit het oog verloren.' },
+  { t: 'Van de Dwalende', x: 'Niet iedere dwalende is verloren. Een mens kan liegen en weder waarheid spreken. Een wrede kan berouw kennen. Een hoogmoedige kan leren buigen. Daarom moet de eerste hand die naar de dwalende wordt uitgestoken een open hand zijn.\n\nDoch wie de uitgestoken hand telkens wegstoot en bewust het Licht van anderen dooft, moet worden tegengehouden.', m: 'Barmhartigheid zonder wijsheid laat het onrecht groeien. Recht zonder barmhartigheid wordt zelf tot hardheid.' },
+  { t: 'De Grootste Schaduw', x: 'En men vroeg: “Welke Schaduw is het grootst?” Sommigen zeiden moord. Anderen verraad. Anderen leugen. Maar de oude leraar antwoordde: “De gevaarlijkste Schaduw is die welke zichzelf Licht noemt.”\n\nWant tegen zichtbaar kwaad wapent de mens zich. Doch wanneer wreedheid rechtvaardigheid wordt genoemd, wanneer hebzucht plicht wordt genoemd en wanneer hoogmoed heiligheid wordt genoemd, volgen velen zonder te zien waarheen zij geleid worden.', m: 'Onderzoek daarom niet slechts de woorden van een mens. Zie wat zijn daden achterlaten. Want de vrucht verraadt de boom.' }
+ ]},
+ { titel: 'De Kronieken van Elian', kort: 'Kronieken van Elian', sub: 'Het leven en de leer van de geleerde die het Luminisme vormde.', kleur: 'var(--rug-1)', h: 232, delen: [
+  { t: 'De Geleerde van de Oude Leer', x: 'Elian werd geboren in een tijd waarin de oude geschriften van Aelar verspreid waren geraakt. Sommige steden kenden slechts de Acht Leringen. Andere vereerden Aelar als een goddelijke verschijning. Weer anderen beweerden dat Licht en Schaduw twee strijdende machten waren.\n\nElian verzamelde gedurende vele jaren geschriften, mondelinge overleveringen en oude liederen. Hij vergeleek hun woorden. En hij zag dat hetgeen oorspronkelijk eenvoudig was, door generaties van angst en verlangen was veranderd. Daarom schreef hij:', m: '“De waarheid wordt niet zuiverder omdat zij ouder wordt genoemd.”' },
+  { t: 'De Verwerping van de Twee Machten', x: 'In zijn eerste Verhandeling schreef Elian: “Er zijn geen twee machten. Want indien de Schaduw een macht was, zou zij kunnen bestaan waar het Licht aanwezig is. Doch steek een lamp aan en de Schaduw wijkt. Daarom strijdt het Licht niet tegen een vijand. Het verschijnt slechts waar het ontbreken ophoudt.”\n\nHiermee verwierp Elian de oude leer dat goed en kwaad in gelijke balans moesten worden gehouden. Want, zo schreef hij: “Men dient geen wreedheid te bewaren om barmhartigheid in evenwicht te houden. Men behoeft geen leugen opdat waarheid waarde bezit.”', m: '“De natuurlijke wereld kent balans. De menselijke deugd zoekt helderheid.”' },
+  { t: 'Aelar opnieuw gelezen', x: 'Elian bestudeerde daarna de woorden van Aelar. Hij leerde dat Aelar nooit had beweerd door een goddelijke stem te zijn gekozen. Hij had waargenomen. Hij had gedacht. Hij had gehandeld. Daarom noemde Elian hem niet langer de Brenger van Balans, maar de Eerste Drager van de Volledige Gloed.\n\nHij schreef: “Aelar bracht het Licht niet naar de wereld. Het Licht was er lang vóór hem. Hij leerde de mens slechts hoe het herkend moest worden.”', m: 'Hieruit ontstond de leer dat de mens het Licht niet hoeft te aanbidden als een persoon, maar het moet dienen door waarheid en rechtvaardigheid.' },
+  { t: 'De Acht Herlezingen', x: 'Elian nam de Acht Leringen van Aelar en gaf hun een nieuwe plaats binnen de leer. De eerste leerde gelijkwaardigheid. De tweede waarheid. De derde inzicht. De vierde verspreiding van kennis. De vijfde barmhartigheid. De zesde nederigheid. De zevende dienstbaarheid. De achtste de wijsheid van Zon en Maan.\n\nElian schreef:', m: '“Wie deze acht afzonderlijk leest, begrijpt slechts delen. Wie hen gezamenlijk draagt, begrijpt de weg.”' },
+  { t: 'De Eerste Aelarianen', x: 'Rond Elian verzamelden zich leerlingen. Zij noemden zichzelf aanvankelijk geen nieuwe gelovigen. Zij spraken slechts van de Verlichten, omdat zij meenden dat de oude leer opnieuw helder was geworden. Maar tegenstanders noemden hen Aelarianen. De naam bleef.\n\nDe eerste Aelarianen reisden van nederzetting tot nederzetting. Zij kopieerden de oude teksten. Zij onderwezen kinderen. Zij bouwden eenvoudige lichthuizen waarin reizigers voedsel, warmte en onderwijs konden ontvangen.', m: 'Boven hun deuren brandde altijd één lantaarn.' },
+  { t: 'De Laatste Verhandeling', x: 'Aan het einde van zijn leven schreef Elian: “Vrees de dag waarop men mijn woorden heilig noemt enkel omdat zij de mijne zijn. Onderzoek mij zoals ik de ouden onderzocht. Behoud wat waar blijkt. Verwerp wat vals blijkt. Want een leer die onderzoek vreest, vreest het Licht.”\n\nDaarna legde hij zijn pen neer. Zijn leerlingen verzamelden zijn geschriften en noemden hen de Verlichte Verhandelingen.', m: 'En uit zijn leer groeide hetgeen later het Luminisme zou worden genoemd.' }
+ ]},
+ { titel: 'De Wacht van het Licht', kort: 'De Wacht van het Licht', sub: 'Over dienst, gezag, strijd en de eed van wie het zwaard draagt.', kleur: 'var(--rug-3)', h: 248, delen: [
+  { t: 'Van Dienstbaarheid', x: 'Niemand draagt het Licht uitsluitend voor zichzelf. Wie sterk is, beschermt. Wie geleerd is, onderwijst. Wie bezit, deelt wanneer nood heerst. Wie gezag draagt, draagt daarmee grotere verantwoordelijkheid.', m: 'Daarom is heersen geen beloning. Het is een last die zichtbaar maakt hoe helder of hoe zwak een mens werkelijk handelt.' },
+  { t: 'Van de Wachters', x: 'De Wachter staat niet boven degene die hij beschermt. Zoals een muur niet belangrijker is dan het huis dat zij omsluit, zo is de soldaat niet belangrijker dan het volk dat achter hem leeft.\n\nDaarom moet iedere Wachter onthouden: zijn wapen is geen teken van verheffing. Zijn rang is geen bewijs van zuiverheid. Zijn eed geeft hem geen recht op wreedheid.', m: 'Hij draagt het zwaard opdat anderen het niet hoeven dragen.' },
+  { t: 'Van Rechtvaardig Gezag', x: 'Gezag zonder recht wordt tirannie. Recht zonder inzicht wordt hardheid. Inzicht zonder daad wordt leegte.\n\nDaarom behoort ieder die leiding geeft drie vragen te stellen:\nIs hetgeen ik doe waarachtig?\nBeschermt het degenen voor wie ik verantwoordelijkheid draag?\nLaat het meer Licht achter dan het wegneemt?', m: 'Wanneer het antwoord op deze vragen verloren raakt, moet zelfs de hoogste leider worden tegengesproken.' },
+  { t: 'Van de Tempel en de Straat', x: 'Het Licht woont niet enkel in tempels. Een brugbouwer kan het beter dienen dan een geestelijke. Een geneesheer kan het helderder dragen dan een bisschop. Een moeder kan meer waarheid onderwijzen dan honderd schriftgeleerden.\n\nDaarom wordt de waarde van dienst niet gemeten aan de plaats waar zij verricht wordt.', m: 'De straat kan heilig zijn wanneer daar recht wordt gedaan. Een tempel kan donker zijn wanneer daar leugen wordt gesproken.' },
+  { t: 'Van de Vijand', x: 'De vijand is niet zonder Licht omdat hij de vijand is. Ook in hem brandt een vonk. Daarom moet men niet doden uit haat. Niet martelen uit wraak. Niet vernederen uit genot.\n\nWanneer strijd noodzakelijk is, strijd dan om te beschermen. Wanneer de vijand zich overgeeft, laat het zwaard rusten.', m: 'Want overwinning die slechts meer Schaduw voortbrengt, is geen overwinning van het Licht.' },
+  { t: 'Van Ketterij en Dwaling', x: 'Wie dwaalt, moet eerst worden onderwezen. Wie twijfelt, moet worden gehoord. Wie vragen stelt, moet niet enkel daarom worden gevreesd. Want waarheid die slechts kan bestaan wanneer niemand haar bevraagt, is zwakke waarheid.\n\nDoch wie doelbewust leugen verspreidt om anderen te onderwerpen, verdeeldheid zaait of het leven van onschuldigen bedreigt, moet worden tegengehouden.', m: 'Daarom waakt de Kerk niet enkel over woorden. Zij behoort te waken over hetgeen woorden veroorzaken.' },
+  { t: 'De Eed van de Wacht', x: 'Daarom spreken zij die zich aan de Wacht verbinden:\n\nIk draag het Licht, maar bezit het niet.\nIk draag gezag, maar sta niet boven de waarheid.\nIk draag het zwaard, maar zal het niet liefhebben.\nIk bescherm wie achter mij staat en reik de hand aan wie terug wil keren.\nIk zal de Schaduw niet zoeken, noch haar in naam van het Licht voortbrengen.\nEn wanneer mijn eigen inzicht mij verlaat, zal ik luisteren naar hen wier ogen helderder zien.', m: 'Dit is de Wacht van het Licht.' }
+ ]},
+ { titel: 'Het Boek van de Laatste Schemering', kort: 'De Laatste Schemering', sub: 'Over sterven, rouw en wat na ons blijft.', kleur: 'var(--rug-4)', h: 240, delen: [
+  { t: 'Wanneer de Avond Komt', x: 'Zoals iedere dag zijn avond kent, zo kent ieder leven zijn einde. De wijze bidt niet dat de Zon nooit ondergaat. Hij is dankbaar dat zij heeft geschenen.\n\nDaarom moet de stervende niet worden verteld dat hij gefaald heeft omdat zijn lichaam zwakker wordt.', m: 'Een dovende vlam heeft niet verkeerd gebrand. Haar tijd is slechts gekomen.' },
+  { t: 'Het Loslaten', x: 'Wanneer de adem zwaar wordt en de handen hun kracht verliezen, verzamel u dan niet in angst rondom de stervende. Laat een lamp branden. Open, indien het kan, een venster naar de hemel. Spreek zijn naam. Herinner hem aan hetgeen hij heeft gebouwd, geleerd, beschermd en liefgehad.\n\nEn wanneer hij niet langer kan antwoorden, blijf dan niet spreken alsof hij reeds verdwenen is.', m: 'Want de laatste stilte behoort nog tot zijn leven.' },
+  { t: 'De Terugkeer van de Vonk', x: 'Niemand weet waar één vlam eindigt wanneer zij haar vuur verliest. Doch wij weten dat haar warmte niet uit niets kwam. Zo is ook de Lichtvonk. Zij werd niet door ons gemaakt. Daarom kan zij ook niet werkelijk ons bezit zijn.\n\nWanneer het lichaam sterft, wordt hetgeen bijeen was gebracht opnieuw losgelaten.', m: 'Aarde tot aarde. Adem tot lucht. Warmte tot de wereld. Licht tot Licht.' },
+  { t: 'Van Rouw', x: 'Ween om de gestorvene. Want verdriet is geen gebrek aan geloof. Wie heeft liefgehad, voelt de plaats waar iemand ontbrak.\n\nZeg daarom niet tegen de rouwende: “Uw verdriet is Schaduw.” Want ook tranen kunnen getuigen van Licht.', m: 'De mens treurt niet omdat hij de orde van de wereld ontkent. Hij treurt omdat hetgeen tijdelijk was kostbaar is geweest.' },
+  { t: 'De Naam die Achterblijft', x: 'De Lichtvonk keert terug. Maar de naam blijft enige tijd bij de levenden. Daarom moet men verhalen bewaren. Noem de gestorvenen tijdens maaltijden. Vertel kinderen wie vóór hen leefden.\n\nBewaar geen mens uitsluitend als held of zondaar. Herinner hem volledig.', m: 'Want ook herinnering wordt duister wanneer zij wordt vervormd tot leugen.' },
+  { t: 'De Laatste Schemering', x: 'Er zal een dag komen waarop ook onze huizen verdwijnen. Onze steden zullen andere namen dragen. Onze koninkrijken zullen vallen. Zelfs de stenen waarop onze woorden geschreven staan zullen breken.\n\nDit is geen reden tot wanhoop. Want het Licht vraagt niet herinnerd te worden. Het behoeft geen monument.', m: 'Het was vóór onze eerste woorden en zal zijn wanneer onze laatste woorden verdwenen zijn.' },
+  { t: 'Het Avondgebed', x: 'Wanneer de laatste avond komt, laat de stervende zeggen:\n\nIk heb gedragen wat mij gegeven werd.\nWaar ik kon, heb ik Licht gedeeld.\nWaar ik faalde, mogen anderen helderder handelen.\nIk houd mijn vonk niet langer vast.\nWat uit het Licht kwam, keert tot het Licht.\n\nEn laat degenen rondom hem antwoorden:', m: 'Uw naam blijft nog bij ons. Uw daden blijven waar zij vrucht hebben gedragen. Ga zonder vrees.' },
+  { t: 'Na de Nacht', x: 'Vrees de nacht niet omdat de Zon verdwenen is. De dageraad behoeft uw ogen niet om te komen. Zo behoeft het Licht ook uw leven niet om te blijven bestaan. Gij waart een drager. Gij waart geen einde.\n\nDaarom spreekt men bij het sluiten van het graf:\nVoor u was het Licht. In u brandde het Licht. Na u blijft het Licht.', m: 'En waar uw vlam eindigt, zal elders een nieuwe worden ontstoken.' }
+ ]}
+];
+const plank = $('#plank'), toc = $('#toc'), lezerTekst = $('#lezerTekst');
+let bi = 0, pi = 0;
+BOEKEN.forEach((b, i) => {
+  const r = document.createElement('button');
+  r.type = 'button'; r.className = 'rug'; r.setAttribute('role', 'tab'); r.id = 'rug-' + i; r.setAttribute('aria-controls', 'lezer');
+  r.style.setProperty('--kleur', b.kleur); r.style.setProperty('--h', b.h + 'px');
+  r.setAttribute('aria-label', `Boek ${ROM[i]}: ${b.titel}`);
+  r.innerHTML = `<span class="rug-nr" aria-hidden="true">${ROM[i]}</span><span class="rug-titel" aria-hidden="true">${b.kort}</span><svg width="14" height="14" aria-hidden="true" style="color:#F2C46A"><use href="#ster"/></svg>`;
+  r.addEventListener('click', () => openBoek(i, 0));
+  plank.appendChild(r);
+});
+function alinea(tekst){
+  const p = document.createElement('p');
+  tekst.split('\n').forEach((regel, k) => { if (k) p.appendChild(document.createElement('br')); p.appendChild(document.createTextNode(regel)); });
+  return p;
+}
+function openBoek(b, p){
+  const nieuwBoek = b !== bi || !toc.children.length;
+  bi = b; pi = p;
+  const boek = BOEKEN[bi], deel = boek.delen[pi];
+  $$('.rug', plank).forEach((r, j) => r.setAttribute('aria-selected', String(j === bi)));
+  if (nieuwBoek) {
+    $('#boekNr').textContent = 'Boek ' + ROM[bi];
+    $('#boekTitel').textContent = boek.titel;
+    $('#boekSub').textContent = boek.sub;
+    toc.innerHTML = '';
+    boek.delen.forEach((d, k) => {
+      const li = document.createElement('li'), knop = document.createElement('button');
+      knop.type = 'button'; knop.innerHTML = `<span>${ROM[k]}</span>`; knop.appendChild(document.createTextNode(d.t));
+      knop.addEventListener('click', () => openBoek(bi, k));
+      li.appendChild(knop); toc.appendChild(li);
+    });
+    const actieveRug = $('#rug-' + bi);
+    const wrap = plank.parentElement;
+    if (wrap.scrollWidth > wrap.clientWidth) wrap.scrollTo({ left: actieveRug.offsetLeft - wrap.clientWidth / 2 + 29, behavior: minder ? 'auto' : 'smooth' });
+  }
+  $$('button', toc).forEach((k, j) => { k.setAttribute('aria-current', String(j === pi)); });
+  const actief = toc.children[pi];
+  if (actief && toc.scrollWidth > toc.clientWidth) toc.scrollTo({ left: actief.offsetLeft - 16, behavior: minder ? 'auto' : 'smooth' });
+  $('#passageNr').textContent = (boek.vers ? 'Zang ' : 'Hoofdstuk ') + ROM[pi];
+  $('#passageTitel').textContent = deel.t;
+  const pas = $('#passage'); pas.innerHTML = ''; pas.classList.toggle('vers', !!boek.vers);
+  deel.x.split(/\n\s*\n/).forEach(a => pas.appendChild(alinea(a)));
+  const moraal = $('#moraal');
+  if (deel.m) {
+    moraal.innerHTML = '';
+    const mk = deel.mk || boek.mk;
+    const orn = document.createElement('div'); orn.className = 'ornament'; orn.innerHTML = '<svg aria-hidden="true"><use href="#ster"/></svg>'; moraal.appendChild(orn);
+    if (mk) { const l = document.createElement('p'); l.className = 'label'; l.textContent = mk; moraal.appendChild(l); }
+    moraal.appendChild(alinea(deel.m)); moraal.hidden = false;
+  } else moraal.hidden = true;
+  const na = $('#naMoraal'); na.hidden = !deel.na; na.textContent = deel.na || '';
+  $('#positie').textContent = `${pi + 1} / ${boek.delen.length}`;
+  $('#vorige').disabled = bi === 0 && pi === 0; $('#vorige').style.visibility = (bi === 0 && pi === 0) ? 'hidden' : '';
+  const laatste = bi === BOEKEN.length - 1 && pi === boek.delen.length - 1;
+  $('#volgende').disabled = laatste; $('#volgende').style.visibility = laatste ? 'hidden' : '';
+  lezerTekst.classList.remove('wissel'); void lezerTekst.offsetWidth; lezerTekst.classList.add('wissel');
+}
+$('#vorige').addEventListener('click', () => { if (pi > 0) openBoek(bi, pi - 1); else if (bi > 0) openBoek(bi - 1, BOEKEN[bi - 1].delen.length - 1); });
+$('#volgende').addEventListener('click', () => { if (pi < BOEKEN[bi].delen.length - 1) openBoek(bi, pi + 1); else if (bi < BOEKEN.length - 1) openBoek(bi + 1, 0); });
+openBoek(0, 0);
+
+/* ================= kopiëren ================= */
+$$('[data-kopieer]').forEach(b => b.addEventListener('click', () => {
+  const herstel = () => setTimeout(() => { b.textContent = 'kopieer'; }, 1800);
+  const selecteer = () => { const el = document.getElementById(b.dataset.doel); const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'geselecteerd'; herstel(); };
+  try {
+    navigator.clipboard.writeText(b.dataset.kopieer).then(() => { b.textContent = 'gekopieerd'; herstel(); }, selecteer);
+  } catch (e) { selecteer(); }
+}));
+
+/* ================= lantaarncursor (alleen bij Maan) ================= */
+const lc = $('#lichtcursor');
+if (fijn && !minder) {
+  lc.classList.add('aan');
+  addEventListener('pointermove', e => { lc.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`; }, { passive: true });
+}
+
+/* ================= scroll + animatielus ================= */
+let rij = false;
+function opScroll(){
+  if (rij) return; rij = true;
+  requestAnimationFrame(() => {
+    rij = false;
+    const y = scrollY;
+    nav.classList.toggle('is-vast', y > 40);
+    if (!minder && y < innerHeight * 1.2) heroBeeld.style.transform = `translate3d(0, ${y * .22}px, 0)`;
+    tijdlijn();
+  });
+}
+addEventListener('scroll', opScroll, { passive: true });
+let maatTimer;
+addEventListener('resize', () => { clearTimeout(maatTimer); maatTimer = setTimeout(() => { heroMaat(); vonkMaat(); opScroll(); if (minder) { heroTeken(false); vonkTeken(false); } }, 120); });
+heroBeeld.addEventListener('animationend', () => { heroBeeld.style.animation = 'none'; opScroll(); });
+opScroll();
+
+if (!minder) {
+  const lus = t => {
+    if (heroZicht && !document.hidden) heroTeken(true);
+    if (vZicht && !document.hidden) vonkTeken(true);
+    if (lZicht && !document.hidden) lantaarnStap(t);
+    requestAnimationFrame(lus);
+  };
+  requestAnimationFrame(lus);
+}
+})();
+</script>
+</body>
+</html>
