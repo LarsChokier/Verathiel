@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>De Verlichte Verhalen · Verathiel</title>
+    <meta name="description" content="Het heilige boek van Verathiel: acht boeken over het Eerste Licht, Aelar, Elian en het einde van alle dingen." />
+    <meta name="theme-color" content="#14112A" />
+
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@500;700&family=Marcellus&family=Marcellus+SC&display=swap"
+    />
+
+    <script type="module" crossorigin src="./assets/verhalen-BdAhV5KF.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/gedeeld-qVtBO_b6.js">
+    <link rel="modulepreload" crossorigin href="./assets/romeins-BL9bOCjB.js">
+    <link rel="stylesheet" crossorigin href="./assets/gedeeld-DC3o7x7U.css">
+    <link rel="stylesheet" crossorigin href="./assets/verhalen-BvQ0LGJq.css">
+    <link rel="stylesheet" crossorigin href="./assets/pagina-kop-BnZRckX0.css">
+  </head>
+
+  <body data-pagina="verhalen">
+    <!-- Navigatie: wordt opgebouwd door src/components/nav/nav.ts -->
+    <header class="nav" id="nav"></header>
+
+    <main>
+      <!-- ============ PAGINAKOP ============ -->
+      <section class="pagina-kop">
+        <img class="pagina-kop-beeld" src="./assets/klokkentoren-D2aAvGlQ.webp" alt="" />
+        <div class="binnen">
+          <p class="eyebrow">
+            <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+            De Verlichte Verhalen
+          </p>
+          <h1>Het heilige boek van Verathiel</h1>
+          <p>
+            Acht boeken over het Eerste Licht, de reizen van Aelar, de leer van Elian en het einde van alle dingen. Kies een boek van de plank en lees.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ BOEKENPLANK EN LEZER ============ -->
+      <section class="sectie" id="boeken">
+        <div class="binnen">
+          <!-- De boekruggen worden gemaakt door src/components/verhalen/verhalen.ts uit src/data/boeken.json -->
+          <div class="plank-wrap"><div class="plank" id="plank" role="tablist" aria-label="De acht boeken"></div></div>
+
+          <div class="lezer kader" id="lezer">
+            <div class="lezer-inhoud">
+              <p class="label" id="boekNr"></p>
+              <h3 id="boekTitel"></h3>
+              <p class="sub" id="boekSub"></p>
+              <ol class="toc" id="toc" aria-label="Hoofdstukken"></ol>
+            </div>
+
+            <div class="lezer-tekst" id="lezerTekst" aria-live="polite">
+              <p class="label" id="passageNr"></p>
+              <h4 id="passageTitel"></h4>
+              <div class="passage" id="passage"></div>
+              <div class="moraal" id="moraal" hidden></div>
+              <p class="na-moraal" id="naMoraal" hidden></p>
+
+              <div class="lezer-voet">
+                <button class="knop knop-lijn knop-klein" type="button" id="vorige">
+                  <svg aria-hidden="true"><use href="iconen.svg#pijl-links" /></svg>
+                  vorige
+                </button>
+                <span id="positie"></span>
+                <button class="knop knop-lijn knop-klein" type="button" id="volgende">
+                  volgende
+                  <svg aria-hidden="true"><use href="iconen.svg#pijl-rechts" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Voettekst: wordt opgebouwd door src/components/voet/voet.ts -->
+    <footer class="voet" id="voet"></footer>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>De Stad · Verathiel</title>
+    <meta name="description" content="De builds van Verathiel: de beginstad in beeld en een video-showcase." />
+    <meta name="theme-color" content="#14112A" />
+
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@500;700&family=Marcellus&family=Marcellus+SC&display=swap"
+    />
+
+    <script type="module" crossorigin src="./assets/stad-CqxwCD3f.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/gedeeld-qVtBO_b6.js">
+    <link rel="stylesheet" crossorigin href="./assets/gedeeld-DC3o7x7U.css">
+    <link rel="stylesheet" crossorigin href="./assets/stad-CCbanKCN.css">
+    <link rel="stylesheet" crossorigin href="./assets/pagina-kop-BnZRckX0.css">
+  </head>
+
+  <body data-pagina="stad">
+    <!-- Navigatie: wordt opgebouwd door src/components/nav/nav.ts -->
+    <header class="nav" id="nav"></header>
+
+    <main>
+      <!-- ============ PAGINAKOP ============ -->
+      <section class="pagina-kop">
+        <img class="pagina-kop-beeld" src="./assets/stallen-DWD26gZa.webp" alt="" />
+        <div class="binnen">
+          <p class="eyebrow">
+            <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+            De Stad
+          </p>
+          <h1>Zandsteen onder de woestijnzon</h1>
+          <p>
+            Tussen de duinen en cactussen van Quartum verrijst Verathiel: zandstenen muren, rode daken, zuilengangen en klokkentorens. Het plan is een grote stad in Romeinse stijl, met basilieken waar het Licht gevierd wordt.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ VIDEO ============ -->
+      <section class="sectie" id="video">
+        <div class="binnen">
+          <div class="kop">
+            <p class="eyebrow">
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+              Showcase
+            </p>
+            <h2>Een rondleiding door de beginstad</h2>
+          </div>
+
+          <!-- De video laadt pas na een klik (zie src/components/stad/stad.ts) -->
+          <div class="video">
+            <button
+              class="video-start"
+              id="videoStart"
+              type="button"
+              data-video="gcXV-3FQmE4"
+              data-titel="Showcase van de beginstad van Verathiel"
+            >
+              <img src="./assets/video-beginstad-ZOcKTtGg.webp" alt="" />
+              <span class="video-knop"><svg aria-hidden="true"><use href="iconen.svg#afspelen" /></svg></span>
+              <span class="video-label">Speel de showcase van de beginstad af</span>
+            </button>
+          </div>
+          <p class="video-voet">
+            Liever op YouTube? <a href="https://youtu.be/gcXV-3FQmE4" target="_blank" rel="noopener">Bekijk de video daar</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ GALERIJ ============ -->
+      <section class="sectie sectie-alt" id="galerij-sectie">
+        <div class="binnen">
+          <div class="kop">
+            <p class="eyebrow">
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+              Galerij
+            </p>
+            <h2>De stad in beeld</h2>
+            <p class="intro">Klik op een beeld om het te vergroten.</p>
+          </div>
+
+          <div class="galerij" id="galerij">
+            <button class="foto groot" type="button">
+              <img src="./assets/stallen-DWD26gZa.webp" alt="Een zandstenen gebouw met stallen en varkens, een hoge toren en de woestijn op de achtergrond" loading="lazy" />
+              <span class="onderschrift">Aan de rand van de stad, waar de woestijn begint</span>
+            </button>
+            <button class="foto" type="button">
+              <img src="./assets/binnenhof-BbxLScDj.webp" alt="Een binnenhof met gras, een bank en zuilengangen met lantaarns" loading="lazy" />
+              <span class="onderschrift">Een stille binnenhof achter de zuilengang</span>
+            </button>
+            <button class="foto" type="button">
+              <img src="./assets/korenveld-Bxg9EKHJ.webp" alt="Een groot zandstenen gebouw met rode daken naast een korenveld bij zonsondergang" loading="lazy" />
+              <span class="onderschrift">Tussen stenen muren en gouden korenvelden</span>
+            </button>
+            <button class="foto" type="button">
+              <img src="./assets/klokkentoren-D2aAvGlQ.webp" alt="Huizen en een klokkentoren bij zonsondergang, met palmen ernaast" loading="lazy" />
+              <span class="onderschrift">De klokkentoren bij zonsondergang</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vergroting van een foto -->
+      <div class="lichtbak" id="lichtbak" role="dialog" aria-modal="true" aria-label="Vergrote foto" hidden>
+        <button class="lb-knop lb-sluit" type="button" id="lbSluit" aria-label="Sluiten">
+          <svg aria-hidden="true"><use href="iconen.svg#kruis" /></svg>
+        </button>
+        <button class="lb-knop lb-vorige" type="button" id="lbVorige" aria-label="Vorige foto">
+          <svg aria-hidden="true"><use href="iconen.svg#pijl-links" /></svg>
+        </button>
+        <figure>
+          <img id="lbImg" alt="" />
+          <figcaption id="lbCap"></figcaption>
+        </figure>
+        <button class="lb-knop lb-volgende" type="button" id="lbVolgende" aria-label="Volgende foto">
+          <svg aria-hidden="true"><use href="iconen.svg#pijl-rechts" /></svg>
+        </button>
+      </div>
+    </main>
+
+    <!-- Voettekst: wordt opgebouwd door src/components/voet/voet.ts -->
+    <footer class="voet" id="voet"></footer>
+  </body>
+</html>

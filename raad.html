@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>De Raad · Verathiel</title>
+    <meta name="description" content="De Heilige Raad van Verathiel: wie het kingdom leidt, de lijn der Pontifexen en de hiërarchie." />
+    <meta name="theme-color" content="#14112A" />
+
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@500;700&family=Marcellus&family=Marcellus+SC&display=swap"
+    />
+
+    <script type="module" crossorigin src="./assets/raad-aGQ4IW9l.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/gedeeld-qVtBO_b6.js">
+    <link rel="stylesheet" crossorigin href="./assets/gedeeld-DC3o7x7U.css">
+    <link rel="stylesheet" crossorigin href="./assets/raad-CfyaggvB.css">
+    <link rel="stylesheet" crossorigin href="./assets/pagina-kop-BnZRckX0.css">
+  </head>
+
+  <body data-pagina="raad">
+    <!-- Navigatie: wordt opgebouwd door src/components/nav/nav.ts -->
+    <header class="nav" id="nav"></header>
+
+    <main>
+      <!-- ============ PAGINAKOP ============ -->
+      <section class="pagina-kop">
+        <img class="pagina-kop-beeld" src="./assets/kop-binnenhof-CUzxbx09.webp" alt="" />
+        <div class="binnen">
+          <p class="eyebrow">
+            <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+            Het bestuur van Verathiel
+          </p>
+          <h1>De Raad</h1>
+          <p>
+            In Verathiel zijn kerk en staat één. De Pontifex leidt het kingdom, samen met de Heilige Raad van
+            bisschoppen en aartsvicarissen die waken over de leer van het Licht.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ DE LEDEN ============ -->
+      <section class="sectie" id="leden-sectie">
+        <div class="binnen">
+          <div class="kop">
+            <p class="eyebrow">
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+              De Raad van nu
+            </p>
+            <h2>Wie Verathiel leidt</h2>
+          </div>
+
+          <!-- De kaarten worden gemaakt door src/components/raad/raad.ts uit src/data/raad.json -->
+          <div class="leden" id="leden"></div>
+        </div>
+      </section>
+
+      <!-- Venster met het volledige verhaal van een lid (gevuld door raad.ts) -->
+      <dialog class="karakter" id="karakter" aria-labelledby="karakterNaam">
+        <button class="karakter-sluit" type="button" id="karakterSluit" aria-label="Sluiten">
+          <svg aria-hidden="true"><use href="iconen.svg#kruis" /></svg>
+        </button>
+        <figure class="karakter-portret"><img id="karakterFoto" alt="" /></figure>
+        <div class="karakter-tekst">
+          <p class="lid-titel" id="karakterTitel"></p>
+          <h2 id="karakterNaam"></h2>
+          <p class="lid-bijnaam" id="karakterBijnaam"></p>
+          <dl class="lid-feiten" id="karakterFeiten"></dl>
+          <div class="karakter-verhaal" id="karakterVerhaal"></div>
+        </div>
+      </dialog>
+
+      <!-- ============ LIJN DER PONTIFEXEN ============ -->
+      <section class="sectie sectie-alt" id="pontifexen">
+        <div class="binnen">
+          <div class="kop">
+            <p class="eyebrow">
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+              De lijn der Pontifexen
+            </p>
+            <h2>Vijf dragers van het hoogste ambt</h2>
+            <p class="intro">
+              Van Elian, die Verathiel in 360 N.A. stichtte, tot Pontifex Lars. Klik op een Pontifex voor meer.
+            </p>
+          </div>
+
+          <div class="pontifexen">
+            <div class="pontifex-rij" id="pontifexRij" role="tablist" aria-label="Pontifexen van Verathiel"></div>
+            <div class="pf-detail kader" id="pfDetail" role="tabpanel" aria-live="polite"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ HIËRARCHIE ============ -->
+      <section class="sectie" id="rangen">
+        <div class="binnen">
+          <div class="kop">
+            <p class="eyebrow">
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+              Hiërarchie
+            </p>
+            <h2>Heersen is een last, geen beloning</h2>
+            <p class="intro">
+              Elke rang draagt een kerkelijke titel. Naast elke titel staat de rang waarmee hij op de server
+              overeenkomt.
+            </p>
+          </div>
+
+          <div class="rangen-wrap">
+            <ol class="rangen">
+              <li class="rang top">
+                <h3>Pontifex</h3>
+                <span class="gelijk">koning</span>
+                <p>Hoogste geestelijke leider en staatshoofd van Verathiel, gekozen door de Heilige Raad.</p>
+              </li>
+              <li class="rang">
+                <h3>Bisschop</h3>
+                <span class="gelijk">hertog</span>
+                <p>Draagt het Licht over een bisdom. Ons doel is van heel Quartum één bisdom te maken.</p>
+              </li>
+              <li class="rang">
+                <h3>Aartsvicaris</h3>
+                <span class="gelijk">raadgever</span>
+                <p>Ziet toe op de geestelijke en politieke zuiverheid van het land.</p>
+              </li>
+              <li class="rang">
+                <h3>Maarschalk</h3>
+                <span class="gelijk">generaal</span>
+                <p>Voert de Wacht van het Licht aan.</p>
+              </li>
+              <li class="rang">
+                <h3>Abtsheer</h3>
+                <span class="gelijk">graaf</span>
+                <p>Heer over een abdij en de landen die erbij horen.</p>
+              </li>
+              <li class="rang">
+                <h3>Tempelier</h3>
+                <span class="gelijk">elitesoldaat</span>
+                <p>“Ik draag het zwaard, maar zal het niet liefhebben.”</p>
+              </li>
+              <li class="rang">
+                <h3>Geloofswachter</h3>
+                <span class="gelijk">soldaat</span>
+                <p>“Hij draagt het zwaard opdat anderen het niet hoeven dragen.”</p>
+              </li>
+              <li class="rang">
+                <h3>Monnik</h3>
+                <span class="gelijk">herbergier</span>
+                <p>Houdt de Lichthuizen open, waar reizigers voedsel, warmte en kennis vinden.</p>
+              </li>
+              <li class="rang">
+                <h3>Gelovige</h3>
+                <span class="gelijk">burger</span>
+                <p>Geestelijke, gelovige of gewoon burger. Ieder draagt een Lichtvonk.</p>
+              </li>
+            </ol>
+
+            <aside class="rang-citaat kader">
+              <svg class="pijler-icoon" aria-hidden="true"><use href="iconen.svg#lichtvonk" /></svg>
+              <blockquote>
+                “Het Licht kent geen koning. Geen priester wordt geboren met een helderder vonk dan een boer. Ambt
+                kan verantwoordelijkheid geven. Kennis kan inzicht geven. Maar geen titel maakt de ziel zuiver.”
+              </blockquote>
+              <p class="bron">Boek der Schaduwen, IV · Van Hoogmoed</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Voettekst: wordt opgebouwd door src/components/voet/voet.ts -->
+    <footer class="voet" id="voet"></footer>
+  </body>
+</html>

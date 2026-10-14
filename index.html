@@ -1,29 +1,15 @@
 <!doctype html>
 <html lang="nl">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Verathiel</title>
     <meta name="description" content="Verathiel, de theocratie van het Eerste Licht op RepublicMC." />
-    <meta name="theme-color" content="#17132B" />
+    <meta name="theme-color" content="#14112A" />
 
-    <!-- Icoontjes -->
-    <link rel="icon" type="image/png" href="img/favicon.png" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
 
-    <!-- Voorbeeld bij het delen van de link (Discord, WhatsApp...).
-       Discord heeft een volledig adres nodig: vervang "img/og.jpg" door
-       bv. https://jouwnaam.github.io/verathiel/img/og.jpg zodra de site online staat. -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Verathiel" />
-    <meta
-      property="og:description"
-      content="De theocratie van het Eerste Licht op RepublicMC. Voor ons was het Licht. In ons brandt het Licht. Na ons blijft het Licht."
-    />
-    <meta property="og:image" content="img/og.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Lettertypes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -31,291 +17,103 @@
       href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+SC:wght@500;700&family=Marcellus&family=Marcellus+SC&display=swap"
     />
 
-    <!-- Stijl en scripts -->
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="js/thema-vooraf.js"></script>
-    <script src="js/bestand-melding.js" defer></script>
-    <script type="module" src="js/main.js"></script>
+    <script type="module" crossorigin src="./assets/home-CtMczJvd.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/gedeeld-qVtBO_b6.js">
+    <link rel="modulepreload" crossorigin href="./assets/romeins-BL9bOCjB.js">
+    <link rel="stylesheet" crossorigin href="./assets/gedeeld-DC3o7x7U.css">
+    <link rel="stylesheet" crossorigin href="./assets/home-Bdl-aS_T.css">
   </head>
-  <body>
-    <!-- Iconen en verlopen, hergebruikt met <use href="#naam"> -->
-    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
-      <defs>
-        <radialGradient id="lampGloed">
-          <stop offset="0" stop-color="#FFD27A" stop-opacity=".75" />
-          <stop offset=".45" stop-color="#FFB04A" stop-opacity=".22" />
-          <stop offset="1" stop-color="#FF9A3A" stop-opacity="0" />
-        </radialGradient>
-        <symbol id="ster" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z" />
-          <circle cx="12" cy="12" r="2.6" style="fill: var(--karmijn)" />
-        </symbol>
-        <symbol id="zon" viewBox="0 0 24 24">
-          <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-            <circle cx="12" cy="12" r="4.2" />
-            <path
-              d="M12 2v2.4M12 19.6V22M2 12h2.4M19.6 12H22M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M4.9 19.1l1.7-1.7M17.4 6.6l1.7-1.7"
-            />
-          </g>
-        </symbol>
-        <symbol id="maan" viewBox="0 0 24 24">
-          <path fill="currentColor" d="M15.5 2.6A9.5 9.5 0 1 0 21.4 15 7.6 7.6 0 0 1 15.5 2.6z" />
-        </symbol>
-        <symbol id="vonk" viewBox="0 0 24 24">
-          <path
-            fill="currentColor"
-            d="M12 1c.6 5.2 2.8 8.4 8 9.4v1.2c-5.2 1-7.4 4.2-8 9.4h-.2c-.6-5.2-2.8-8.4-8-9.4v-1.2c5.2-1 7.4-4.2 8-9.4z"
-          />
-        </symbol>
-        <symbol id="eerste-licht" viewBox="0 0 48 48">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <circle cx="24" cy="24" r="7" />
-            <path d="M24 4v7M24 37v7M4 24h7M37 24h7M9.9 9.9l5 5M33.1 33.1l5 5M9.9 38.1l5-5M33.1 14.9l5-5" />
-          </g>
-          <circle cx="24" cy="24" r="2.5" fill="currentColor" />
-        </symbol>
-        <symbol id="lichtvonk" viewBox="0 0 48 48">
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linejoin="round"
-            d="M24 5c3 9 8 13 8 21a8 8 0 0 1-16 0c0-8 5-12 8-21z"
-          />
-          <path fill="currentColor" d="M24 24c1.4 3 3 4.6 3 7a3 3 0 0 1-6 0c0-2.4 1.6-4 3-7z" />
-          <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M14 43h20" />
-        </symbol>
-        <symbol id="schaduw" viewBox="0 0 48 48">
-          <circle cx="24" cy="24" r="15" fill="none" stroke="currentColor" stroke-width="2" />
-          <path fill="currentColor" d="M24 9a15 15 0 0 1 0 30z" opacity=".85" />
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            d="M5 24h3M40 24h3"
-          />
-        </symbol>
-        <symbol id="zonmaan-icoon" viewBox="0 0 48 48">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <circle cx="18" cy="24" r="7" />
-            <path d="M18 9v3M18 36v3M6 24h3M8.5 14.5l2 2M8.5 33.5l2-2" />
-          </g>
-          <path fill="currentColor" d="M34 13a11 11 0 1 0 8 18.5A9 9 0 0 1 34 13z" />
-        </symbol>
-        <symbol id="stem" viewBox="0 0 48 48">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <rect x="18" y="6" width="12" height="22" rx="6" />
-            <path d="M11 22a13 13 0 0 0 26 0M24 35v7M17 42h14" />
-          </g>
-        </symbol>
-        <symbol id="weegschaal" viewBox="0 0 48 48">
-          <g
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M24 6v36M14 42h20M10 12h28" />
-            <path d="M10 12l-6 14h12zM38 12l-6 14h12z" />
-            <path d="M4 26a6 4 0 0 0 12 0M32 26a6 4 0 0 0 12 0" />
-          </g>
-        </symbol>
-        <symbol id="basiliek" viewBox="0 0 48 48">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-            <path d="M6 20L24 8l18 12M8 20h32M10 20v18M17 20v18M24 20v18M31 20v18M38 20v18M6 40h36" />
-          </g>
-          <circle cx="24" cy="15" r="2" fill="currentColor" />
-        </symbol>
-        <symbol id="beeld" viewBox="0 0 48 48">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-            <rect x="5" y="11" width="38" height="26" rx="3" />
-            <path d="M21 18l9 6-9 6z" fill="currentColor" />
-          </g>
-        </symbol>
-        <symbol id="praat" viewBox="0 0 48 48">
-          <g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
-            <path d="M8 10h32a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H22l-9 7v-7H8a3 3 0 0 1-3-3V13a3 3 0 0 1 3-3z" />
-          </g>
-          <circle cx="17" cy="21.5" r="2.2" fill="currentColor" />
-          <circle cx="24" cy="21.5" r="2.2" fill="currentColor" />
-          <circle cx="31" cy="21.5" r="2.2" fill="currentColor" />
-        </symbol>
-        <symbol id="speel" viewBox="0 0 48 48">
-          <rect
-            x="4"
-            y="10"
-            width="40"
-            height="28"
-            rx="8"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          />
-          <path d="M20 17l11 7-11 7z" fill="currentColor" />
-        </symbol>
-        <symbol id="pijl-r" viewBox="0 0 24 24">
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9 5l7 7-7 7"
-          />
-        </symbol>
-        <symbol id="pijl-l" viewBox="0 0 24 24">
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 5l-7 7 7 7"
-          />
-        </symbol>
-        <symbol id="pijl-o" viewBox="0 0 24 24">
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M5 9l7 7 7-7"
-          />
-        </symbol>
-        <symbol id="kruis" viewBox="0 0 24 24">
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            d="M6 6l12 12M18 6L6 18"
-          />
-        </symbol>
-        <symbol id="uit" viewBox="0 0 24 24">
-          <path
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"
-          />
-        </symbol>
-      </defs>
-    </svg>
 
-    <header class="nav" id="nav">
-      <a class="nav-merk" href="#begin">
-        <img src="img/logo.webp" alt="" width="38" height="38" />
-        <span>Verathiel</span>
-      </a>
-      <nav class="nav-links" id="navLinks" aria-label="Hoofdmenu">
-        <a href="#licht">Het Licht</a>
-        <a href="#geboden">Geboden</a>
-        <a href="#kroniek">Kroniek</a>
-        <a href="#rangen">Rangen</a>
-        <a href="#stad">De Stad</a>
-        <a href="#verhalen">Verhalen</a>
-        <a href="#aansluiten" class="nav-cta">Aansluiten</a>
-      </nav>
-      <button class="zonmaan" id="zonmaan" type="button" aria-label="Wissel tussen Zon en Maan">
-        <svg class="zm-zon" aria-hidden="true"><use href="#zon" /></svg>
-        <svg class="zm-maan" aria-hidden="true"><use href="#maan" /></svg>
-        <span class="zm-knop" aria-hidden="true"></span>
-      </button>
-      <button class="nav-menu" id="navMenu" type="button" aria-expanded="false" aria-controls="navLinks">
-        <span aria-hidden="true"></span>
-        menu
-      </button>
-    </header>
-
-    <section class="hero" id="begin">
-      <img
-        class="hero-beeld"
-        id="heroBeeld"
-        src="img/klokkentoren.webp"
-        alt="Verathiel bij zonsondergang: zandstenen huizen met rode daken, een klokkentoren en palmen in de woestijn"
-        fetchpriority="high"
-      />
-      <div class="hero-waas"></div>
-      <canvas class="vonken" id="vonken" aria-hidden="true"></canvas>
-      <div class="hero-inhoud">
-        <div class="medaillon">
-          <div class="stralen"></div>
-          <img
-            src="img/logo.webp"
-            alt="Het wapen van Verathiel: een honingdas op een rots, voor de opkomende woestijnzon"
-            width="186"
-            height="186"
-          />
-        </div>
-        <p class="eyebrow">
-          <svg aria-hidden="true"><use href="#ster" /></svg>
-          Theocratie van het Eerste Licht · RepublicMC
-          <svg aria-hidden="true"><use href="#ster" /></svg>
-        </p>
-        <h1 aria-label="Verathiel">
-          <span style="--i: 0" aria-hidden="true">V</span>
-          <span style="--i: 1" aria-hidden="true">e</span>
-          <span style="--i: 2" aria-hidden="true">r</span>
-          <span style="--i: 3" aria-hidden="true">a</span>
-          <span style="--i: 4" aria-hidden="true">t</span>
-          <span style="--i: 5" aria-hidden="true">h</span>
-          <span style="--i: 6" aria-hidden="true">i</span>
-          <span style="--i: 7" aria-hidden="true">e</span>
-          <span style="--i: 8" aria-hidden="true">l</span>
-        </h1>
-        <p class="hero-gebed">
-          <span>Voor ons was het Licht.</span>
-          <span>In ons brandt het Licht.</span>
-          <span>Na ons blijft het Licht.</span>
-        </p>
-        <div class="knoppen">
-          <a class="knop knop-primair" href="https://discord.gg/6MVmUydGcq" target="_blank" rel="noopener">
-            <svg aria-hidden="true"><use href="#praat" /></svg>
-            Word lid op Discord
-          </a>
-          <a
-            class="knop knop-glas"
-            href="https://www.youtube.com/@VerathielRMC"
-            target="_blank"
-            rel="noopener"
-          >
-            <svg aria-hidden="true"><use href="#speel" /></svg>
-            Bekijk ons op YouTube
-          </a>
-        </div>
-      </div>
-      <a class="daal" href="#licht">
-        daal af
-        <svg aria-hidden="true"><use href="#pijl-o" /></svg>
-      </a>
-    </section>
+  <body data-pagina="home">
+    <!-- Navigatie: wordt opgebouwd door src/components/nav/nav.ts -->
+    <header class="nav" id="nav"></header>
 
     <main>
+      <!-- ============ STARTSCHERM ============ -->
+      <section class="hero" id="begin">
+        <img
+          class="hero-beeld"
+          id="heroBeeld"
+          src="./assets/hero-klokkentoren-83IzbJp5.webp"
+          alt="Verathiel bij zonsondergang: zandstenen huizen met rode daken, een klokkentoren en palmen in de woestijn"
+          fetchpriority="high"
+        />
+        <div class="hero-waas"></div>
+        <canvas class="hero-vonken" id="heroVonken" aria-hidden="true"></canvas>
+
+        <div class="hero-inhoud">
+          <div class="medaillon">
+            <div class="stralen"></div>
+            <img
+              src="./assets/logo-CLmrbzZ5.webp"
+              alt="Het wapen van Verathiel: een honingdas op een rots, voor de opkomende woestijnzon"
+              width="186"
+              height="186"
+            />
+          </div>
+
+          <p class="eyebrow">
+            <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+            Theocratie van het Eerste Licht · RepublicMC
+            <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
+          </p>
+
+          <h1 aria-label="Verathiel">
+            <span style="--i: 0" aria-hidden="true">V</span>
+            <span style="--i: 1" aria-hidden="true">e</span>
+            <span style="--i: 2" aria-hidden="true">r</span>
+            <span style="--i: 3" aria-hidden="true">a</span>
+            <span style="--i: 4" aria-hidden="true">t</span>
+            <span style="--i: 5" aria-hidden="true">h</span>
+            <span style="--i: 6" aria-hidden="true">i</span>
+            <span style="--i: 7" aria-hidden="true">e</span>
+            <span style="--i: 8" aria-hidden="true">l</span>
+          </h1>
+
+          <p class="hero-gebed">
+            <span>Voor ons was het Licht.</span>
+            <span>In ons brandt het Licht.</span>
+            <span>Na ons blijft het Licht.</span>
+          </p>
+
+          <div class="knoppen">
+            <a class="knop knop-primair" href="https://discord.gg/6MVmUydGcq" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="iconen.svg#praat" /></svg>
+              Word lid op Discord
+            </a>
+            <a class="knop knop-glas" href="https://www.youtube.com/@VerathielRMC" target="_blank" rel="noopener">
+              <svg aria-hidden="true"><use href="iconen.svg#speel" /></svg>
+              Bekijk ons op YouTube
+            </a>
+          </div>
+        </div>
+
+        <a class="daal" href="#licht">
+          daal af
+          <svg aria-hidden="true"><use href="iconen.svg#pijl-omlaag" /></svg>
+        </a>
+      </section>
+
       <!-- ============ HET LICHT ============ -->
       <section class="sectie" id="licht">
         <div class="binnen">
           <div class="kop">
             <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
               Het Luminisme
             </p>
             <h2>Iedere ziel draagt een vonk van het Eerste Licht</h2>
             <p class="intro">
               Verathiel is een theocratisch kingdom op RepublicMC, in de wereld Quartum. Wij leven naar het
               Luminisme, het geloof dat de geleerde Elian in 315 N.A. opnieuw samenstelde uit de verspreide
-              geschriften van het oude Aehisme. De wet van de staat is de wet van het Licht. Aan het hoofd
-              staan de Pontifex en de Heilige Raad.
+              geschriften van het oude Aehisme. De wet van de staat is de wet van het Licht. Aan het hoofd staan
+              de Pontifex en de Heilige Raad.
             </p>
           </div>
 
           <div class="pijlers">
             <article class="pijler">
-              <svg class="pijler-icoon" aria-hidden="true"><use href="#eerste-licht" /></svg>
+              <svg class="pijler-icoon" aria-hidden="true"><use href="iconen.svg#eerste-licht" /></svg>
               <h3>Het Eerste Licht</h3>
               <blockquote>
                 “Voor de dagen geteld werden, voor hemel, aarde en adem bestonden, was er het Licht. Niet
@@ -323,116 +121,59 @@
               </blockquote>
               <p class="bron">Boek van de Eerste Gloed, I</p>
             </article>
+
             <article class="pijler">
-              <svg class="pijler-icoon" aria-hidden="true"><use href="#lichtvonk" /></svg>
+              <svg class="pijler-icoon" aria-hidden="true"><use href="iconen.svg#lichtvonk" /></svg>
               <h3>De Lichtvonk</h3>
               <blockquote>
-                “In de mens brandt het als een vonk. Deze Lichtvonk behoort hem niet toe. Zij is slechts aan
-                hem toevertrouwd zolang hij leeft.”
+                “In de mens brandt het als een vonk. Deze Lichtvonk behoort hem niet toe. Zij is slechts aan hem
+                toevertrouwd zolang hij leeft.”
               </blockquote>
               <p class="bron">Boek van de Eerste Gloed, IV</p>
             </article>
+
             <article class="pijler">
-              <svg class="pijler-icoon" aria-hidden="true"><use href="#schaduw" /></svg>
+              <svg class="pijler-icoon" aria-hidden="true"><use href="iconen.svg#schaduw" /></svg>
               <h3>De Schaduw</h3>
               <blockquote>
-                “Er zijn geen twee machten. Steek een lamp aan en de Schaduw wijkt. Daarom strijdt het Licht
-                niet tegen een vijand.”
+                “Er zijn geen twee machten. Steek een lamp aan en de Schaduw wijkt. Daarom strijdt het Licht niet
+                tegen een vijand.”
               </blockquote>
               <p class="bron">Kronieken van Elian, II</p>
             </article>
+
             <article class="pijler">
-              <svg class="pijler-icoon" aria-hidden="true"><use href="#zonmaan-icoon" /></svg>
+              <svg class="pijler-icoon" aria-hidden="true"><use href="iconen.svg#zon-en-maan" /></svg>
               <h3>Zon en Maan</h3>
               <blockquote>
-                “De Zon is het Licht van handelen. De Maan is het Licht van inzicht. Daarom dient de wijze
-                beiden te kennen.”
+                “De Zon is het Licht van handelen. De Maan is het Licht van inzicht. Daarom dient de wijze beiden
+                te kennen.”
               </blockquote>
-              <button class="tekstknop" type="button" data-wissel-thema data-thema-tekst>
-                Wissel naar de Maan
-              </button>
+              <p class="bron">Boek van de Eerste Gloed, III</p>
             </article>
-          </div>
-
-          <div class="vonk kader">
-            <div class="vonk-tekst">
-              <p class="label">Probeer het zelf</p>
-              <h3>Jouw Lichtvonk</h3>
-              <p class="vonk-citaat">
-                “Door waarheid, barmhartigheid, inzicht en rechtvaardigheid brandt zij helder. Door hoogmoed,
-                bedrog, verraad en wreedheid wordt zij verduisterd. Doch niemand wordt zonder Licht geboren.”
-              </p>
-              <div class="vonk-groep">
-                <p class="label">Brengt Licht</p>
-                <div class="chips" id="deugden">
-                  <button class="chip chip-deugd" type="button" data-richting="deugd">
-                    <svg aria-hidden="true"><use href="#vonk" /></svg>
-                    Waarheid
-                  </button>
-                  <button class="chip chip-deugd" type="button" data-richting="deugd">
-                    <svg aria-hidden="true"><use href="#vonk" /></svg>
-                    Barmhartigheid
-                  </button>
-                  <button class="chip chip-deugd" type="button" data-richting="deugd">
-                    <svg aria-hidden="true"><use href="#vonk" /></svg>
-                    Inzicht
-                  </button>
-                  <button class="chip chip-deugd" type="button" data-richting="deugd">
-                    <svg aria-hidden="true"><use href="#vonk" /></svg>
-                    Rechtvaardigheid
-                  </button>
-                </div>
-              </div>
-              <div class="vonk-groep">
-                <p class="label">Verduistert</p>
-                <div class="chips" id="zonden">
-                  <button class="chip chip-zonde" type="button" data-richting="zonde">Hoogmoed</button>
-                  <button class="chip chip-zonde" type="button" data-richting="zonde">Bedrog</button>
-                  <button class="chip chip-zonde" type="button" data-richting="zonde">Verraad</button>
-                  <button class="chip chip-zonde" type="button" data-richting="zonde">Wreedheid</button>
-                </div>
-              </div>
-              <div class="meter" aria-hidden="true">
-                helderheid
-                <span class="meter-balk"><i id="meterVulling"></i></span>
-              </div>
-              <p class="vonk-status" id="vonkStatus" aria-live="polite">
-                Je vonk brandt rustig. Kies hierboven hoe je leeft.
-              </p>
-            </div>
-            <div class="vonk-beeld" id="vonkBeeld">
-              <canvas id="vonkCanvas" aria-hidden="true"></canvas>
-              <svg class="vonk-lamp" id="vonkLamp" viewBox="0 0 120 100" aria-hidden="true">
-                <ellipse class="l-schaduw" cx="58" cy="92" rx="30" ry="4" />
-                <path class="l-greep" d="M28 72 Q 10 70 11 58 Q 13 48 22 52" />
-                <path class="l-klei" d="M80 66 Q 98 61 106 63 Q 113 65 111 71 Q 107 78 84 80 Z" />
-                <ellipse class="l-klei" cx="56" cy="74" rx="32" ry="14" />
-                <path class="l-lijn" d="M33 77 Q 56 86 79 77" />
-                <ellipse class="l-donker" cx="56" cy="66" rx="21" ry="5.5" />
-                <circle cx="56" cy="66" r="2.6" fill="#2A1A12" opacity=".6" />
-                <ellipse cx="106" cy="64.5" rx="3.2" ry="1.4" fill="#2A1A12" opacity=".7" />
-              </svg>
-            </div>
           </div>
         </div>
       </section>
 
-      <!-- ============ GEBODEN ============ -->
+      <!-- ============ DE ACHT GEBODEN ============ -->
       <section class="sectie sectie-alt" id="geboden">
         <div class="binnen">
           <div class="kop">
             <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
+              <svg aria-hidden="true"><use href="iconen.svg#ster" /></svg>
               De Acht Geboden
             </p>
             <h2>Acht lampen, ontstoken uit dezelfde vlam</h2>
             <p class="intro">
-              Aelar de Vredesbrenger trok door de landen en schreef na elke ontmoeting één regel op. Wetten
-              noemde hij ze nooit: “Ik heb slechts gezien wat reeds voor ieder zichtbaar was.” Ontsteek een
-              lamp om haar gebod te lezen.
+              Aelar de Vredesbrenger trok door de landen en schreef na elke ontmoeting één regel op. Wetten noemde
+              hij ze nooit: “Ik heb slechts gezien wat reeds voor ieder zichtbaar was.” Ontsteek een lamp om haar
+              gebod te lezen.
             </p>
           </div>
+
+          <!-- De lampen worden door src/components/geboden/geboden.ts gemaakt -->
           <div class="lampen" id="lampen" role="tablist" aria-label="De acht geboden"></div>
+
           <article class="gebod" id="gebod" role="tabpanel" aria-live="polite">
             <p class="gebod-nr" id="gebodNr">Gebod I · Gelijkwaardigheid</p>
             <blockquote class="gebod-tekst" id="gebodTekst">
@@ -443,616 +184,32 @@
               <p class="label">Uit De Leer van Aelar</p>
               <h3 id="gebodVerhaal">De Vonk in de Ander</h3>
               <p id="gebodKern">
-                Twee families leven al jaren in twist. Aelar ontsteekt acht lampen uit dezelfde vlam en
-                vraagt: “Ziet gij verschil in het Licht dat zij dragen?”
+                Twee families leven al jaren in twist. Aelar ontsteekt acht lampen uit dezelfde vlam en vraagt:
+                “Ziet gij verschil in het Licht dat zij dragen?”
               </p>
-              <button class="tekstknop" type="button" id="gebodLees">Lees het hele verhaal</button>
+              <a class="knop knop-lijn knop-klein" id="gebodLees" href="verhalen.html#boek-2-deel-1">
+                lees het hele verhaal
+              </a>
             </div>
           </article>
+
           <div class="lampen-voet">
             <span id="lampenTeller">1 van 8 lampen brandt</span>
             <button class="knop knop-lijn knop-klein" type="button" id="doof" hidden>doof de lampen</button>
           </div>
+
           <div class="alle-lampen kader" id="alleLampen" hidden>
             <p class="label">De Acht Leringen van Aelar</p>
             <p>
-              “Dit zijn geen woorden die mij gegeven zijn. Het Licht spreekt niet. Ik heb slechts gezien wat
-              reeds voor ieder zichtbaar was.”
+              “Dit zijn geen woorden die mij gegeven zijn. Het Licht spreekt niet. Ik heb slechts gezien wat reeds
+              voor ieder zichtbaar was.”
             </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ KRONIEK ============ -->
-      <section class="sectie" id="kroniek">
-        <div class="binnen">
-          <div class="kop">
-            <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              Kroniek
-            </p>
-            <h2>Van verboden geloof tot theocratie</h2>
-            <p class="intro">
-              Bijna anderhalve eeuw geschiedenis, van het verbod in Doveport tot het bewind van Pontifex Lars.
-              Scroll naar beneden en volg het Licht.
-            </p>
-          </div>
-
-          <div class="tijdlijn" id="tijdlijn">
-            <div class="tijdperk"><span>Het Aehisme in ballingschap</span></div>
-            <div class="moment">
-              <p class="jaar">
-                280
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Het Verbod van Doveport</h3>
-                <p>
-                  Na het openbarsten van de Esfarr raakt raadslid Joachym Blook in paniek. Hij verdenkt Pius
-                  en de gelovigen van Doveport van samenzwering, verbiedt het geloof en sluit de deuren van de
-                  grote kerk.
-                </p>
-              </div>
-            </div>
-            <div class="moment">
-              <p class="jaar">
-                282
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Het Verborgen Aehisme</h3>
-                <p>
-                  Het geloof leeft ondergronds verder. Terwijl oorlog en rampen het continent teisteren,
-                  zoeken steeds meer inwoners in het geheim hoop bij het oude geloof.
-                </p>
-              </div>
-            </div>
-            <div class="moment">
-              <p class="jaar">
-                293
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>De zoektocht naar een beter leven</h3>
-                <p>
-                  De oorlog van Joachym Blook brengt honger en tekorten. Een grote stroom vluchtelingen trekt
-                  naar het rustige Wynnhog en neemt het verboden Aehisme in het geheim mee.
-                </p>
-              </div>
-            </div>
-            <div class="moment">
-              <p class="jaar">
-                296
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Het geloof valt op</h3>
-                <p>
-                  De gemeenschap in Wynnhog groeit en durft zich te tonen. De nieuwe regent Marius Blook deelt
-                  het wantrouwen van zijn vader en beveelt een klopjacht. Wie niet gepakt wordt, vlucht
-                  opnieuw of duikt onder.
-                </p>
-              </div>
-            </div>
-            <div class="tijdperk lijn"><span>Het Luminisme</span></div>
-            <div class="moment">
-              <p class="jaar">
-                315
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>De Openbaring van Elian</h3>
-                <p>
-                  De geleerde Elian publiceert zijn Verlichte Verhandelingen. Aelar kwam niet om balans te
-                  brengen, maar om het Eerste Licht te schenken. Zijn volgelingen, de Aelarianen, verspreiden
-                  het Luminisme snel onder het volk.
-                </p>
-              </div>
-            </div>
-            <div class="moment kloof" aria-hidden="true">
-              <span class="kloof-tekst">· · · 45 jaar · · ·</span>
-            </div>
-            <div class="moment">
-              <p class="jaar">
-                360
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>De Oprichting van Verathiel</h3>
-                <p>
-                  De Aelarianen verenigen de verspreide nederzettingen onder het vaandel van het Luminisme. De
-                  wet van de staat wordt de wet van het Licht. Elian wordt de eerste Pontifex en de hiërarchie
-                  van Aartsvicarissen wordt vastgelegd.
-                </p>
-              </div>
-            </div>
-            <div class="moment klein">
-              <p class="jaar">
-                370
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Pontifex Arie gekroond</h3>
-                <p>Pontifex Elian I overlijdt. Arie volgt hem op.</p>
-              </div>
-            </div>
-            <div class="moment klein">
-              <p class="jaar">
-                390
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Pontifex Cornelis gekroond</h3>
-                <p>Pontifex Arie sterft aan een hartaanval. Cornelis neemt het ambt over.</p>
-              </div>
-            </div>
-            <div class="moment klein">
-              <p class="jaar">
-                410
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Pontifex Paulus gekroond</h3>
-                <p>Pontifex Cornelis overlijdt een natuurlijke dood. Paulus wordt gekroond.</p>
-              </div>
-            </div>
-            <div class="moment nu">
-              <p class="jaar">
-                428
-                <small>N.A.</small>
-              </p>
-              <span class="punt" aria-hidden="true"></span>
-              <div class="moment-inhoud">
-                <h3>Het Verlichte Bewind</h3>
-                <p>
-                  Pontifex Paulus overlijdt onder schimmige omstandigheden en Pontifex Lars neemt zijn plaats
-                  in. Verathiel is uitgegroeid tot een welvarende, strikte theocratie die met ijzeren hand
-                  wordt geregeerd. Het oude Aehisme is een verboden, ketterse herinnering.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="pontifexen">
-            <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              De lijn der Pontifexen
-            </p>
-            <h3>Vijf dragers van het hoogste ambt</h3>
-            <div
-              class="pontifex-rij"
-              id="pontifexRij"
-              role="tablist"
-              aria-label="Pontifexen van Verathiel"
-            ></div>
-            <div class="pf-detail kader" id="pfDetail" role="tabpanel" aria-live="polite">
-              <p class="label">De huidige Pontifex · sinds 428 N.A.</p>
-              <h4>Pontifex Lars</h4>
-              <p>
-                Volgde Paulus op na diens dood. Onder zijn leiding is Verathiel een welvarende en strikte
-                theocratie.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ RANGEN ============ -->
-      <section class="sectie sectie-alt" id="rangen">
-        <div class="binnen">
-          <div class="kop">
-            <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              Hiërarchie
-            </p>
-            <h2>Heersen is een last, geen beloning</h2>
-            <p class="intro">
-              In Verathiel zijn kerk en staat één. Elke rang draagt een kerkelijke titel. Naast elke titel
-              staat de rang waarmee hij op de server overeenkomt.
-            </p>
-          </div>
-          <div class="rangen-wrap">
-            <ol class="rangen">
-              <li class="rang top">
-                <h3>Pontifex</h3>
-                <span class="gelijk">koning</span>
-                <p>Hoogste geestelijke leider en staatshoofd van Verathiel, gekozen door de Heilige Raad.</p>
-              </li>
-              <li class="rang">
-                <h3>Bisschop</h3>
-                <span class="gelijk">hertog</span>
-                <p>Draagt het Licht over een bisdom. Ons doel is van heel Quartum één bisdom te maken.</p>
-              </li>
-              <li class="rang">
-                <h3>Maarschalk</h3>
-                <span class="gelijk">generaal</span>
-                <p>Voert de Wacht van het Licht aan.</p>
-              </li>
-              <li class="rang">
-                <h3>Aartsvicaris</h3>
-                <span class="gelijk">raadgever</span>
-                <p>Ziet toe op de geestelijke en politieke zuiverheid van het land.</p>
-              </li>
-              <li class="rang">
-                <h3>Abtsheer</h3>
-                <span class="gelijk">graaf</span>
-                <p>Heer over een abdij en de landen die erbij horen.</p>
-              </li>
-              <li class="rang">
-                <h3>Tempelier</h3>
-                <span class="gelijk">elitesoldaat</span>
-                <p>“Ik draag het zwaard, maar zal het niet liefhebben.”</p>
-              </li>
-              <li class="rang">
-                <h3>Geloofswachter</h3>
-                <span class="gelijk">soldaat</span>
-                <p>“Hij draagt het zwaard opdat anderen het niet hoeven dragen.”</p>
-              </li>
-              <li class="rang">
-                <h3>Monnik</h3>
-                <span class="gelijk">herbergier</span>
-                <p>Houdt de Lichthuizen open, waar reizigers voedsel, warmte en kennis vinden.</p>
-              </li>
-              <li class="rang">
-                <h3>Gelovige</h3>
-                <span class="gelijk">burger</span>
-                <p>Geestelijke, gelovige of gewoon burger. Ieder draagt een Lichtvonk.</p>
-              </li>
-            </ol>
-            <aside class="rang-citaat kader">
-              <svg class="pijler-icoon" aria-hidden="true"><use href="#lichtvonk" /></svg>
-              <blockquote>
-                “Het Licht kent geen koning. Geen priester wordt geboren met een helderder vonk dan een boer.
-                Ambt kan verantwoordelijkheid geven. Kennis kan inzicht geven. Maar geen titel maakt de ziel
-                zuiver.”
-              </blockquote>
-              <p class="bron">Boek der Schaduwen, IV · Van Hoogmoed</p>
-            </aside>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ LANTAARN ============ -->
-      <section class="lantaarn" id="schaduw" aria-labelledby="schaduwKop">
-        <div class="lantaarn-gloed" aria-hidden="true"></div>
-        <div class="binnen">
-          <div class="lantaarn-stapel">
-            <div class="lantaarn-laag lantaarn-donker">
-              <p class="eyebrow">
-                <svg aria-hidden="true"><use href="#ster" /></svg>
-                Uit het Boek der Schaduwen
-              </p>
-              <h2 id="schaduwKop">De gevaarlijkste Schaduw is die welke zichzelf Licht noemt.</h2>
-              <p>
-                Tegen zichtbaar kwaad wapent de mens zich. Doch wanneer wreedheid rechtvaardigheid wordt
-                genoemd, wanneer hebzucht plicht wordt genoemd en wanneer hoogmoed heiligheid wordt genoemd,
-                volgen velen zonder te zien waarheen zij geleid worden.
-              </p>
-              <p class="slot">Zie wat de daden van een mens achterlaten. Want de vrucht verraadt de boom.</p>
-            </div>
-            <div class="lantaarn-laag lantaarn-licht" id="lantaarnLicht" aria-hidden="true">
-              <p class="eyebrow">
-                <svg aria-hidden="true"><use href="#ster" /></svg>
-                Uit het Boek der Schaduwen
-              </p>
-              <h2>De gevaarlijkste Schaduw is die welke zichzelf Licht noemt.</h2>
-              <p>
-                Tegen zichtbaar kwaad wapent de mens zich. Doch wanneer wreedheid rechtvaardigheid wordt
-                genoemd, wanneer hebzucht plicht wordt genoemd en wanneer hoogmoed heiligheid wordt genoemd,
-                volgen velen zonder te zien waarheen zij geleid worden.
-              </p>
-              <p class="slot">Zie wat de daden van een mens achterlaten. Want de vrucht verraadt de boom.</p>
-            </div>
-          </div>
-          <p class="lantaarn-hint" id="lantaarnHint">beweeg je lantaarn over de tekst</p>
-        </div>
-      </section>
-
-      <!-- ============ STAD ============ -->
-      <section class="sectie" id="stad">
-        <div class="binnen">
-          <div class="kop">
-            <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              De Stad
-            </p>
-            <h2>Zandsteen onder de woestijnzon</h2>
-            <p class="intro">
-              Tussen de duinen en cactussen van Quartum verrijst Verathiel: zandstenen muren, rode daken,
-              zuilengangen en klokkentorens. Dit is pas het begin. Het plan is een grote stad in Romeinse
-              stijl, met basilieken waar het Licht gevierd wordt.
-            </p>
-          </div>
-          <div class="galerij" id="galerij">
-            <button class="foto groot" type="button" data-i="0">
-              <img
-                src="img/stallen.webp"
-                alt="Een zandstenen gebouw met stallen en varkens, een hoge toren en de woestijn op de achtergrond"
-                loading="lazy"
-              />
-              <span class="onderschrift">Aan de rand van de stad, waar de woestijn begint</span>
-            </button>
-            <button class="foto" type="button" data-i="1">
-              <img
-                src="img/binnenhof-klein.webp"
-                alt="Een binnenhof met gras, een bank en zuilengangen met lantaarns"
-                loading="lazy"
-              />
-              <span class="onderschrift">Een stille binnenhof achter de zuilengang</span>
-            </button>
-            <button class="foto" type="button" data-i="2">
-              <img
-                src="img/korenveld-klein.webp"
-                alt="Een groot zandstenen gebouw met rode daken naast een korenveld bij zonsondergang"
-                loading="lazy"
-              />
-              <span class="onderschrift">Tussen stenen muren en gouden korenvelden</span>
-            </button>
-            <button class="foto" type="button" data-i="3">
-              <img
-                src="img/klokkentoren-klein.webp"
-                alt="Huizen en een klokkentoren bij zonsondergang, met palmen ernaast"
-                loading="lazy"
-              />
-              <span class="onderschrift">De klokkentoren bij zonsondergang</span>
-            </button>
-          </div>
-          <div class="stad-noot">
-            <span>
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              Romeinse bouwstijl
-            </span>
-            <span>
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              Basilieken in aanbouw
-            </span>
-            <span>
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              Klik op een beeld om het te vergroten
-            </span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ VERHALEN ============ -->
-      <section class="sectie sectie-alt" id="verhalen">
-        <div class="binnen">
-          <div class="kop">
-            <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              De Verlichte Verhalen
-            </p>
-            <h2>Het heilige boek van Verathiel</h2>
-            <p class="intro">
-              Acht boeken over het Eerste Licht, de reizen van Aelar, de leer van Elian en het einde van alle
-              dingen. Kies een boek van de plank en lees.
-            </p>
-          </div>
-          <div class="plank-wrap">
-            <div class="plank" id="plank" role="tablist" aria-label="De acht boeken"></div>
-          </div>
-          <div class="lezer kader" id="lezer">
-            <div class="lezer-inhoud">
-              <p class="label" id="boekNr">Boek I</p>
-              <h3 id="boekTitel">Het Boek van de Eerste Gloed</h3>
-              <p class="sub" id="boekSub">
-                Over het begin van alle dingen, de Lichtvonk en de Eerste Belofte.
-              </p>
-              <ol class="toc" id="toc" aria-label="Hoofdstukken"></ol>
-            </div>
-            <div class="lezer-tekst" id="lezerTekst" aria-live="polite">
-              <p class="label" id="passageNr">Hoofdstuk I</p>
-              <h4 id="passageTitel">Voor het Begin</h4>
-              <div class="passage" id="passage">
-                <p>
-                  Voor de dagen geteld werden, voor hemel, aarde en adem bestonden, was er het Licht. Niet
-                  geschapen en niet geboren. Het was.
-                </p>
-              </div>
-              <div class="moraal" id="moraal" hidden></div>
-              <p class="na-moraal" id="naMoraal" hidden></p>
-              <div class="lezer-voet">
-                <button class="knop knop-lijn knop-klein" type="button" id="vorige">
-                  <svg aria-hidden="true"><use href="#pijl-l" /></svg>
-                  vorige
-                </button>
-                <span id="positie">1 / 8</span>
-                <button class="knop knop-lijn knop-klein" type="button" id="volgende">
-                  volgende
-                  <svg aria-hidden="true"><use href="#pijl-r" /></svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============ AANSLUITEN ============ -->
-      <section class="sectie" id="aansluiten">
-        <div class="binnen">
-          <div class="kop">
-            <p class="eyebrow">
-              <svg aria-hidden="true"><use href="#ster" /></svg>
-              Aansluiten
-            </p>
-            <h2>Draag het Licht met ons mee</h2>
-            <p class="intro">
-              Verathiel zoekt gelovigen, bouwers, wachters en verhalenvertellers. Dit is waar wij voor staan.
-            </p>
-          </div>
-          <div class="waarden">
-            <div class="waarde">
-              <svg aria-hidden="true"><use href="#stem" /></svg>
-              <h3>Voice RP</h3>
-              <p>
-                Wij spelen het liefst met stem. Het grootste deel van onze leden kiest voice RP boven tekst.
-              </p>
-            </div>
-            <div class="waarde">
-              <svg aria-hidden="true"><use href="#weegschaal" /></svg>
-              <h3>Neutraal met principes</h3>
-              <p>
-                We blijven buiten de politieke conflicten van Quartum, tenzij die ingaan tegen de geboden van
-                het Licht.
-              </p>
-            </div>
-            <div class="waarde">
-              <svg aria-hidden="true"><use href="#basiliek" /></svg>
-              <h3>Eén bisdom, heel Quartum</h3>
-              <p>
-                Ons doel is in elk rijk een kerk of basiliek te stichten en het Licht over het hele continent
-                te dragen.
-              </p>
-            </div>
-            <div class="waarde">
-              <svg aria-hidden="true"><use href="#beeld" /></svg>
-              <h3>Verhalen op beeld</h3>
-              <p>Shorts en roleplayvideo's, van live RP tot opgenomen misvieringen.</p>
-            </div>
-          </div>
-          <ol class="stappen">
-            <li class="stap">
-              <span class="stap-nr">I</span>
-              <h3>Kom binnen op Discord</h3>
-              <p>Stel je voor, lees de regels en maak kennis met de gemeenschap.</p>
-            </li>
-            <li class="stap">
-              <span class="stap-nr">II</span>
-              <h3>Bedenk je karakter</h3>
-              <p>
-                Wie is jouw gelovige? Monnik, Geloofswachter of gewone burger: iedereen draagt een Lichtvonk.
-              </p>
-            </li>
-            <li class="stap">
-              <span class="stap-nr">III</span>
-              <h3>Speel mee op RepublicMC</h3>
-              <p>Bouw mee aan de stad, woon een misviering bij en speel mee in voice RP.</p>
-            </li>
-          </ol>
-          <div class="poorten">
-            <article class="poort kader">
-              <div class="poort-kop">
-                <svg aria-hidden="true"><use href="#praat" /></svg>
-                <h3>Discord</h3>
-              </div>
-              <p>
-                Hier komt Verathiel samen: aankondigingen, roleplay, taken voor de stad en alles wat er in het
-                kingdom gebeurt.
-              </p>
-              <div class="kopieer">
-                <code id="dcLink">discord.gg/6MVmUydGcq</code>
-                <button
-                  class="knop knop-lijn knop-klein"
-                  type="button"
-                  data-kopieer="https://discord.gg/6MVmUydGcq"
-                  data-doel="dcLink"
-                >
-                  kopieer
-                </button>
-              </div>
-              <div class="knoppen">
-                <a
-                  class="knop knop-primair"
-                  href="https://discord.gg/6MVmUydGcq"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Open de Discord
-                  <svg aria-hidden="true"><use href="#uit" /></svg>
-                </a>
-              </div>
-            </article>
-            <article class="poort kader">
-              <div class="poort-kop">
-                <svg aria-hidden="true"><use href="#speel" /></svg>
-                <h3>YouTube</h3>
-              </div>
-              <p>
-                Shorts en roleplayvideo's uit Verathiel, op ons kanaal <strong>@VerathielRMC</strong>.
-              </p>
-              <div class="knoppen">
-                <a
-                  class="knop knop-lijn"
-                  href="https://www.youtube.com/@VerathielRMC"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  Naar het kanaal
-                  <svg aria-hidden="true"><use href="#uit" /></svg>
-                </a>
-              </div>
-            </article>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="voet">
-      <div class="binnen voet-binnen">
-        <img src="img/logo.webp" alt="" width="84" height="84" loading="lazy" />
-        <blockquote>“Waar Licht wordt gedeeld, wordt het niet kleiner maar groter.”</blockquote>
-        <nav aria-label="Voettekst">
-          <a href="https://discord.gg/6MVmUydGcq" target="_blank" rel="noopener">Discord</a>
-          <a href="https://www.youtube.com/@VerathielRMC" target="_blank" rel="noopener">YouTube</a>
-          <a href="#verhalen">De Verlichte Verhalen</a>
-          <a href="#begin">Terug naar boven</a>
-        </nav>
-        <small>
-          Verathiel is een kingdom op RepublicMC (RMC). Minecraft is een merk van Mojang; deze site is daar
-          niet aan verbonden.
-        </small>
-      </div>
-    </footer>
-
-    <div class="lichtbak" id="lichtbak" role="dialog" aria-modal="true" aria-label="Vergrote foto" hidden>
-      <button class="lb-knop lb-sluit" type="button" id="lbSluit" aria-label="Sluiten">
-        <svg aria-hidden="true"><use href="#kruis" /></svg>
-      </button>
-      <button class="lb-knop lb-vorige" type="button" id="lbVorige" aria-label="Vorige foto">
-        <svg aria-hidden="true"><use href="#pijl-l" /></svg>
-      </button>
-      <figure>
-        <img id="lbImg" src="" alt="" />
-        <figcaption id="lbCap"></figcaption>
-      </figure>
-      <button class="lb-knop lb-volgende" type="button" id="lbVolgende" aria-label="Volgende foto">
-        <svg aria-hidden="true"><use href="#pijl-r" /></svg>
-      </button>
-    </div>
-    <div class="lichtcursor" id="lichtcursor" aria-hidden="true"></div>
-
-    <!-- Sjabloon voor één olielamp bij de Acht Geboden (gebruikt door js/geboden.js) -->
-    <template id="lampSjabloon">
-      <button class="lamp" type="button" role="tab" aria-controls="gebod" aria-selected="false">
-        <svg viewBox="0 0 120 100" aria-hidden="true">
-          <circle class="gloed" cx="106" cy="46" r="34" fill="url(#lampGloed)" />
-          <g class="vlam">
-            <g class="vlam-g">
-              <path class="l-vlam" d="M106 20 C 116 37, 117 50, 106 63 C 95 50, 96 37, 106 20 Z" />
-              <path class="l-kern" d="M106 35 C 111 45, 112 52, 106 61 C 100 52, 101 45, 106 35 Z" />
-            </g>
-          </g>
-          <ellipse class="l-schaduw" cx="58" cy="93" rx="30" ry="4" />
-          <g class="lichaam">
-            <path class="l-greep" d="M28 72 Q 10 70 11 58 Q 13 48 22 52" />
-            <path class="l-klei" d="M80 66 Q 98 61 106 63 Q 113 65 111 71 Q 107 78 84 80 Z" />
-            <ellipse class="l-klei" cx="56" cy="74" rx="32" ry="14" />
-            <path class="l-lijn" d="M33 77 Q 56 86 79 77" />
-            <ellipse class="l-donker" cx="56" cy="66" rx="21" ry="5.5" />
-            <circle cx="56" cy="66" r="2.6" fill="#2A1A12" opacity=".6" />
-          </g>
-        </svg>
-        <span class="nr" aria-hidden="true"></span>
-      </button>
-    </template>
+    <!-- Voettekst: wordt opgebouwd door src/components/voet/voet.ts -->
+    <footer class="voet" id="voet"></footer>
   </body>
 </html>
