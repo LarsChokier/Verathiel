@@ -1,0 +1,1 @@
+import{c as e,r as t,t as n}from"./gedeeld-BFH4uaKk.js";/* empty css                   */var r=.62;function i(){let n=e(`.moment, .tijdperk.lijn`);t(()=>{let e=innerHeight*r;for(let t of n){let n=t.getBoundingClientRect(),r=Math.max(0,Math.min(1,(e-n.top)/n.height));t.style.setProperty(`--p`,r.toFixed(3)),t.classList.toggle(`is-verlicht`,e>n.top+20)}})}n(),i();
